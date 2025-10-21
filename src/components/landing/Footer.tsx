@@ -1,0 +1,118 @@
+"use client";
+
+import { Theme, FooterConfig } from "@/types/landing";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Github } from "lucide-react";
+
+interface FooterProps {
+  config: FooterConfig;
+  theme?: Theme;
+}
+
+export function Footer({ config, theme }: FooterProps) {
+  const { logo, tagline, columns, social, copyright, background, spacing } = config;
+
+  const textColor = theme?.colors.text || "#111827";
+  const textMuted = theme?.colors.textMuted || "#6b7280";
+
+  const getBackgroundColor = () => {
+    if (background.type === "solid") {
+      if (background.color === "background") return theme?.colors.background || "#ffffff";
+      return background.color;
+    }
+    return "#0f172a";
+  };
+
+  const isDark = background.color === "#0f172a" || background.color?.startsWith("#0");
+  const finalTextColor = isDark ? "#f1f5f9" : textColor;
+  const finalTextMuted = isDark ? "#94a3b8" : textMuted;
+
+  const paddingClass = spacing?.padding === "xl" ? "py-16" : "py-12";
+
+  const getSocialIcon = (platform: string) => {
+    const iconClass = "h-5 w-5";
+    switch (platform) {
+      case "facebook":
+        return <Facebook className={iconClass} />;
+      case "twitter":
+        return <Twitter className={iconClass} />;
+      case "instagram":
+        return <Instagram className={iconClass} />;
+      case "linkedin":
+        return <Linkedin className={iconClass} />;
+      case "youtube":
+        return <Youtube className={iconClass} />;
+      case "github":
+        return <Github className={iconClass} />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <footer className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          <div className="lg:col-span-2">
+            {logo && (
+              <div className="mb-4">
+                <img src={logo} alt="Logo" className="h-8" />
+              </div>
+            )}
+
+            {tagline && (
+              <p className="text-base mb-6" style={{ color: finalTextMuted }}>
+                {tagline}
+              </p>
+            )}
+
+            {social && social.length > 0 && (
+              <div className="flex gap-4">
+                {social.map((link) => (
+                  <a
+                    key={link.platform}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity"
+                    style={{ color: finalTextMuted }}
+                  >
+                    {getSocialIcon(link.platform)}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {columns.map((column) => (
+            <div key={column.id}>
+              <h3 className="font-semibold mb-4" style={{ color: finalTextColor }}>
+                {column.title}
+              </h3>
+              <ul className="space-y-2">
+                {column.links.map((link, idx) => (
+                  <li key={idx}>
+                    <a
+                      href={link.link}
+                      className="hover:opacity-70 transition-opacity"
+                      style={{ color: finalTextMuted }}
+                    >
+                      {link.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {copyright && (
+          <div className="pt-8 border-t" style={{ borderColor: isDark ? "#1e293b" : "#e5e7eb" }}>
+            <p className="text-center text-sm" style={{ color: finalTextMuted }}>
+              {copyright}
+            </p>
+          </div>
+        )}
+      </div>
+    </footer>
+  );
+}
