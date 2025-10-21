@@ -1,0 +1,164 @@
+"use client";
+
+import { Theme, HeroConfig } from "@/types/landing";
+import { Button } from "@/components/ui/button";
+import { useEditMode } from "@/contexts/EditModeContext";
+
+interface HeroProps {
+  config: HeroConfig;
+  theme?: Theme;
+}
+
+export function Hero({ config, theme }: HeroProps) {
+  const { isEditMode, sidebarOpen } = useEditMode();
+  const {
+    title,
+    subtitle,
+    description,
+    primaryCTA,
+    secondaryCTA,
+    image,
+    alignment = "center",
+    background,
+    spacing,
+  } = config;
+
+  // Theme colors with fallbacks
+  const primaryColor = theme?.colors.primary || "#3b82f6";
+  const textColor = theme?.colors.text || "#111827";
+  const surfaceColor = theme?.colors.surface || "#f9fafb";
+
+  // Alignment classes
+  const alignmentClasses = {
+    left: "text-left items-start",
+    center: "text-center items-center",
+    right: "text-right items-end",
+  };
+
+  // Background styles
+  const getBackgroundStyle = () => {
+    if (background.type === "gradient" && background.gradient) {
+      const { from, to, direction = "to-br" } = background.gradient;
+      return {
+        background: `linear-gradient(${direction}, ${from}, ${to})`,
+      };
+    }
+    if (background.type === "solid") {
+      const color = background.color === "background" ? theme?.colors.background : background.color;
+      return { backgroundColor: color };
+    }
+    if (background.type === "image" && background.image) {
+      return {
+        backgroundImage: `url(${background.image.url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      };
+    }
+    return {};
+  };
+
+  // Spacing classes
+  const paddingClass = spacing?.padding ? `py-${spacing.padding === "2xl" ? "24" : "20"}` : "py-20";
+
+  return (
+    <section
+      className={`relative ${paddingClass} px-4 overflow-hidden`}
+      style={getBackgroundStyle()}
+    >
+      {/* Overlay for image backgrounds */}
+      {background.type === "image" && background.image?.overlay && (
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundColor: background.image.overlay,
+            opacity: background.image.opacity || 0.5,
+          }}
+        />
+      )}
+
+      <div
+        className={`relative z-10 flex flex-col ${alignmentClasses[alignment]} ${
+          isEditMode && sidebarOpen ? "px-4 mx-auto max-w-none" : "container mx-auto"
+        }`}
+      >
+        {/* Subtitle */}
+        {subtitle && (
+          <div
+            className="text-sm font-semibold uppercase tracking-wider mb-4"
+            style={{
+              color: background.type === "gradient" ? "#ffffff" : primaryColor,
+            }}
+          >
+            {subtitle}
+          </div>
+        )}
+
+        {/* Title */}
+        <h1
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl"
+          style={{
+            color:
+              background.type === "gradient" || background.type === "image" ? "#ffffff" : textColor,
+            fontFamily: theme?.fonts.heading,
+          }}
+        >
+          {title}
+        </h1>
+
+        {/* Description */}
+        <p
+          className="text-lg md:text-xl mb-8 max-w-2xl"
+          style={{
+            color:
+              background.type === "gradient" || background.type === "image"
+                ? "rgba(255,255,255,0.9)"
+                : theme?.colors.textMuted,
+            fontFamily: theme?.fonts.body,
+          }}
+        >
+          {description}
+        </p>
+
+        {/* CTAs */}
+        {(primaryCTA || secondaryCTA) && (
+          <div className="flex flex-wrap gap-4">
+            {primaryCTA && (
+              <Button
+                asChild
+                size="lg"
+                style={{
+                  backgroundColor: primaryColor,
+                  color: "#ffffff",
+                }}
+                className="hover:opacity-90 transition-opacity"
+              >
+                <a href={primaryCTA.link}>{primaryCTA.text}</a>
+              </Button>
+            )}
+            {secondaryCTA && (
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                style={{
+                  borderColor: background.type === "gradient" ? "#ffffff" : primaryColor,
+                  color: background.type === "gradient" ? "#ffffff" : primaryColor,
+                }}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <a href={secondaryCTA.link}>{secondaryCTA.text}</a>
+              </Button>
+            )}
+          </div>
+        )}
+
+        {/* Hero Image */}
+        {image && (
+          <div className="mt-12 w-full max-w-5xl">
+            <img src={image} alt={title} className="w-full h-auto rounded-lg shadow-2xl" />
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
