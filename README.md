@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Multi Landing Page Builder
 
-## Getting Started
+A powerful, flexible CMS platform for creating and managing multiple landing pages. Built with Next.js 14, TypeScript, and TailwindCSS.
 
-First, run the development server:
+## ✨ Features
+
+- **🎨 Multiple Landing Pages** - Manage unlimited landing pages from one dashboard
+- **📱 Fully Responsive** - Mobile-first design that looks great on all devices
+- **🎭 Multiple Themes** - Modern, Dark, and Minimal themes included
+- **🧩 Component Library** - Hero, Features, Pricing, Testimonials, CTA, Footer
+- **⚡ Server-Side Rendering** - Fast page loads with Next.js SSR
+- **🔍 SEO Optimized** - Built-in SEO configuration for each page
+- **💾 JSON Configuration** - Simple file-based data storage
+- **🎯 Type-Safe** - Full TypeScript support
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Admin Dashboard**: http://localhost:3000/admin
+- **Landing Pages**:
+  - http://localhost:3000/landing/saas-platform
+  - http://localhost:3000/landing/ai-startup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+├── public/
+│   ├── data/
+│   │   └── landing-config.json     # All pages configuration
+│   └── assets/images/              # Uploaded images
+├── src/
+│   ├── app/
+│   │   ├── admin/                  # Admin dashboard
+│   │   ├── landing/[slug]/         # Public landing pages (SSR)
+│   │   └── api/                    # API routes
+│   ├── components/
+│   │   ├── landing/                # Landing components
+│   │   └── ui/                     # UI components (shadcn)
+│   ├── types/
+│   │   └── landing.ts              # TypeScript types
+│   └── lib/
+└── BOT-DEVELOPMENT-GUIDE.md        # Detailed dev guide
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Available Components
 
-## Deploy on Vercel
+- **Hero** - Eye-catching headers with CTAs
+- **Features** - Showcase features in grid/list layout
+- **Pricing** - Display pricing plans and tiers
+- **Testimonials** - Customer reviews with ratings
+- **CTA** - Call-to-action sections
+- **Footer** - Multi-column footer with social links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎭 Themes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Modern** - Clean, professional blue theme
+- **Dark** - Sleek dark mode with indigo accents
+- **Minimal** - Simple black & white design
+
+## 📖 Documentation
+
+For detailed development instructions, see [BOT-DEVELOPMENT-GUIDE.md](./BOT-DEVELOPMENT-GUIDE.md)
+
+Topics covered:
+
+- Adding new components
+- Creating pages
+- Theme customization
+- Type system
+- Best practices
+- Testing checklist
+
+## 🔧 Configuration
+
+All configuration is stored in `public/data/landing-config.json`. Edit this file to:
+
+- Add/edit pages
+- Configure components
+- Customize themes
+- Update SEO settings
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: TailwindCSS
+- **UI**: shadcn/ui
+- **Icons**: Lucide React
+
+## 🎯 Roadmap
+
+- [ ] Visual drag & drop editor
+- [ ] Real-time preview
+- [ ] Advanced component editor
+- [ ] Image upload UI
+- [ ] Theme customization panel
+- [ ] Page duplication
+- [ ] Export/Import
+- [ ] Analytics integration
+
+## 📝 License
+
+MIT License
+
+---
+
+**Built with ❤️ using Next.js, TypeScript, and TailwindCSS**

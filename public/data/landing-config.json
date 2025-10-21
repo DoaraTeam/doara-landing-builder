@@ -1,0 +1,703 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "lastUpdated": "2025-10-21T09:57:50.753Z",
+    "totalPages": 2,
+    "version": "1.0.0"
+  },
+  "themes": {
+    "modern": {
+      "name": "Modern Theme",
+      "colors": {
+        "primary": "#3b82f6",
+        "secondary": "#8b5cf6",
+        "accent": "#ec4899",
+        "background": "#ffffff",
+        "surface": "#f9fafb",
+        "text": "#111827",
+        "textMuted": "#6b7280"
+      },
+      "fonts": {
+        "heading": "Inter",
+        "body": "Inter"
+      },
+      "borderRadius": "0.5rem",
+      "shadows": "modern"
+    },
+    "dark": {
+      "name": "Dark Theme",
+      "colors": {
+        "primary": "#6366f1",
+        "secondary": "#8b5cf6",
+        "accent": "#ec4899",
+        "background": "#0f172a",
+        "surface": "#1e293b",
+        "text": "#f1f5f9",
+        "textMuted": "#94a3b8"
+      },
+      "fonts": {
+        "heading": "Inter",
+        "body": "Inter"
+      },
+      "borderRadius": "0.75rem",
+      "shadows": "lg"
+    },
+    "minimal": {
+      "name": "Minimal Theme",
+      "colors": {
+        "primary": "#000000",
+        "secondary": "#404040",
+        "accent": "#000000",
+        "background": "#ffffff",
+        "surface": "#fafafa",
+        "text": "#000000",
+        "textMuted": "#737373"
+      },
+      "fonts": {
+        "heading": "Inter",
+        "body": "Inter"
+      },
+      "borderRadius": "0rem",
+      "shadows": "none"
+    }
+  },
+  "pages": {
+    "saas-platform": {
+      "id": "saas-platform",
+      "title": "SaaS Platform - Build Your Next Product",
+      "description": "A modern SaaS platform landing page",
+      "slug": "saas-platform",
+      "theme": "modern",
+      "status": "published",
+      "seo": {
+        "metaTitle": "SaaS Platform - Build Your Next Product",
+        "metaDescription": "Launch your SaaS product faster with our all-in-one platform. Powerful features, beautiful design, and affordable pricing.",
+        "keywords": [
+          "saas",
+          "platform",
+          "software",
+          "cloud",
+          "business"
+        ],
+        "ogImage": "/assets/images/og-saas.jpg"
+      },
+      "components": [
+        {
+          "id": "hero-1",
+          "type": "hero",
+          "order": 0,
+          "visible": true,
+          "config": {
+            "title": "Build Your Next SaaS Product Faster",
+            "subtitle": "All-in-One Platform",
+            "description": "Launch your SaaS product in days, not months. Get everything you need to build, deploy, and scale your business.",
+            "primaryCTA": {
+              "text": "Start Free Trial",
+              "link": "#pricing",
+              "style": "primary"
+            },
+            "secondaryCTA": {
+              "text": "Watch Demo",
+              "link": "#demo",
+              "style": "outline"
+            },
+            "alignment": "center",
+            "background": {
+              "type": "image",
+              "gradient": {
+                "from": "#3b82f6",
+                "to": "#8b5cf6",
+                "direction": "to-br"
+              }
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          }
+        },
+        {
+          "id": "features-1",
+          "type": "features",
+          "order": 1,
+          "visible": true,
+          "config": {
+            "title": "Everything You Need to Succeed",
+            "subtitle": "Powerful Features",
+            "description": "Built with modern technologies and best practices",
+            "features": [
+              {
+                "id": "feature-3",
+                "icon": "📊",
+                "title": "Analytics & Insights",
+                "description": "Track your metrics and make data-driven decisions with powerful analytics."
+              },
+              {
+                "id": "feature-4",
+                "icon": "🎨",
+                "title": "Beautiful Design",
+                "description": "Crafted with attention to detail. Looks great on every device."
+              },
+              {
+                "id": "feature-5",
+                "icon": "🚀",
+                "title": "Easy to Scale",
+                "description": "Built to grow with you. Scale from 1 to 1 million users seamlessly."
+              },
+              {
+                "id": "feature-6",
+                "icon": "💬",
+                "title": "24/7 Support",
+                "description": "Our team is here to help you succeed, anytime you need us."
+              }
+            ],
+            "layout": "grid",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "id": "pricing-1",
+          "type": "pricing",
+          "order": 2,
+          "visible": true,
+          "config": {
+            "title": "Simple, Transparent Pricing",
+            "subtitle": "Choose Your Plan",
+            "description": "Start free and scale as you grow",
+            "plans": [
+              {
+                "id": "plan-1",
+                "name": "Starter",
+                "description": "Perfect for side projects",
+                "price": "$0",
+                "period": "/month",
+                "features": [
+                  "Up to 1,000 users",
+                  "Basic analytics",
+                  "Email support",
+                  "1 GB storage",
+                  "Community access"
+                ],
+                "highlighted": false,
+                "ctaText": "Get Started",
+                "ctaLink": "#signup"
+              },
+              {
+                "id": "plan-2",
+                "name": "Pro",
+                "description": "For growing teams",
+                "price": "$29",
+                "period": "/month",
+                "features": [
+                  "Up to 10,000 users",
+                  "Advanced analytics",
+                  "Priority support",
+                  "10 GB storage",
+                  "API access",
+                  "Custom integrations"
+                ],
+                "highlighted": true,
+                "ctaText": "Start Free Trial",
+                "ctaLink": "#signup"
+              },
+              {
+                "id": "plan-3",
+                "name": "Enterprise",
+                "description": "For large organizations",
+                "price": "$99",
+                "period": "/month",
+                "features": [
+                  "Unlimited users",
+                  "Custom analytics",
+                  "24/7 phone support",
+                  "Unlimited storage",
+                  "Dedicated account manager",
+                  "SLA guarantee",
+                  "Custom training"
+                ],
+                "highlighted": false,
+                "ctaText": "Contact Sales",
+                "ctaLink": "#contact"
+              }
+            ],
+            "background": {
+              "type": "solid",
+              "color": "#f9fafb"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 200
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "id": "testimonials-1",
+          "type": "testimonials",
+          "order": 3,
+          "visible": true,
+          "config": {
+            "title": "Loved by Thousands of Customers",
+            "subtitle": "Customer Reviews",
+            "description": "See what our customers have to say about us",
+            "testimonials": [
+              {
+                "id": "testimonial-1",
+                "name": "Sarah Johnson",
+                "role": "CEO",
+                "company": "TechCorp",
+                "rating": 5,
+                "text": "This platform has transformed how we build and ship products. The speed and reliability are unmatched."
+              },
+              {
+                "id": "testimonial-2",
+                "name": "Michael Chen",
+                "role": "CTO",
+                "company": "StartupXYZ",
+                "rating": 5,
+                "text": "We cut our development time by 50% and our costs by even more. This is a game-changer for startups."
+              },
+              {
+                "id": "testimonial-3",
+                "name": "Emily Rodriguez",
+                "role": "Product Manager",
+                "company": "InnovateLab",
+                "rating": 5,
+                "text": "The best investment we've made. The ROI was clear within the first month of use."
+              },
+              {
+                "content": "This product has been amazing! I highly recommend it to everyone.",
+                "author": "John Doe",
+                "role": "CEO",
+                "company": "Tech Company",
+                "rating": 5,
+                "avatar": ""
+              },
+              {
+                "content": "This product has been amazing! I highly recommend it to everyone.",
+                "author": "John Doe",
+                "role": "CEO",
+                "company": "Tech Company",
+                "rating": 5,
+                "avatar": ""
+              }
+            ],
+            "layout": "grid",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 300
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "id": "footer-1",
+          "type": "footer",
+          "order": 4,
+          "visible": true,
+          "config": {
+            "tagline": "Build better products, faster.",
+            "columns": [
+              {
+                "id": "col-1",
+                "title": "Product",
+                "links": [
+                  {
+                    "text": "Features",
+                    "link": "#features"
+                  },
+                  {
+                    "text": "Pricing",
+                    "link": "#pricing"
+                  },
+                  {
+                    "text": "Integrations",
+                    "link": "#integrations"
+                  },
+                  {
+                    "text": "Changelog",
+                    "link": "#changelog"
+                  }
+                ]
+              },
+              {
+                "id": "col-2",
+                "title": "Company",
+                "links": [
+                  {
+                    "text": "About Us",
+                    "link": "#about"
+                  },
+                  {
+                    "text": "Careers",
+                    "link": "#careers"
+                  },
+                  {
+                    "text": "Blog",
+                    "link": "#blog"
+                  },
+                  {
+                    "text": "Press Kit",
+                    "link": "#press"
+                  }
+                ]
+              },
+              {
+                "id": "col-3",
+                "title": "Resources",
+                "links": [
+                  {
+                    "text": "Documentation",
+                    "link": "#docs"
+                  },
+                  {
+                    "text": "API Reference",
+                    "link": "#api"
+                  },
+                  {
+                    "text": "Support",
+                    "link": "#support"
+                  },
+                  {
+                    "text": "Community",
+                    "link": "#community"
+                  }
+                ]
+              },
+              {
+                "id": "col-4",
+                "title": "Legal",
+                "links": [
+                  {
+                    "text": "Privacy Policy",
+                    "link": "#privacy"
+                  },
+                  {
+                    "text": "Terms of Service",
+                    "link": "#terms"
+                  },
+                  {
+                    "text": "Cookie Policy",
+                    "link": "#cookies"
+                  },
+                  {
+                    "text": "GDPR",
+                    "link": "#gdpr"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "twitter",
+                "url": "https://twitter.com"
+              },
+              {
+                "platform": "github",
+                "url": "https://github.com"
+              },
+              {
+                "platform": "linkedin",
+                "url": "https://linkedin.com"
+              }
+            ],
+            "copyright": "© 2025 SaaS Platform. All rights reserved.",
+            "background": {
+              "type": "solid",
+              "color": "#0f172a"
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          }
+        }
+      ],
+      "updatedAt": "2025-10-21T09:57:50.753Z"
+    },
+    "ai-startup": {
+      "id": "ai-startup",
+      "title": "AI Startup - Transform Your Business with AI",
+      "description": "An AI-focused landing page for startups",
+      "slug": "ai-startup",
+      "theme": "dark",
+      "status": "published",
+      "seo": {
+        "metaTitle": "AI Startup - Transform Your Business with AI",
+        "metaDescription": "Harness the power of artificial intelligence to automate, optimize, and grow your business.",
+        "keywords": [
+          "ai",
+          "artificial intelligence",
+          "machine learning",
+          "automation",
+          "innovation"
+        ],
+        "ogImage": "/assets/images/og-ai.jpg"
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": false,
+          "config": {
+            "title": "Welcome to Our Platform",
+            "subtitle": "Innovate • Transform • Succeed",
+            "description": "Transform your business with our cutting-edge solutions. Get started today and see the difference.",
+            "alignment": "center",
+            "cta": {
+              "primary": {
+                "text": "Get Started",
+                "link": "#",
+                "variant": "default"
+              },
+              "secondary": {
+                "text": "Learn More",
+                "link": "#",
+                "variant": "outline"
+              }
+            },
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "from": "#3b82f6",
+                "to": "#8b5cf6"
+              }
+            },
+            "spacing": {
+              "paddingTop": "80px",
+              "paddingBottom": "80px"
+            }
+          },
+          "id": "comp-1761037695575-2jlpxwib5",
+          "order": 0
+        },
+        {
+          "id": "features-ai-1",
+          "type": "features",
+          "order": 2,
+          "visible": true,
+          "config": {
+            "title": "AI-Powered Features",
+            "subtitle": "Built for the Future",
+            "description": "Cutting-edge technology meets practical business solutions",
+            "features": [
+              {
+                "id": "ai-feature-3",
+                "icon": "📈",
+                "title": "Predictive Analytics",
+                "description": "Forecast trends and make informed decisions with AI insights."
+              },
+              {
+                "id": "ai-feature-4",
+                "icon": "💡",
+                "title": "Smart Recommendations",
+                "description": "Get personalized recommendations powered by neural networks."
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              }
+            ],
+            "layout": "grid",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#1e293b"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "id": "cta-ai-1",
+          "type": "cta",
+          "order": 3,
+          "visible": true,
+          "config": {
+            "title": "Ready to Embrace AI?",
+            "description": "Join the AI revolution and transform your business today.",
+            "primaryCTA": {
+              "text": "Start Your AI Journey",
+              "link": "#signup",
+              "style": "primary"
+            },
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "from": "#6366f1",
+                "to": "#8b5cf6",
+                "direction": "to-r"
+              }
+            },
+            "animation": {
+              "type": "fadeIn",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "id": "footer-ai-1",
+          "type": "footer",
+          "order": 4,
+          "visible": true,
+          "config": {
+            "tagline": "Powered by artificial intelligence.",
+            "columns": [
+              {
+                "id": "ai-col-1",
+                "title": "Product",
+                "links": [
+                  {
+                    "text": "Features",
+                    "link": "#features"
+                  },
+                  {
+                    "text": "Use Cases",
+                    "link": "#cases"
+                  },
+                  {
+                    "text": "Pricing",
+                    "link": "#pricing"
+                  }
+                ]
+              },
+              {
+                "id": "ai-col-2",
+                "title": "Company",
+                "links": [
+                  {
+                    "text": "About",
+                    "link": "#about"
+                  },
+                  {
+                    "text": "Blog",
+                    "link": "#blog"
+                  },
+                  {
+                    "text": "Careers",
+                    "link": "#careers"
+                  }
+                ]
+              },
+              {
+                "id": "ai-col-3",
+                "title": "Legal",
+                "links": [
+                  {
+                    "text": "Privacy",
+                    "link": "#privacy"
+                  },
+                  {
+                    "text": "Terms",
+                    "link": "#terms"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "twitter",
+                "url": "https://twitter.com"
+              },
+              {
+                "platform": "linkedin",
+                "url": "https://linkedin.com"
+              }
+            ],
+            "copyright": "© 2025 AI Startup. All rights reserved.",
+            "background": {
+              "type": "solid",
+              "color": "#0f172a"
+            },
+            "spacing": {
+              "padding": "lg",
+              "margin": "none"
+            }
+          }
+        }
+      ],
+      "updatedAt": "2025-10-21T09:27:31.902Z"
+    }
+  },
+  "navigation": {
+    "links": [
+      {
+        "text": "Home",
+        "link": "/"
+      },
+      {
+        "text": "Features",
+        "link": "#features"
+      },
+      {
+        "text": "Pricing",
+        "link": "#pricing"
+      },
+      {
+        "text": "About",
+        "link": "#about"
+      },
+      {
+        "text": "Contact",
+        "link": "#contact"
+      }
+    ]
+  }
+}
