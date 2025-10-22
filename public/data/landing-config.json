@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "lastUpdated": "2025-10-21T09:57:50.753Z",
-    "totalPages": 2,
+    "lastUpdated": "2025-10-22T09:27:24.421Z",
+    "totalPages": 7,
     "version": "1.0.0"
   },
   "themes": {
@@ -67,7 +67,7 @@
       "title": "SaaS Platform - Build Your Next Product",
       "description": "A modern SaaS platform landing page",
       "slug": "saas-platform",
-      "theme": "modern",
+      "theme": "nature",
       "status": "published",
       "seo": {
         "metaTitle": "SaaS Platform - Build Your Next Product",
@@ -83,95 +83,65 @@
       },
       "components": [
         {
-          "id": "hero-1",
           "type": "hero",
-          "order": 0,
           "visible": true,
           "config": {
-            "title": "Build Your Next SaaS Product Faster",
-            "subtitle": "All-in-One Platform",
-            "description": "Launch your SaaS product in days, not months. Get everything you need to build, deploy, and scale your business.",
-            "primaryCTA": {
-              "text": "Start Free Trial",
-              "link": "#pricing",
-              "style": "primary"
-            },
-            "secondaryCTA": {
-              "text": "Watch Demo",
-              "link": "#demo",
-              "style": "outline"
-            },
+            "title": "Experience Excellence",
+            "subtitle": "Premium Quality",
+            "description": "Discover the difference that quality makes. Elevate your experience today.",
             "alignment": "center",
+            "primaryCTA": {
+              "text": "Explore Now",
+              "link": "#"
+            },
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200",
             "background": {
               "type": "image",
-              "gradient": {
-                "from": "#3b82f6",
-                "to": "#8b5cf6",
-                "direction": "to-br"
+              "color": "#ffffff",
+              "image": {
+                "url": ""
               }
             },
-            "animation": {
-              "type": "fadeInUp",
-              "duration": 600,
-              "delay": 0
-            },
             "spacing": {
-              "padding": "xl",
-              "margin": "none"
+              "padding": "2xl"
             }
-          }
+          },
+          "id": "comp-1761121907515-ph2iboate",
+          "order": 0
         },
         {
-          "id": "features-1",
-          "type": "features",
-          "order": 1,
+          "type": "stats",
           "visible": true,
           "config": {
-            "title": "Everything You Need to Succeed",
-            "subtitle": "Powerful Features",
-            "description": "Built with modern technologies and best practices",
-            "features": [
+            "stats": [
               {
-                "id": "feature-3",
-                "icon": "📊",
-                "title": "Analytics & Insights",
-                "description": "Track your metrics and make data-driven decisions with powerful analytics."
+                "id": "1",
+                "value": "1M",
+                "label": "Downloads",
+                "suffix": "+"
               },
               {
-                "id": "feature-4",
-                "icon": "🎨",
-                "title": "Beautiful Design",
-                "description": "Crafted with attention to detail. Looks great on every device."
+                "id": "2",
+                "value": "4.9",
+                "label": "Rating"
               },
               {
-                "id": "feature-5",
-                "icon": "🚀",
-                "title": "Easy to Scale",
-                "description": "Built to grow with you. Scale from 1 to 1 million users seamlessly."
-              },
-              {
-                "id": "feature-6",
-                "icon": "💬",
-                "title": "24/7 Support",
-                "description": "Our team is here to help you succeed, anytime you need us."
+                "id": "3",
+                "value": "24/7",
+                "label": "Support"
               }
             ],
-            "layout": "grid",
-            "columns": 3,
+            "layout": "horizontal",
             "background": {
               "type": "solid",
-              "color": "#ffffff"
-            },
-            "animation": {
-              "type": "fadeInUp",
-              "duration": 600,
-              "delay": 100
+              "color": "background"
             },
             "spacing": {
-              "padding": "xl",
-              "margin": "lg"
+              "padding": "md"
             }
-          }
+          },
+          "id": "comp-1761105745002-1wiaoc0oo",
+          "order": 1
         },
         {
           "id": "pricing-1",
@@ -236,6 +206,22 @@
                 "highlighted": false,
                 "ctaText": "Contact Sales",
                 "ctaLink": "#contact"
+              },
+              {
+                "name": "New Plan",
+                "price": "$99",
+                "period": "per month",
+                "description": "Perfect for growing businesses",
+                "features": [
+                  "Feature 1",
+                  "Feature 2",
+                  "Feature 3"
+                ],
+                "cta": {
+                  "text": "Get Started",
+                  "link": "#"
+                },
+                "highlighted": false
               }
             ],
             "background": {
@@ -254,9 +240,84 @@
           }
         },
         {
+          "type": "video",
+          "visible": true,
+          "config": {
+            "title": "Watch Our Story",
+            "subtitle": "VIDEO",
+            "description": "See how we're transforming the industry",
+            "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "videoType": "youtube",
+            "thumbnail": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1200",
+            "autoPlay": false,
+            "aspectRatio": "16/9",
+            "background": {
+              "type": "solid",
+              "color": "surface"
+            },
+            "spacing": {
+              "padding": "xl"
+            }
+          },
+          "id": "comp-1761103748001-q284sae5m",
+          "order": 3
+        },
+        {
+          "id": "features-1",
+          "type": "features",
+          "order": 4,
+          "visible": true,
+          "config": {
+            "title": "Everything You Need to Succeed",
+            "subtitle": "Powerful Features",
+            "description": "Built with modern technologies and best practices",
+            "features": [
+              {
+                "id": "feature-3",
+                "icon": "📊",
+                "title": "Analytics & Insights",
+                "description": "Track your metrics and make data-driven decisions with powerful analytics."
+              },
+              {
+                "id": "feature-4",
+                "icon": "🎨",
+                "title": "Beautiful Design",
+                "description": "Crafted with attention to detail. Looks great on every device."
+              },
+              {
+                "id": "feature-5",
+                "icon": "🚀",
+                "title": "Easy to Scale",
+                "description": "Built to grow with you. Scale from 1 to 1 million users seamlessly."
+              },
+              {
+                "id": "feature-6",
+                "icon": "💬",
+                "title": "24/7 Support",
+                "description": "Our team is here to help you succeed, anytime you need us."
+              }
+            ],
+            "layout": "grid",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
           "id": "testimonials-1",
           "type": "testimonials",
-          "order": 3,
+          "order": 5,
           "visible": true,
           "config": {
             "title": "Loved by Thousands of Customers",
@@ -321,9 +382,22 @@
           }
         },
         {
+          "type": "newsletter",
+          "visible": true,
+          "config": {
+            "title": "Stay Updated",
+            "description": "Get the latest news delivered to your inbox",
+            "placeholder": "Enter your email",
+            "buttonText": "Subscribe",
+            "style": "centered"
+          },
+          "id": "comp-1761105888021-1ogofiuae",
+          "order": 6
+        },
+        {
           "id": "footer-1",
           "type": "footer",
-          "order": 4,
+          "order": 7,
           "visible": true,
           "config": {
             "tagline": "Build better products, faster.",
@@ -443,14 +517,14 @@
           }
         }
       ],
-      "updatedAt": "2025-10-21T09:57:50.753Z"
+      "updatedAt": "2025-10-22T09:27:24.421Z"
     },
     "ai-startup": {
       "id": "ai-startup",
       "title": "AI Startup - Transform Your Business with AI",
       "description": "An AI-focused landing page for startups",
       "slug": "ai-startup",
-      "theme": "dark",
+      "theme": "vibrant",
       "status": "published",
       "seo": {
         "metaTitle": "AI Startup - Transform Your Business with AI",
@@ -673,7 +747,1166 @@
           }
         }
       ],
-      "updatedAt": "2025-10-21T09:27:31.902Z"
+      "updatedAt": "2025-10-22T06:47:36.537Z"
+    },
+    "page-1761100213241": {
+      "id": "page-1761100213241",
+      "title": "Minimal Portfolio",
+      "description": "Minimal Portfolio for frontend developer",
+      "slug": "minimal-portfolio",
+      "theme": "dark",
+      "status": "draft",
+      "seo": {
+        "title": "Minimal Portfolio",
+        "description": "Minimal Portfolio for frontend developer",
+        "keywords": [],
+        "ogImage": ""
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": true,
+          "config": {
+            "title": "Designer & Developer",
+            "subtitle": "Creating Digital Experiences",
+            "description": "Hi, I'm a creative professional passionate about design and code. Let's build something amazing together.",
+            "primaryCTA": {
+              "text": "View My Work",
+              "link": "#portfolio",
+              "style": "primary"
+            },
+            "secondaryCTA": {
+              "text": "Get In Touch",
+              "link": "#contact",
+              "style": "outline"
+            },
+            "alignment": "center",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeIn",
+              "duration": 1000,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761100213241-0",
+          "order": 0
+        },
+        {
+          "type": "features",
+          "visible": true,
+          "config": {
+            "title": "What I Do",
+            "subtitle": "My expertise",
+            "description": "Specialized in creating beautiful and functional solutions",
+            "features": [
+              {
+                "title": "UI/UX Design",
+                "description": "Creating intuitive and beautiful user interfaces",
+                "icon": "🎨",
+                "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400"
+              },
+              {
+                "title": "Web Development",
+                "description": "Building responsive and performant websites",
+                "icon": "💻",
+                "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400"
+              },
+              {
+                "title": "Mobile Apps",
+                "description": "Developing native and cross-platform mobile apps",
+                "icon": "📱",
+                "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400"
+              },
+              {
+                "title": "Branding",
+                "description": "Creating memorable brand identities",
+                "icon": "✨",
+                "image": "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              }
+            ],
+            "layout": "grid",
+            "columns": 2,
+            "background": {
+              "type": "solid",
+              "color": "#f9fafb"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761100213241-1",
+          "order": 1
+        },
+        {
+          "type": "testimonials",
+          "visible": true,
+          "config": {
+            "title": "Client Testimonials",
+            "subtitle": "What clients say about working with me",
+            "description": "Building lasting relationships through quality work",
+            "testimonials": [
+              {
+                "content": "Exceptional work! The attention to detail and creativity exceeded our expectations.",
+                "author": "Rachel Green",
+                "role": "Marketing Manager",
+                "company": "TechVision",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=8"
+              },
+              {
+                "content": "Professional, reliable, and talented. A pleasure to work with from start to finish.",
+                "author": "Tom Anderson",
+                "role": "Founder",
+                "company": "StartupHub",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=9"
+              }
+            ],
+            "layout": "grid",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761100213241-2",
+          "order": 2
+        },
+        {
+          "type": "cta",
+          "visible": true,
+          "config": {
+            "title": "Let's Work Together",
+            "description": "Have a project in mind? Let's discuss how I can help bring your ideas to life.",
+            "primaryCTA": {
+              "text": "Start a Project",
+              "link": "#contact",
+              "style": "primary"
+            },
+            "secondaryCTA": {
+              "text": "Download Resume",
+              "link": "#resume",
+              "style": "outline"
+            },
+            "background": {
+              "type": "solid",
+              "color": "#000000"
+            },
+            "animation": {
+              "type": "fadeIn",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "2xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761100213241-3",
+          "order": 3
+        },
+        {
+          "type": "footer",
+          "visible": true,
+          "config": {
+            "logo": {
+              "text": "John Doe",
+              "image": ""
+            },
+            "description": "Designer & Developer based in San Francisco",
+            "links": [
+              {
+                "title": "Work",
+                "items": [
+                  {
+                    "text": "Portfolio",
+                    "link": "#portfolio"
+                  },
+                  {
+                    "text": "Case Studies",
+                    "link": "#cases"
+                  },
+                  {
+                    "text": "Services",
+                    "link": "#services"
+                  }
+                ]
+              },
+              {
+                "title": "Connect",
+                "items": [
+                  {
+                    "text": "Contact",
+                    "link": "#contact"
+                  },
+                  {
+                    "text": "LinkedIn",
+                    "link": "#linkedin"
+                  },
+                  {
+                    "text": "Resume",
+                    "link": "#resume"
+                  }
+                ]
+              },
+              {
+                "title": "More",
+                "items": [
+                  {
+                    "text": "About",
+                    "link": "#about"
+                  },
+                  {
+                    "text": "Blog",
+                    "link": "#blog"
+                  },
+                  {
+                    "text": "Speaking",
+                    "link": "#speaking"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "linkedin",
+                "link": "#",
+                "icon": "linkedin"
+              },
+              {
+                "platform": "github",
+                "link": "#",
+                "icon": "github"
+              },
+              {
+                "platform": "twitter",
+                "link": "#",
+                "icon": "twitter"
+              }
+            ],
+            "copyright": "© 2024 John Doe. All rights reserved."
+          },
+          "id": "comp-1761100213241-4",
+          "order": 4
+        },
+        {
+          "type": "logo-cloud",
+          "visible": true,
+          "config": {
+            "title": "Trusted by Industry Leaders",
+            "subtitle": "OUR PARTNERS",
+            "description": "Join thousands of companies using our platform",
+            "logos": [
+              {
+                "id": "1",
+                "name": "Google",
+                "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+              },
+              {
+                "id": "2",
+                "name": "Microsoft",
+                "image": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
+              },
+              {
+                "id": "3",
+                "name": "Amazon",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+              },
+              {
+                "id": "4",
+                "name": "Meta",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg"
+              },
+              {
+                "id": "5",
+                "name": "Apple",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+              },
+              {
+                "id": "6",
+                "name": "Netflix",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+              }
+            ],
+            "layout": "grid",
+            "grayscale": true,
+            "background": {
+              "type": "solid",
+              "color": "surface"
+            },
+            "spacing": {
+              "padding": "lg"
+            }
+          },
+          "id": "comp-1761103547008-4g0obphby",
+          "order": 5
+        }
+      ],
+      "createdAt": "2025-10-22T02:30:13.241Z",
+      "updatedAt": "2025-10-22T03:26:01.342Z"
+    },
+    "page-1761115269772": {
+      "id": "page-1761115269772",
+      "title": "gym",
+      "description": "gym - fitness",
+      "slug": "gym",
+      "theme": "modern",
+      "status": "draft",
+      "seo": {
+        "title": "gym",
+        "description": "gym - fitness",
+        "keywords": [],
+        "ogImage": ""
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": true,
+          "config": {
+            "title": "Build Something Amazing",
+            "subtitle": "The Future is Now",
+            "description": "Join thousands of companies using our platform to accelerate their growth and achieve remarkable results.",
+            "alignment": "center",
+            "primaryCTA": {
+              "text": "Start Free Trial",
+              "link": "#"
+            },
+            "secondaryCTA": {
+              "text": "Watch Demo",
+              "link": "#"
+            },
+            "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
+            "background": {
+              "type": "solid",
+              "color": "background"
+            },
+            "spacing": {
+              "padding": "xl"
+            }
+          },
+          "id": "comp-1761115279546-dkevgny9q",
+          "order": 1
+        }
+      ],
+      "createdAt": "2025-10-22T06:41:09.772Z",
+      "updatedAt": "2025-10-22T06:41:34.014Z"
+    },
+    "page-1761116686839": {
+      "id": "page-1761116686839",
+      "title": "E-Commerce Store",
+      "description": "",
+      "slug": "e-commerce-store",
+      "theme": "vibrant",
+      "status": "draft",
+      "seo": {
+        "title": "E-Commerce Store",
+        "description": "",
+        "keywords": [],
+        "ogImage": ""
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": true,
+          "config": {
+            "title": "Shop The Latest Collection",
+            "subtitle": "Quality • Style • Value",
+            "description": "Discover amazing products at unbeatable prices. Free shipping on orders over $50.",
+            "primaryCTA": {
+              "text": "Shop Now",
+              "link": "#products",
+              "style": "primary"
+            },
+            "secondaryCTA": {
+              "text": "View Catalog",
+              "link": "#catalog",
+              "style": "outline"
+            },
+            "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800",
+            "alignment": "center",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 800,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "2xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761116686839-0",
+          "order": 0
+        },
+        {
+          "type": "features",
+          "visible": true,
+          "config": {
+            "title": "Why Shop With Us",
+            "subtitle": "Customer satisfaction is our priority",
+            "description": "Experience the best shopping journey",
+            "features": [
+              {
+                "title": "Free Shipping",
+                "description": "Free delivery on all orders over $50",
+                "icon": "🚚"
+              },
+              {
+                "title": "Secure Payment",
+                "description": "100% secure payment with SSL encryption",
+                "icon": "💳"
+              },
+              {
+                "title": "30-Day Returns",
+                "description": "Easy returns within 30 days of purchase",
+                "icon": "↩️"
+              },
+              {
+                "title": "24/7 Support",
+                "description": "Dedicated customer support team",
+                "icon": "💬"
+              },
+              {
+                "title": "Quality Guarantee",
+                "description": "All products are quality checked",
+                "icon": "✓"
+              },
+              {
+                "title": "Best Prices",
+                "description": "Competitive prices with regular discounts",
+                "icon": "💰"
+              }
+            ],
+            "layout": "grid",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#f9fafb"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761116686839-1",
+          "order": 1
+        },
+        {
+          "type": "testimonials",
+          "visible": true,
+          "config": {
+            "title": "Happy Customers",
+            "subtitle": "See what our customers say",
+            "description": "Join thousands of satisfied shoppers",
+            "testimonials": [
+              {
+                "content": "Love the quality and fast shipping! Will definitely order again.",
+                "author": "Emma Wilson",
+                "role": "Verified Buyer",
+                "company": "Fashion Lover",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=5"
+              },
+              {
+                "content": "Best online shopping experience. Great products and customer service!",
+                "author": "James Brown",
+                "role": "Verified Buyer",
+                "company": "Tech Enthusiast",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=6"
+              },
+              {
+                "content": "Amazing deals and quick delivery. Highly recommend to everyone!",
+                "author": "Sophia Martinez",
+                "role": "Verified Buyer",
+                "company": "Regular Customer",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=7"
+              }
+            ],
+            "layout": "grid",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761116686839-2",
+          "order": 2
+        },
+        {
+          "type": "cta",
+          "visible": true,
+          "config": {
+            "title": "Start Shopping Today!",
+            "description": "Get 20% off your first order. Use code: WELCOME20 at checkout.",
+            "primaryCTA": {
+              "text": "Browse Products",
+              "link": "#products",
+              "style": "primary"
+            },
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "from": "#ec4899",
+                "to": "#8b5cf6",
+                "direction": "to-r"
+              }
+            },
+            "animation": {
+              "type": "fadeIn",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761116686839-3",
+          "order": 3
+        },
+        {
+          "type": "footer",
+          "visible": true,
+          "config": {
+            "logo": {
+              "text": "ShopStyle",
+              "image": ""
+            },
+            "description": "Your trusted online shopping destination.",
+            "links": [
+              {
+                "title": "Shop",
+                "items": [
+                  {
+                    "text": "New Arrivals",
+                    "link": "#new"
+                  },
+                  {
+                    "text": "Best Sellers",
+                    "link": "#bestsellers"
+                  },
+                  {
+                    "text": "Sale",
+                    "link": "#sale"
+                  },
+                  {
+                    "text": "Categories",
+                    "link": "#categories"
+                  }
+                ]
+              },
+              {
+                "title": "Customer Service",
+                "items": [
+                  {
+                    "text": "Contact Us",
+                    "link": "#contact"
+                  },
+                  {
+                    "text": "Shipping Info",
+                    "link": "#shipping"
+                  },
+                  {
+                    "text": "Returns",
+                    "link": "#returns"
+                  },
+                  {
+                    "text": "Track Order",
+                    "link": "#track"
+                  }
+                ]
+              },
+              {
+                "title": "Company",
+                "items": [
+                  {
+                    "text": "About Us",
+                    "link": "#about"
+                  },
+                  {
+                    "text": "Careers",
+                    "link": "#careers"
+                  },
+                  {
+                    "text": "Blog",
+                    "link": "#blog"
+                  },
+                  {
+                    "text": "Press",
+                    "link": "#press"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "facebook",
+                "link": "#",
+                "icon": "facebook"
+              },
+              {
+                "platform": "instagram",
+                "link": "#",
+                "icon": "instagram"
+              },
+              {
+                "platform": "twitter",
+                "link": "#",
+                "icon": "twitter"
+              }
+            ],
+            "copyright": "© 2024 ShopStyle. All rights reserved."
+          },
+          "id": "comp-1761116686839-4",
+          "order": 4
+        }
+      ],
+      "createdAt": "2025-10-22T07:04:46.839Z",
+      "updatedAt": "2025-10-22T07:07:23.293Z"
+    },
+    "page-1761120484583": {
+      "id": "page-1761120484583",
+      "title": "Trang trống",
+      "description": "",
+      "slug": "trang-tr-ng",
+      "theme": "modern",
+      "status": "draft",
+      "seo": {
+        "title": "Trang trống",
+        "description": "",
+        "keywords": [],
+        "ogImage": ""
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": true,
+          "config": {
+            "title": "Experience Excellence",
+            "subtitle": "Premium Quality",
+            "description": "Discover the difference that quality makes. Elevate your experience today.",
+            "alignment": "center",
+            "primaryCTA": {
+              "text": "Explore Now",
+              "link": "#"
+            },
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200",
+            "background": {
+              "type": "solid",
+              "color": "#1a1a1a"
+            },
+            "spacing": {
+              "padding": "2xl"
+            }
+          },
+          "id": "comp-1761120494687-hwibk4cii",
+          "order": 1
+        }
+      ],
+      "createdAt": "2025-10-22T08:08:04.583Z",
+      "updatedAt": "2025-10-22T08:08:27.759Z"
+    },
+    "page-1761125168228": {
+      "id": "page-1761125168228",
+      "title": "SaaS Platform - Build Your Next Product (Copy)",
+      "description": "A modern SaaS platform landing page",
+      "slug": "saas-platform-copy-1761125168228",
+      "theme": "nature",
+      "status": "draft",
+      "seo": {
+        "metaTitle": "SaaS Platform - Build Your Next Product",
+        "metaDescription": "Launch your SaaS product faster with our all-in-one platform. Powerful features, beautiful design, and affordable pricing.",
+        "keywords": [
+          "saas",
+          "platform",
+          "software",
+          "cloud",
+          "business"
+        ],
+        "ogImage": "/assets/images/og-saas.jpg"
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": true,
+          "config": {
+            "title": "Experience Excellence",
+            "subtitle": "Premium Quality",
+            "description": "Discover the difference that quality makes. Elevate your experience today.",
+            "alignment": "center",
+            "primaryCTA": {
+              "text": "Explore Now",
+              "link": "#"
+            },
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200",
+            "background": {
+              "type": "image",
+              "color": "#ffffff",
+              "image": {
+                "url": "/assets/images/image-1761124879816-nj8n3xz.jpg"
+              }
+            },
+            "spacing": {
+              "padding": "2xl"
+            }
+          },
+          "id": "comp-1761121907515-ph2iboate",
+          "order": 0
+        },
+        {
+          "type": "stats",
+          "visible": true,
+          "config": {
+            "stats": [
+              {
+                "id": "1",
+                "value": "1M",
+                "label": "Downloads",
+                "suffix": "+"
+              },
+              {
+                "id": "2",
+                "value": "4.9",
+                "label": "Rating"
+              },
+              {
+                "id": "3",
+                "value": "24/7",
+                "label": "Support"
+              }
+            ],
+            "layout": "horizontal",
+            "background": {
+              "type": "solid",
+              "color": "background"
+            },
+            "spacing": {
+              "padding": "md"
+            }
+          },
+          "id": "comp-1761105745002-1wiaoc0oo",
+          "order": 1
+        },
+        {
+          "id": "pricing-1",
+          "type": "pricing",
+          "order": 2,
+          "visible": true,
+          "config": {
+            "title": "Simple, Transparent Pricing",
+            "subtitle": "Choose Your Plan",
+            "description": "Start free and scale as you grow",
+            "plans": [
+              {
+                "id": "plan-1",
+                "name": "Starter",
+                "description": "Perfect for side projects",
+                "price": "$0",
+                "period": "/month",
+                "features": [
+                  "Up to 1,000 users",
+                  "Basic analytics",
+                  "Email support",
+                  "1 GB storage",
+                  "Community access"
+                ],
+                "highlighted": false,
+                "ctaText": "Get Started",
+                "ctaLink": "#signup"
+              },
+              {
+                "id": "plan-2",
+                "name": "Pro",
+                "description": "For growing teams",
+                "price": "$29",
+                "period": "/month",
+                "features": [
+                  "Up to 10,000 users",
+                  "Advanced analytics",
+                  "Priority support",
+                  "10 GB storage",
+                  "API access",
+                  "Custom integrations"
+                ],
+                "highlighted": true,
+                "ctaText": "Start Free Trial",
+                "ctaLink": "#signup"
+              },
+              {
+                "id": "plan-3",
+                "name": "Enterprise",
+                "description": "For large organizations",
+                "price": "$99",
+                "period": "/month",
+                "features": [
+                  "Unlimited users",
+                  "Custom analytics",
+                  "24/7 phone support",
+                  "Unlimited storage",
+                  "Dedicated account manager",
+                  "SLA guarantee",
+                  "Custom training"
+                ],
+                "highlighted": false,
+                "ctaText": "Contact Sales",
+                "ctaLink": "#contact"
+              },
+              {
+                "name": "New Plan",
+                "price": "$99",
+                "period": "per month",
+                "description": "Perfect for growing businesses",
+                "features": [
+                  "Feature 1",
+                  "Feature 2",
+                  "Feature 3"
+                ],
+                "cta": {
+                  "text": "Get Started",
+                  "link": "#"
+                },
+                "highlighted": false
+              }
+            ],
+            "background": {
+              "type": "solid",
+              "color": "#f9fafb"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 200
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "type": "video",
+          "visible": true,
+          "config": {
+            "title": "Watch Our Story",
+            "subtitle": "VIDEO",
+            "description": "See how we're transforming the industry",
+            "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "videoType": "youtube",
+            "thumbnail": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1200",
+            "autoPlay": false,
+            "aspectRatio": "16/9",
+            "background": {
+              "type": "solid",
+              "color": "surface"
+            },
+            "spacing": {
+              "padding": "xl"
+            }
+          },
+          "id": "comp-1761103748001-q284sae5m",
+          "order": 3
+        },
+        {
+          "id": "features-1",
+          "type": "features",
+          "order": 4,
+          "visible": true,
+          "config": {
+            "title": "Everything You Need to Succeed",
+            "subtitle": "Powerful Features",
+            "description": "Built with modern technologies and best practices",
+            "features": [
+              {
+                "id": "feature-3",
+                "icon": "📊",
+                "title": "Analytics & Insights",
+                "description": "Track your metrics and make data-driven decisions with powerful analytics."
+              },
+              {
+                "id": "feature-4",
+                "icon": "🎨",
+                "title": "Beautiful Design",
+                "description": "Crafted with attention to detail. Looks great on every device."
+              },
+              {
+                "id": "feature-5",
+                "icon": "🚀",
+                "title": "Easy to Scale",
+                "description": "Built to grow with you. Scale from 1 to 1 million users seamlessly."
+              },
+              {
+                "id": "feature-6",
+                "icon": "💬",
+                "title": "24/7 Support",
+                "description": "Our team is here to help you succeed, anytime you need us."
+              }
+            ],
+            "layout": "grid",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "id": "testimonials-1",
+          "type": "testimonials",
+          "order": 5,
+          "visible": true,
+          "config": {
+            "title": "Loved by Thousands of Customers",
+            "subtitle": "Customer Reviews",
+            "description": "See what our customers have to say about us",
+            "testimonials": [
+              {
+                "id": "testimonial-1",
+                "name": "Sarah Johnson",
+                "role": "CEO",
+                "company": "TechCorp",
+                "rating": 5,
+                "text": "This platform has transformed how we build and ship products. The speed and reliability are unmatched."
+              },
+              {
+                "id": "testimonial-2",
+                "name": "Michael Chen",
+                "role": "CTO",
+                "company": "StartupXYZ",
+                "rating": 5,
+                "text": "We cut our development time by 50% and our costs by even more. This is a game-changer for startups."
+              },
+              {
+                "id": "testimonial-3",
+                "name": "Emily Rodriguez",
+                "role": "Product Manager",
+                "company": "InnovateLab",
+                "rating": 5,
+                "text": "The best investment we've made. The ROI was clear within the first month of use."
+              },
+              {
+                "content": "This product has been amazing! I highly recommend it to everyone.",
+                "author": "John Doe",
+                "role": "CEO",
+                "company": "Tech Company",
+                "rating": 5,
+                "avatar": ""
+              },
+              {
+                "content": "This product has been amazing! I highly recommend it to everyone.",
+                "author": "John Doe",
+                "role": "CEO",
+                "company": "Tech Company",
+                "rating": 5,
+                "avatar": ""
+              }
+            ],
+            "layout": "grid",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 300
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "lg"
+            }
+          }
+        },
+        {
+          "type": "newsletter",
+          "visible": true,
+          "config": {
+            "title": "Stay Updated",
+            "description": "Get the latest news delivered to your inbox",
+            "placeholder": "Enter your email",
+            "buttonText": "Subscribe",
+            "style": "centered"
+          },
+          "id": "comp-1761105888021-1ogofiuae",
+          "order": 6
+        },
+        {
+          "id": "footer-1",
+          "type": "footer",
+          "order": 7,
+          "visible": true,
+          "config": {
+            "tagline": "Build better products, faster.",
+            "columns": [
+              {
+                "id": "col-1",
+                "title": "Product",
+                "links": [
+                  {
+                    "text": "Features",
+                    "link": "#features"
+                  },
+                  {
+                    "text": "Pricing",
+                    "link": "#pricing"
+                  },
+                  {
+                    "text": "Integrations",
+                    "link": "#integrations"
+                  },
+                  {
+                    "text": "Changelog",
+                    "link": "#changelog"
+                  }
+                ]
+              },
+              {
+                "id": "col-2",
+                "title": "Company",
+                "links": [
+                  {
+                    "text": "About Us",
+                    "link": "#about"
+                  },
+                  {
+                    "text": "Careers",
+                    "link": "#careers"
+                  },
+                  {
+                    "text": "Blog",
+                    "link": "#blog"
+                  },
+                  {
+                    "text": "Press Kit",
+                    "link": "#press"
+                  }
+                ]
+              },
+              {
+                "id": "col-3",
+                "title": "Resources",
+                "links": [
+                  {
+                    "text": "Documentation",
+                    "link": "#docs"
+                  },
+                  {
+                    "text": "API Reference",
+                    "link": "#api"
+                  },
+                  {
+                    "text": "Support",
+                    "link": "#support"
+                  },
+                  {
+                    "text": "Community",
+                    "link": "#community"
+                  }
+                ]
+              },
+              {
+                "id": "col-4",
+                "title": "Legal",
+                "links": [
+                  {
+                    "text": "Privacy Policy",
+                    "link": "#privacy"
+                  },
+                  {
+                    "text": "Terms of Service",
+                    "link": "#terms"
+                  },
+                  {
+                    "text": "Cookie Policy",
+                    "link": "#cookies"
+                  },
+                  {
+                    "text": "GDPR",
+                    "link": "#gdpr"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "twitter",
+                "url": "https://twitter.com"
+              },
+              {
+                "platform": "github",
+                "url": "https://github.com"
+              },
+              {
+                "platform": "linkedin",
+                "url": "https://linkedin.com"
+              }
+            ],
+            "copyright": "© 2025 SaaS Platform. All rights reserved.",
+            "background": {
+              "type": "solid",
+              "color": "#0f172a"
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          }
+        }
+      ],
+      "updatedAt": "2025-10-22T09:26:08.557Z",
+      "createdAt": "2025-10-22T09:26:08.228Z"
     }
   },
   "navigation": {
