@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Theme, FooterConfig } from "@/types/landing";
@@ -11,18 +12,20 @@ interface FooterProps {
 export function Footer({ config, theme }: FooterProps) {
   const { logo, tagline, columns, social, copyright, background, spacing } = config;
 
-  const textColor = theme?.colors.text || "#111827";
-  const textMuted = theme?.colors.textMuted || "#6b7280";
+  // Use CSS variables for theme colors
+  const textColor = "var(--color-text)";
+  const textMuted = "var(--color-text-muted)";
+  const bgColor = "var(--color-background)";
 
   const getBackgroundColor = () => {
-    if (background.type === "solid") {
-      if (background.color === "background") return theme?.colors.background || "#ffffff";
-      return background.color;
+    if (background?.type === "solid") {
+      if (background?.color === "background") return bgColor;
+      return background?.color;
     }
     return "#0f172a";
   };
 
-  const isDark = background.color === "#0f172a" || background.color?.startsWith("#0");
+  const isDark = background?.color === "#0f172a" || background?.color?.startsWith("#0");
   const finalTextColor = isDark ? "#f1f5f9" : textColor;
   const finalTextMuted = isDark ? "#94a3b8" : textMuted;
 
@@ -83,7 +86,7 @@ export function Footer({ config, theme }: FooterProps) {
             )}
           </div>
 
-          {columns.map((column) => (
+          {columns?.map((column) => (
             <div key={column.id}>
               <h3 className="font-semibold mb-4" style={{ color: finalTextColor }}>
                 {column.title}
