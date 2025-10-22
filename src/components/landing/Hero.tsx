@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Theme, HeroConfig } from "@/types/landing";
 import { Button } from "@/components/ui/button";
 import { useEditMode } from "@/contexts/EditModeContext";
+import { getBackgroundStyle } from "@/lib/background-utils";
 
 interface HeroProps {
   config: HeroConfig;
@@ -23,10 +25,12 @@ export function Hero({ config, theme }: HeroProps) {
     spacing,
   } = config;
 
-  // Theme colors with fallbacks
-  const primaryColor = theme?.colors.primary || "#3b82f6";
-  const textColor = theme?.colors.text || "#111827";
-  const surfaceColor = theme?.colors.surface || "#f9fafb";
+  // Use CSS variables for theme colors (these are set by applyTheme())
+  const primaryColor = "var(--color-primary)";
+  const textColor = "var(--color-text)";
+  const textMuted = "var(--color-text-muted)";
+  const headingFont = "var(--font-heading)";
+  const bodyFont = "var(--font-body)";
 
   // Alignment classes
   const alignmentClasses = {
@@ -35,35 +39,13 @@ export function Hero({ config, theme }: HeroProps) {
     right: "text-right items-end",
   };
 
-  // Background styles
-  const getBackgroundStyle = () => {
-    if (background.type === "gradient" && background.gradient) {
-      const { from, to, direction = "to-br" } = background.gradient;
-      return {
-        background: `linear-gradient(${direction}, ${from}, ${to})`,
-      };
-    }
-    if (background.type === "solid") {
-      const color = background.color === "background" ? theme?.colors.background : background.color;
-      return { backgroundColor: color };
-    }
-    if (background.type === "image" && background.image) {
-      return {
-        backgroundImage: `url(${background.image.url})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      };
-    }
-    return {};
-  };
-
   // Spacing classes
   const paddingClass = spacing?.padding ? `py-${spacing.padding === "2xl" ? "24" : "20"}` : "py-20";
 
   return (
     <section
       className={`relative ${paddingClass} px-4 overflow-hidden`}
-      style={getBackgroundStyle()}
+      style={getBackgroundStyle(background, theme?.colors.background)}
     >
       {/* Overlay for image backgrounds */}
       {background.type === "image" && background.image?.overlay && (
@@ -99,7 +81,7 @@ export function Hero({ config, theme }: HeroProps) {
           style={{
             color:
               background.type === "gradient" || background.type === "image" ? "#ffffff" : textColor,
-            fontFamily: theme?.fonts.heading,
+            fontFamily: headingFont,
           }}
         >
           {title}
@@ -112,8 +94,8 @@ export function Hero({ config, theme }: HeroProps) {
             color:
               background.type === "gradient" || background.type === "image"
                 ? "rgba(255,255,255,0.9)"
-                : theme?.colors.textMuted,
-            fontFamily: theme?.fonts.body,
+                : textMuted,
+            fontFamily: bodyFont,
           }}
         >
           {description}
