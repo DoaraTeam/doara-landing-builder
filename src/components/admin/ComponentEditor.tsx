@@ -473,6 +473,77 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                   </Select>
                 </div>
               )}
+
+              {(config.background as { type?: string })?.type === "image" && (
+                <div className="space-y-2">
+                  <ImageUpload
+                    label="Background Image"
+                    value={(config.background as { image?: { url?: string } })?.image?.url || ""}
+                    onChange={(url) => handleChange("background.image.url", url)}
+                  />
+
+                  <div className="space-y-2">
+                    <Label className="text-xs">Overlay Color</Label>
+                    <Input
+                      type="text"
+                      value={
+                        (config.background as { image?: { overlay?: string } })?.image?.overlay ||
+                        "rgba(0,0,0,0.5)"
+                      }
+                      onChange={(e) => handleChange("background.image.overlay", e.target.value)}
+                      placeholder="rgba(0,0,0,0.5)"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Ví dụ: rgba(0,0,0,0.5) cho lớp phủ đen trong suốt 50%
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-xs">Position</Label>
+                    <Select
+                      value={
+                        (config.background as { image?: { position?: string } })?.image?.position ||
+                        "center"
+                      }
+                      onValueChange={(value) => handleChange("background.image.position", value)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="center">Center</SelectItem>
+                        <SelectItem value="top">Top</SelectItem>
+                        <SelectItem value="bottom">Bottom</SelectItem>
+                        <SelectItem value="left">Left</SelectItem>
+                        <SelectItem value="right">Right</SelectItem>
+                        <SelectItem value="top left">Top Left</SelectItem>
+                        <SelectItem value="top right">Top Right</SelectItem>
+                        <SelectItem value="bottom left">Bottom Left</SelectItem>
+                        <SelectItem value="bottom right">Bottom Right</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-xs">Size</Label>
+                    <Select
+                      value={
+                        (config.background as { image?: { size?: string } })?.image?.size || "cover"
+                      }
+                      onValueChange={(value) => handleChange("background.image.size", value)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="cover">Cover (Phủ kín)</SelectItem>
+                        <SelectItem value="contain">Contain (Vừa khung)</SelectItem>
+                        <SelectItem value="auto">Auto</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
