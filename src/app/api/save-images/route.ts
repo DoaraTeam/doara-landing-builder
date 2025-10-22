@@ -72,8 +72,7 @@ export async function POST(request: NextRequest) {
 
     // Filter out null results (failed processing)
     const savedImages = results.filter(
-      (result): result is { originalUrl: string; newUrl: string } =>
-        result !== null
+      (result): result is { originalUrl: string; newUrl: string } => result !== null
     );
 
     return NextResponse.json({

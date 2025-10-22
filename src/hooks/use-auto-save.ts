@@ -16,7 +16,12 @@ interface AutoSaveReturn {
   markAsSaved: (dataToMark?: unknown) => void;
 }
 
-export function useAutoSave({ data, onSave, delay = 8000, enabled = true }: AutoSaveProps): AutoSaveReturn {
+export function useAutoSave({
+  data,
+  onSave,
+  delay = 8000,
+  enabled = true,
+}: AutoSaveProps): AutoSaveReturn {
   const { toast } = useToast();
   const timeoutRef = useRef<NodeJS.Timeout>();
   const dataRef = useRef(data);
@@ -36,9 +41,10 @@ export function useAutoSave({ data, onSave, delay = 8000, enabled = true }: Auto
       console.error("Auto-save failed:", error);
       toast({
         title: "⚠️ Auto-save failed",
-        description: error instanceof Error 
-          ? `Auto-save error: ${error.message}`
-          : "Failed to save changes automatically. Manual save recommended.",
+        description:
+          error instanceof Error
+            ? `Auto-save error: ${error.message}`
+            : "Failed to save changes automatically. Manual save recommended.",
         variant: "destructive",
         duration: 5000,
       });
@@ -89,9 +95,12 @@ export function useAutoSave({ data, onSave, delay = 8000, enabled = true }: Auto
   const hasUnsavedChanges = JSON.stringify(data) !== JSON.stringify(lastSavedRef.current);
 
   // Function to mark current data as saved (for manual saves)
-  const markAsSaved = useCallback((dataToMark?: unknown) => {
-    lastSavedRef.current = dataToMark ?? data;
-  }, [data]);
+  const markAsSaved = useCallback(
+    (dataToMark?: unknown) => {
+      lastSavedRef.current = dataToMark ?? data;
+    },
+    [data]
+  );
 
   return {
     hasUnsavedChanges,
