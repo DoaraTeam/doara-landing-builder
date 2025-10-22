@@ -12,6 +12,15 @@ export type ComponentType =
   | "testimonials"
   | "cta"
   | "footer"
+  | "stats"
+  | "team"
+  | "faq"
+  | "gallery"
+  | "logo-cloud"
+  | "contact"
+  | "content"
+  | "newsletter"
+  | "video"
   | "gym-hero"
   | "gym-services"
   | "gym-pricing"
@@ -33,8 +42,9 @@ export interface BackgroundConfig {
   };
   image?: {
     url: string;
-    opacity?: number;
-    overlay?: string;
+    overlay?: string; // Overlay color with opacity (e.g., "rgba(0,0,0,0.5)")
+    position?: string; // CSS background-position (e.g., "center", "top left")
+    size?: string; // CSS background-size (e.g., "cover", "contain")
   };
 }
 
