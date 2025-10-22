@@ -531,12 +531,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
       <div className="min-h-screen bg-gray-100">
         {/* Top Toolbar */}
         <div
-          className={`bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm transition-all duration-300 ${
-            selectedComponentId ? "md:ml-96 md:mr-4" : ""
-          }`}
-          style={{
-            maxWidth: selectedComponentId ? "calc(100vw - 400px)" : undefined,
-          }}
+          className={`bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm transition-all duration-300 `}
         >
           <div
             className={`px-4 py-3 flex items-center justify-between ${
@@ -641,7 +636,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
                   saving
                     ? "bg-blue-400 cursor-not-allowed"
                     : hasUnsavedChanges
-                      ? "bg-orange-600 hover:bg-orange-700 animate-pulse"
+                      ? "bg-orange-600 hover:bg-orange-700"
                       : "bg-green-600 hover:bg-green-700"
                 }`}
               >
