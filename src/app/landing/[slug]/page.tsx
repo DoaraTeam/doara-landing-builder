@@ -4,6 +4,8 @@ import { join } from "path";
 import { notFound } from "next/navigation";
 import { LandingConfig } from "@/types/landing";
 import { ComponentRenderer } from "@/components/landing/ComponentRenderer";
+import { ThemeProvider } from "@/components/landing/ThemeProvider";
+import { getTheme } from "@/lib/themes";
 
 interface PageProps {
   params: {
@@ -87,8 +89,8 @@ export default async function LandingPage({ params }: PageProps) {
       notFound();
     }
 
-    // Get theme
-    const theme = config.themes[page.theme];
+    // Get theme from themes.ts (not from config.themes)
+    const theme = getTheme(page.theme || "modern");
 
     // Sort components by order and filter visible ones
     const sortedComponents = [...page.components]
@@ -96,18 +98,13 @@ export default async function LandingPage({ params }: PageProps) {
       .sort((a, b) => a.order - b.order);
 
     return (
-      <main
-        className="min-h-screen"
-        style={{
-          fontFamily: theme?.fonts.body || "Inter",
-          color: theme?.colors.text || "#111827",
-          backgroundColor: theme?.colors.background || "#ffffff",
-        }}
-      >
-        {sortedComponents.map((component) => (
-          <ComponentRenderer key={component.id} component={component} theme={theme} />
-        ))}
-      </main>
+      <ThemeProvider theme={theme}>
+        <main className="min-h-screen">
+          {sortedComponents.map((component) => (
+            <ComponentRenderer key={component.id} component={component} theme={theme} />
+          ))}
+        </main>
+      </ThemeProvider>
     );
   } catch (error) {
     console.error("Error rendering landing page:", error);
