@@ -7,6 +7,15 @@ import { Pricing } from "./Pricing";
 import { Testimonials } from "./Testimonials";
 import { CTA } from "./CTA";
 import { Footer } from "./Footer";
+import { Stats } from "./Stats";
+import { Team } from "./Team";
+import { FAQ } from "./FAQ";
+import { Gallery } from "./Gallery";
+import { LogoCloud } from "./LogoCloud";
+import { Contact } from "./Contact";
+import { Content } from "./Content";
+import { Newsletter } from "./Newsletter";
+import { Video } from "./Video";
 
 interface ComponentRendererProps {
   component: ComponentConfig;
@@ -43,6 +52,33 @@ export function ComponentRenderer({ component, theme }: ComponentRendererProps) 
 
     case "footer":
       return <Footer config={config as never} theme={theme} />;
+
+    case "stats":
+      return <Stats config={config as never} theme={theme} />;
+
+    case "team":
+      return <Team config={config as never} theme={theme} />;
+
+    case "faq":
+      return <FAQ config={config as never} theme={theme} />;
+
+    case "gallery":
+      return <Gallery config={config as never} theme={theme} />;
+
+    case "logo-cloud":
+      return <LogoCloud config={config as never} theme={theme} />;
+
+    case "contact":
+      return <Contact config={config as never} theme={theme} />;
+
+    case "content":
+      return <Content config={config as never} theme={theme} />;
+
+    case "newsletter":
+      return <Newsletter config={config as never} theme={theme} />;
+
+    case "video":
+      return <Video config={config as never} theme={theme} />;
 
     // Add more component types here as needed
     case "gym-hero":
