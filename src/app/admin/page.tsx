@@ -63,9 +63,10 @@ export default function AdminDashboard() {
     const originalPage = config.pages[pageId];
     if (!originalPage) return;
 
+    const newPageId = `page-${Date.now()}`;
     const newPage = {
       ...originalPage,
-      id: `page-${Date.now()}`,
+      id: newPageId,
       title: `${originalPage.title} (Copy)`,
       slug: `${originalPage.slug}-copy-${Date.now()}`,
       status: "draft" as const,
@@ -77,14 +78,18 @@ export default function AdminDashboard() {
       const response = await fetch("/api/landing-config", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newPage),
+        body: JSON.stringify({
+          pageId: newPageId,
+          pageData: newPage,
+        }),
       });
 
       if (response.ok) {
         fetchConfig();
         alert("Page duplicated successfully!");
       } else {
-        alert("Failed to duplicate page");
+        const errorData = await response.json();
+        alert(errorData.error || "Failed to duplicate page");
       }
     } catch (error) {
       console.error("Error duplicating page:", error);
