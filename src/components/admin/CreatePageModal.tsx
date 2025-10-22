@@ -20,6 +20,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { LandingConfig } from "@/types/landing";
+import { TemplateSelector } from "./TemplateSelector";
+import { LandingPageTemplate } from "@/lib/landing-templates";
 
 interface CreatePageModalProps {
   open: boolean;
@@ -34,6 +36,8 @@ export default function CreatePageModal({
   config,
   onSuccess,
 }: CreatePageModalProps) {
+  const [step, setStep] = useState<"template" | "details">("template");
+  const [selectedTemplate, setSelectedTemplate] = useState<LandingPageTemplate | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -85,6 +89,21 @@ export default function CreatePageModal({
     return true;
   };
 
+  const handleTemplateSelect = (template: LandingPageTemplate) => {
+    setSelectedTemplate(template);
+    setFormData({
+      ...formData,
+      title: template.name,
+      slug: generateSlug(template.name),
+    });
+    setStep("details");
+  };
+
+  const handleBack = () => {
+    setStep("template");
+    setSelectedTemplate(null);
+  };
+
   const handleCreate = async () => {
     if (!validateForm()) return;
 
@@ -92,8 +111,18 @@ export default function CreatePageModal({
     setError("");
 
     try {
+      // Create components from template
+      const components = selectedTemplate
+        ? selectedTemplate.components.map((comp, index) => ({
+            ...comp,
+            id: `comp-${Date.now()}-${index}`,
+            order: index,
+          }))
+        : [];
+
+      const pageId = `page-${Date.now()}`;
       const newPage = {
-        id: `page-${Date.now()}`,
+        id: pageId,
         title: formData.title,
         description: formData.description,
         slug: formData.slug,
@@ -105,7 +134,7 @@ export default function CreatePageModal({
           keywords: [],
           ogImage: "",
         },
-        components: [],
+        components,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
@@ -113,7 +142,10 @@ export default function CreatePageModal({
       const response = await fetch("/api/landing-config", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newPage),
+        body: JSON.stringify({
+          pageId: pageId,
+          pageData: newPage,
+        }),
       });
 
       if (!response.ok) {
@@ -128,6 +160,8 @@ export default function CreatePageModal({
         slug: "",
         theme: "modern",
       });
+      setStep("template");
+      setSelectedTemplate(null);
 
       onSuccess();
       onOpenChange(false);
@@ -138,13 +172,41 @@ export default function CreatePageModal({
     }
   };
 
+  // Template Selection Step
+  if (step === "template") {
+    return (
+      <TemplateSelector
+        open={open}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setStep("template");
+            setSelectedTemplate(null);
+            setFormData({
+              title: "",
+              description: "",
+              slug: "",
+              theme: "modern",
+            });
+          }
+          onOpenChange(isOpen);
+        }}
+        onSelectTemplate={handleTemplateSelect}
+      />
+    );
+  }
+
+  // Details Step
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Create New Landing Page</DialogTitle>
+          <DialogTitle>
+            {selectedTemplate ? `Tạo page: ${selectedTemplate.name}` : "Tạo Landing Page mới"}
+          </DialogTitle>
           <DialogDescription>
-            Create a new landing page with a unique title and slug.
+            {selectedTemplate
+              ? selectedTemplate.description
+              : "Điền thông tin cho landing page của bạn"}
           </DialogDescription>
         </DialogHeader>
 
@@ -221,13 +283,18 @@ export default function CreatePageModal({
           )}
         </div>
 
-        <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)} disabled={loading}>
-            Cancel
+        <DialogFooter className="flex justify-between">
+          <Button variant="ghost" onClick={handleBack} disabled={loading}>
+            ← Quay lại chọn mẫu
           </Button>
-          <Button onClick={handleCreate} disabled={loading}>
-            {loading ? "Creating..." : "Create Page"}
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => onOpenChange(false)} disabled={loading}>
+              Hủy
+            </Button>
+            <Button onClick={handleCreate} disabled={loading}>
+              {loading ? "Đang tạo..." : "Tạo Page"}
+            </Button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
