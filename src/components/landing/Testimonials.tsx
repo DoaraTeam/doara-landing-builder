@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Theme, TestimonialsConfig } from "@/types/landing";
@@ -12,18 +13,20 @@ interface TestimonialsProps {
 export function Testimonials({ config, theme }: TestimonialsProps) {
   const { title, subtitle, description, testimonials, background, spacing } = config;
 
-  const primaryColor = theme?.colors.primary || "#3b82f6";
-  const textColor = theme?.colors.text || "#111827";
-  const textMuted = theme?.colors.textMuted || "#6b7280";
-  const surfaceColor = theme?.colors.surface || "#f9fafb";
+  // Use CSS variables for theme colors
+  const primaryColor = "var(--color-primary)";
+  const textColor = "var(--color-text)";
+  const textMuted = "var(--color-text-muted)";
+  const surfaceColor = "var(--color-surface)";
+  const bgColor = "var(--color-background)";
 
   const getBackgroundColor = () => {
     if (background.type === "solid") {
-      if (background.color === "background") return theme?.colors.background || "#ffffff";
+      if (background.color === "background") return bgColor;
       if (background.color === "surface") return surfaceColor;
       return background.color;
     }
-    return "#ffffff";
+    return bgColor;
   };
 
   const paddingClass = spacing?.padding === "xl" ? "py-20" : "py-16";
