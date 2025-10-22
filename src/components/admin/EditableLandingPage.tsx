@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LandingPage, ComponentConfig, Theme, LandingConfig } from "@/types/landing";
 import { ComponentRenderer } from "@/components/landing/ComponentRenderer";
 import { EditableBlock } from "./EditableBlock";
@@ -9,13 +9,26 @@ import ComponentTemplatesPanel from "./ComponentTemplatesPanel";
 import PageSettingsModal from "./PageSettingsModal";
 import { ExportImportDialog } from "./ExportImportDialog";
 import { KeyboardShortcutsHelp } from "./KeyboardShortcutsHelp";
+import ThemeSelector from "./ThemeSelector";
+import CustomThemeCreator from "./CustomThemeCreator";
 import { EditModeProvider } from "@/contexts/EditModeContext";
 import { Button } from "@/components/ui/button";
-import { Save, Eye, ArrowLeft, Plus, Settings, Download, HelpCircle } from "lucide-react";
+import {
+  Save,
+  Eye,
+  ArrowLeft,
+  Plus,
+  Settings,
+  Download,
+  HelpCircle,
+  Palette,
+  Paintbrush,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { useAutoSave } from "@/hooks/use-auto-save";
 import { useKeyboardShortcuts, COMMON_SHORTCUTS } from "@/hooks/use-keyboard-shortcuts";
+import { getTheme, applyTheme } from "@/lib/themes";
 import {
   DndContext,
   closestCenter,
@@ -54,6 +67,8 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [exportImportOpen, setExportImportOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [themeSelectorOpen, setThemeSelectorOpen] = useState(false);
+  const [customThemeCreatorOpen, setCustomThemeCreatorOpen] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const { toast } = useToast();
   const router = useRouter();
@@ -71,6 +86,12 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
 
   const selectedComponent = editingPage.components.find((c) => c.id === selectedComponentId);
 
+  // Apply theme when page loads or theme changes
+  useEffect(() => {
+    const currentTheme = getTheme(editingPage.theme || "modern");
+    applyTheme(currentTheme);
+  }, [editingPage.theme]);
+
   // Preview page
   const handlePreview = () => {
     window.open(`/landing/${editingPage.slug}`, "_blank");
@@ -84,7 +105,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
   };
 
   // Auto-save functionality
-  const { hasUnsavedChanges, forceSave, markAsSaved } = useAutoSave({
+  const { hasUnsavedChanges, markAsSaved } = useAutoSave({
     data: editingPage,
     onSave: async () => {
       await onSave(editingPage);
@@ -245,6 +266,37 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
     toast({
       title: "Settings Updated",
       description: "Page settings saved successfully",
+    });
+  };
+
+  // Change theme
+  const handleThemeChange = (themeId: string) => {
+    const updatedPage = {
+      ...editingPage,
+      theme: themeId,
+    };
+
+    setEditingPage(updatedPage);
+
+    const themeName = getTheme(themeId).name;
+
+    toast({
+      title: "🎨 Theme Changed",
+      description: `Switched to ${themeName} theme`,
+      duration: 3000,
+    });
+  };
+
+  // Save custom theme
+  const handleSaveCustomTheme = (theme: Theme, themeId: string) => {
+    // In real app, save to config.themes
+    // For now, just apply it and notify
+    handleThemeChange(themeId);
+
+    toast({
+      title: "✨ Custom Theme Created",
+      description: `"${theme.name}" has been created and applied!`,
+      duration: 3000,
     });
   };
 
@@ -526,6 +578,24 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
               <Button
                 variant="outline"
                 size="sm"
+                onClick={() => setThemeSelectorOpen(true)}
+                className="gap-1"
+              >
+                <Palette className="h-4 w-4" />
+                Theme
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCustomThemeCreatorOpen(true)}
+                className="gap-1"
+              >
+                <Paintbrush className="h-4 w-4" />
+                Custom Theme
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={() => setExportImportOpen(true)}
                 className="gap-1"
               >
@@ -684,6 +754,21 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
 
         {/* Keyboard Shortcuts Help */}
         <KeyboardShortcutsHelp isOpen={helpOpen} onClose={() => setHelpOpen(false)} />
+
+        {/* Theme Selector */}
+        <ThemeSelector
+          open={themeSelectorOpen}
+          onOpenChange={setThemeSelectorOpen}
+          currentThemeId={editingPage.theme}
+          onThemeChange={handleThemeChange}
+        />
+
+        {/* Custom Theme Creator */}
+        <CustomThemeCreator
+          open={customThemeCreatorOpen}
+          onOpenChange={setCustomThemeCreatorOpen}
+          onSaveTheme={handleSaveCustomTheme}
+        />
 
         {/* Sidebar Open Indicator */}
         {selectedComponentId && (
