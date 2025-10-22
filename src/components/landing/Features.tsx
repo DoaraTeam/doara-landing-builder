@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Theme, FeaturesConfig } from "@/types/landing";
@@ -20,20 +21,23 @@ export function Features({ config, theme }: FeaturesProps) {
     spacing,
   } = config;
 
-  // Theme colors
-  const primaryColor = theme?.colors.primary || "#3b82f6";
-  const textColor = theme?.colors.text || "#111827";
-  const textMuted = theme?.colors.textMuted || "#6b7280";
-  const surfaceColor = theme?.colors.surface || "#f9fafb";
+  // Use CSS variables for theme colors
+  const primaryColor = "var(--color-primary)";
+  const textColor = "var(--color-text)";
+  const textMuted = "var(--color-text-muted)";
+  const surfaceColor = "var(--color-surface)";
+  const bgColor = "var(--color-background)";
+  const headingFont = "var(--font-heading)";
+  const bodyFont = "var(--font-body)";
 
   // Background styles
   const getBackgroundColor = () => {
     if (background.type === "solid") {
-      if (background.color === "background") return theme?.colors.background || "#ffffff";
+      if (background.color === "background") return bgColor;
       if (background.color === "surface") return surfaceColor;
       return background.color;
     }
-    return "#ffffff";
+    return bgColor;
   };
 
   // Grid columns class
@@ -61,13 +65,13 @@ export function Features({ config, theme }: FeaturesProps) {
 
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ color: textColor, fontFamily: theme?.fonts.heading }}
+            style={{ color: textColor, fontFamily: headingFont }}
           >
             {title}
           </h2>
 
           {description && (
-            <p className="text-lg" style={{ color: textMuted, fontFamily: theme?.fonts.body }}>
+            <p className="text-lg" style={{ color: textMuted, fontFamily: bodyFont }}>
               {description}
             </p>
           )}
@@ -82,7 +86,7 @@ export function Features({ config, theme }: FeaturesProps) {
               style={{
                 backgroundColor:
                   background.type === "solid" && background.color === "surface"
-                    ? theme?.colors.background
+                    ? bgColor
                     : surfaceColor,
               }}
             >
@@ -104,16 +108,13 @@ export function Features({ config, theme }: FeaturesProps) {
                 {/* Title */}
                 <h3
                   className="text-xl font-semibold mb-2"
-                  style={{ color: textColor, fontFamily: theme?.fonts.heading }}
+                  style={{ color: textColor, fontFamily: headingFont }}
                 >
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  className="text-base"
-                  style={{ color: textMuted, fontFamily: theme?.fonts.body }}
-                >
+                <p className="text-base" style={{ color: textMuted, fontFamily: bodyFont }}>
                   {feature.description}
                 </p>
               </CardContent>
