@@ -284,7 +284,7 @@ export function PricingArrayEditor({ plans, onChange }: PricingArrayEditorProps)
                   <Label className="text-xs font-semibold">Call to Action</Label>
                   <div className="grid grid-cols-2 gap-2">
                     <Input
-                      value={plan.cta.text}
+                      value={plan.cta?.text}
                       onChange={(e) =>
                         handleUpdate(index, { cta: { ...plan.cta, text: e.target.value } })
                       }
@@ -292,7 +292,7 @@ export function PricingArrayEditor({ plans, onChange }: PricingArrayEditorProps)
                       className="h-7 text-xs"
                     />
                     <Input
-                      value={plan.cta.link}
+                      value={plan.cta?.link}
                       onChange={(e) =>
                         handleUpdate(index, { cta: { ...plan.cta, link: e.target.value } })
                       }
