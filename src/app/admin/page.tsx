@@ -149,9 +149,7 @@ export default function AdminDashboard() {
       <aside className="fixed left-0 top-0 h-full w-64 bg-white border-r border-gray-200 shadow-sm z-10">
         <div className="p-6">
           <div className="flex items-center gap-2 mb-8">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <LayoutDashboard className="h-5 w-5 text-white" />
-            </div>
+            <img src="assets/images/admin-logo.png" alt="logo" className="w-10" />
             <div>
               <h1 className="font-bold text-lg">Page Builder</h1>
               <p className="text-xs text-gray-500">Admin Dashboard</p>
