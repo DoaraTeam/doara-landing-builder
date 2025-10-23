@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading Spinner Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .spinner-container {
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 p-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">Loading Spinner Demo</h1>
+      <p class="text-gray-600 mb-8">8 kiểu loading spinner cho landing page của bạn</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 1. Spin -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Spin</h3>
+          <div class="spinner-container">
+            <svg
+              class="animate-spin h-12 w-12 text-orange-600"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              ></path>
+            </svg>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Vòng tròn xoay cổ điển</p>
+        </div>
+
+        <!-- 2. Pulse -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Pulse</h3>
+          <div class="spinner-container">
+            <div class="w-12 h-12 rounded-full bg-orange-600 animate-pulse"></div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Hiệu ứng nhấp nháy</p>
+        </div>
+
+        <!-- 3. Dots -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Dots</h3>
+          <div class="spinner-container">
+            <div class="flex items-center justify-center space-x-2">
+              <div
+                class="w-2.5 h-2.5 bg-orange-600 rounded-full animate-bounce"
+                style="animation-delay: 0ms"
+              ></div>
+              <div
+                class="w-2.5 h-2.5 bg-orange-600 rounded-full animate-bounce"
+                style="animation-delay: 150ms"
+              ></div>
+              <div
+                class="w-2.5 h-2.5 bg-orange-600 rounded-full animate-bounce"
+                style="animation-delay: 300ms"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Ba chấm nhảy</p>
+        </div>
+
+        <!-- 4. Bounce -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Bounce</h3>
+          <div class="spinner-container">
+            <div class="flex items-end justify-center space-x-1">
+              <div
+                class="w-2 h-8 bg-orange-600 rounded animate-bounce"
+                style="animation-delay: 0ms"
+              ></div>
+              <div
+                class="w-2 h-10 bg-orange-600 rounded animate-bounce"
+                style="animation-delay: 150ms"
+              ></div>
+              <div
+                class="w-2 h-8 bg-orange-600 rounded animate-bounce"
+                style="animation-delay: 300ms"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Các thanh nhảy</p>
+        </div>
+
+        <!-- 5. Square Corners -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Square Corners</h3>
+          <div class="spinner-container">
+            <div class="w-12 h-12 relative transform rotate-45">
+              <div
+                class="absolute bg-orange-600 w-3.5 h-3.5 animate-ping"
+                style="top: 0; left: 0; animation-duration: 1.2s"
+              ></div>
+              <div
+                class="absolute bg-orange-600 w-3.5 h-3.5 animate-ping"
+                style="top: 0; right: 0; animation-duration: 1.2s; animation-delay: 0.15s"
+              ></div>
+              <div
+                class="absolute bg-orange-600 w-3.5 h-3.5 animate-ping"
+                style="bottom: 0; right: 0; animation-duration: 1.2s; animation-delay: 0.3s"
+              ></div>
+              <div
+                class="absolute bg-orange-600 w-3.5 h-3.5 animate-ping"
+                style="bottom: 0; left: 0; animation-duration: 1.2s; animation-delay: 0.45s"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Bốn góc vuông chớp</p>
+        </div>
+
+        <!-- 6. Dual Ring -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Dual Ring</h3>
+          <div class="spinner-container">
+            <div class="w-12 h-12 relative">
+              <div
+                class="absolute inset-0 rounded-full border-4 border-orange-600 border-t-transparent animate-spin"
+              ></div>
+              <div
+                class="absolute inset-2 rounded-full border-4 border-orange-600 border-b-transparent animate-spin"
+                style="animation-direction: reverse; animation-duration: 0.8s"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Hai vòng ngược chiều</p>
+        </div>
+
+        <!-- 7. Bars -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Bars</h3>
+          <div class="spinner-container">
+            <div class="flex items-center justify-center space-x-1.5">
+              <div
+                class="w-1.5 h-8 bg-orange-600 rounded-full animate-pulse"
+                style="animation-delay: 0ms; animation-duration: 1s"
+              ></div>
+              <div
+                class="w-1.5 h-8 bg-orange-600 rounded-full animate-pulse"
+                style="animation-delay: 150ms; animation-duration: 1s"
+              ></div>
+              <div
+                class="w-1.5 h-8 bg-orange-600 rounded-full animate-pulse"
+                style="animation-delay: 300ms; animation-duration: 1s"
+              ></div>
+              <div
+                class="w-1.5 h-8 bg-orange-600 rounded-full animate-pulse"
+                style="animation-delay: 450ms; animation-duration: 1s"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Bốn thanh pulse</p>
+        </div>
+
+        <!-- 8. Ripple -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4 text-center">Ripple</h3>
+          <div class="spinner-container">
+            <div class="w-12 h-12 relative">
+              <div
+                class="absolute inset-0 rounded-full border-4 border-orange-600 animate-ping opacity-75"
+                style="animation-duration: 1.5s"
+              ></div>
+              <div
+                class="absolute inset-0 rounded-full border-4 border-orange-600 animate-ping opacity-50"
+                style="animation-duration: 1.5s; animation-delay: 0.5s"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-500 text-center mt-4">Hiệu ứng gợn sóng</p>
+        </div>
+      </div>
+
+      <!-- Color Variations -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Biến thể màu sắc</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Orange -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="spinner-container">
+              <svg
+                class="animate-spin h-12 w-12 text-orange-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-500 text-center mt-4">Orange (#f97316)</p>
+          </div>
+
+          <!-- Blue -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="spinner-container">
+              <svg
+                class="animate-spin h-12 w-12 text-blue-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-500 text-center mt-4">Blue (#3b82f6)</p>
+          </div>
+
+          <!-- Purple -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="spinner-container">
+              <svg
+                class="animate-spin h-12 w-12 text-purple-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-500 text-center mt-4">Purple (#8b5cf6)</p>
+          </div>
+
+          <!-- Green -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="spinner-container">
+              <svg
+                class="animate-spin h-12 w-12 text-green-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-500 text-center mt-4">Green (#16a34a)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-12 bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 class="text-xl font-bold text-blue-900 mb-3">📝 Cách sử dụng</h3>
+        <ol class="list-decimal list-inside space-y-2 text-blue-900">
+          <li>Vào trang Admin Editor của landing page bạn muốn chỉnh sửa</li>
+          <li>Click vào button "Page Settings"</li>
+          <li>Chọn tab "Loading"</li>
+          <li>Enable loading screen và chọn kiểu spinner yêu thích</li>
+          <li>Tùy chỉnh màu sắc và thời gian loading</li>
+          <li>Click "Save Settings" để lưu</li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
