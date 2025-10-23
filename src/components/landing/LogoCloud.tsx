@@ -2,12 +2,12 @@
 "use client";
 
 import { Theme } from "@/types/landing";
+import { BackgroundConfig, getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
 
 interface LogoItem {
-  id: string;
   name: string;
-  image: string;
-  url?: string;
+  url: string;
+  link?: string;
 }
 
 interface LogoCloudConfig {
@@ -17,12 +17,15 @@ interface LogoCloudConfig {
   logos: LogoItem[];
   layout?: "grid" | "scroll";
   grayscale?: boolean;
-  background: {
-    type: "solid";
-    color?: string;
-  };
+  logoSize?: "small" | "medium" | "large";
+  logoSpacing?: "tight" | "normal" | "relaxed";
+  gridColumns?: number;
+  hoverEffect?: "none" | "scale" | "lift" | "glow";
+  logoOpacity?: number;
+  logoBg?: "none" | "white" | "light" | "bordered";
+  background: BackgroundConfig;
   spacing?: {
-    padding?: "sm" | "md" | "lg";
+    padding?: "sm" | "md" | "lg" | "xl";
   };
 }
 
@@ -31,14 +34,20 @@ interface LogoCloudProps {
   theme?: Theme;
 }
 
-export function LogoCloud({ config, theme }: LogoCloudProps) {
+export function LogoCloud({ config }: LogoCloudProps) {
   const {
     title,
     subtitle,
     description,
-    logos,
+    logos = [],
     layout = "grid",
     grayscale = true,
+    logoSize = "medium",
+    logoSpacing = "normal",
+    gridColumns = 6,
+    hoverEffect = "scale",
+    logoOpacity = 70,
+    logoBg = "none",
     background,
     spacing,
   } = config;
@@ -46,21 +55,67 @@ export function LogoCloud({ config, theme }: LogoCloudProps) {
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
   const textMuted = "var(--color-text-muted)";
-  const surfaceColor = "var(--color-surface)";
+  const bgColor = "var(--color-background)";
   const headingFont = "var(--font-heading)";
   const bodyFont = "var(--font-body)";
 
-  const getBackgroundColor = () => {
-    if (background.color === "background") return "var(--color-background)";
-    if (background.color === "surface") return surfaceColor;
-    return background.color || "#ffffff";
-  };
+  const isDarkBg = isBackgroundDark(background);
 
   const paddingClass =
-    spacing?.padding === "lg" ? "py-16" : spacing?.padding === "sm" ? "py-8" : "py-12";
+    spacing?.padding === "xl"
+      ? "py-20"
+      : spacing?.padding === "lg"
+        ? "py-16"
+        : spacing?.padding === "sm"
+          ? "py-8"
+          : "py-12";
+
+  // Logo size classes
+  const logoSizeClass =
+    logoSize === "small" ? "max-h-10" : logoSize === "large" ? "max-h-20" : "max-h-16";
+
+  // Logo spacing classes
+  const spacingClass =
+    logoSpacing === "tight" ? "gap-4" : logoSpacing === "relaxed" ? "gap-12" : "gap-8";
+
+  // Grid columns class - using safe classes for Tailwind
+  const getGridColsClass = () => {
+    const colsMap: Record<number, string> = {
+      3: "lg:grid-cols-3",
+      4: "lg:grid-cols-4",
+      5: "lg:grid-cols-5",
+      6: "lg:grid-cols-6",
+      8: "lg:grid-cols-8",
+    };
+    return `grid-cols-2 md:grid-cols-3 ${colsMap[gridColumns] || "lg:grid-cols-6"}`;
+  };
+
+  // Hover effect classes
+  const getHoverEffectClass = () => {
+    switch (hoverEffect) {
+      case "lift":
+        return "hover:shadow-lg hover:-translate-y-1";
+      case "glow":
+        return "hover:shadow-xl hover:shadow-blue-200";
+      case "scale":
+        return "hover:scale-110";
+      default:
+        return "";
+    }
+  };
+
+  // Logo background classes
+  const logoBgClass =
+    logoBg === "white"
+      ? "bg-white p-4 rounded-lg"
+      : logoBg === "light"
+        ? "bg-gray-50 p-4 rounded-lg"
+        : logoBg === "bordered"
+          ? "border border-gray-200 p-4 rounded-lg"
+          : "";
 
   return (
-    <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
+    <section className={`${paddingClass} px-4`} style={getBackgroundStyle(background, bgColor)}>
       <div className="container mx-auto">
         {/* Header */}
         {(title || subtitle || description) && (
@@ -68,7 +123,7 @@ export function LogoCloud({ config, theme }: LogoCloudProps) {
             {subtitle && (
               <div
                 className="text-sm font-semibold uppercase tracking-wider mb-4"
-                style={{ color: primaryColor }}
+                style={{ color: isDarkBg ? "#ffffff" : primaryColor }}
               >
                 {subtitle}
               </div>
@@ -77,14 +132,23 @@ export function LogoCloud({ config, theme }: LogoCloudProps) {
             {title && (
               <h2
                 className="text-2xl md:text-3xl font-bold mb-4"
-                style={{ color: textColor, fontFamily: headingFont }}
+                style={{
+                  color: isDarkBg ? "#ffffff" : textColor,
+                  fontFamily: headingFont,
+                }}
               >
                 {title}
               </h2>
             )}
 
             {description && (
-              <p className="text-base" style={{ color: textMuted, fontFamily: bodyFont }}>
+              <p
+                className="text-base"
+                style={{
+                  color: isDarkBg ? "rgba(255,255,255,0.9)" : textMuted,
+                  fontFamily: bodyFont,
+                }}
+              >
                 {description}
               </p>
             )}
@@ -92,50 +156,75 @@ export function LogoCloud({ config, theme }: LogoCloudProps) {
         )}
 
         {/* Logos Grid */}
-        {layout === "grid" && (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-            {logos.map((logo) => (
-              <div
-                key={logo.id}
-                className="flex items-center justify-center h-16 transition-all hover:scale-110"
-              >
-                {logo.url ? (
-                  <a href={logo.url} target="_blank" rel="noopener noreferrer">
-                    <img
-                      src={logo.image}
-                      alt={logo.name}
-                      className={`max-h-12 w-auto object-contain ${grayscale ? "grayscale hover:grayscale-0 opacity-70 hover:opacity-100" : "opacity-90 hover:opacity-100"} transition-all`}
-                    />
-                  </a>
-                ) : (
-                  <img
-                    src={logo.image}
-                    alt={logo.name}
-                    className={`max-h-12 w-auto object-contain ${grayscale ? "grayscale opacity-70" : "opacity-90"}`}
-                  />
-                )}
+        {logos && logos.length > 0 ? (
+          <>
+            {layout === "grid" && (
+              <div className={`grid ${getGridColsClass()} ${spacingClass} items-center`}>
+                {logos.map((logo, index) => (
+                  <div
+                    key={`${logo.name}-${index}`}
+                    className={`flex items-center justify-center h-20 p-4 transition-all ${getHoverEffectClass()} ${logoBgClass}`}
+                  >
+                    {logo.link ? (
+                      <a href={logo.link} target="_blank" rel="noopener noreferrer">
+                        <img
+                          src={logo.url}
+                          alt={logo.name}
+                          className={`${logoSizeClass} max-w-full w-auto object-contain ${grayscale ? "grayscale hover:grayscale-0" : ""} transition-all`}
+                          style={{ opacity: grayscale ? logoOpacity / 100 : 0.9 }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = `https://via.placeholder.com/150x50/cccccc/666666?text=${encodeURIComponent(logo.name)}`;
+                          }}
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        src={logo.url}
+                        alt={logo.name}
+                        className={`${logoSizeClass} max-w-full w-auto object-contain ${grayscale ? "grayscale" : ""}`}
+                        style={{ opacity: grayscale ? logoOpacity / 100 : 0.9 }}
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = `https://via.placeholder.com/150x50/cccccc/666666?text=${encodeURIComponent(logo.name)}`;
+                        }}
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+            )}
 
-        {/* Scrolling Logos */}
-        {layout === "scroll" && (
-          <div className="relative overflow-hidden">
-            <div className="flex animate-scroll">
-              {[...logos, ...logos].map((logo, index) => (
-                <div
-                  key={`${logo.id}-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center h-16 px-8"
-                >
-                  <img
-                    src={logo.image}
-                    alt={logo.name}
-                    className={`max-h-12 w-auto object-contain ${grayscale ? "grayscale opacity-70" : "opacity-90"}`}
-                  />
+            {/* Scrolling Logos */}
+            {layout === "scroll" && (
+              <div className="relative overflow-hidden">
+                <div className="flex animate-scroll">
+                  {[...logos, ...logos].map((logo, index) => (
+                    <div
+                      key={`${logo.name}-scroll-${index}`}
+                      className={`flex-shrink-0 flex items-center justify-center h-20 px-8 ${logoBgClass}`}
+                    >
+                      <img
+                        src={logo.url}
+                        alt={logo.name}
+                        className={`${logoSizeClass} w-auto object-contain ${grayscale ? "grayscale" : ""}`}
+                        style={{ opacity: grayscale ? logoOpacity / 100 : 0.9 }}
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = `https://via.placeholder.com/150x50/cccccc/666666?text=${encodeURIComponent(logo.name)}`;
+                        }}
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="text-center py-12">
+            <p style={{ color: isDarkBg ? "rgba(255,255,255,0.7)" : textMuted }}>
+              No logos to display
+            </p>
           </div>
         )}
       </div>
