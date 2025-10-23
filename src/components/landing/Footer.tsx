@@ -10,7 +10,12 @@ interface FooterProps {
 }
 
 export function Footer({ config, theme }: FooterProps) {
-  const { logo, tagline, columns, social, copyright, background, spacing } = config;
+  const { logo, tagline, description, columns, links, social, copyright, background, spacing } =
+    config;
+
+  // Support both 'columns' and 'links' keys
+  const footerColumns = columns || links || [];
+  const footerDescription = description || tagline;
 
   // Use CSS variables for theme colors
   const textColor = "var(--color-text)";
@@ -58,13 +63,19 @@ export function Footer({ config, theme }: FooterProps) {
           <div className="lg:col-span-2">
             {logo && (
               <div className="mb-4">
-                <img src={logo} alt="Logo" className="h-8" />
+                {logo.image ? (
+                  <img src={logo.image} alt={logo.text || "Logo"} className="h-8" />
+                ) : logo.text ? (
+                  <div className="text-xl font-bold" style={{ color: finalTextColor }}>
+                    {logo.text}
+                  </div>
+                ) : null}
               </div>
             )}
 
-            {tagline && (
+            {footerDescription && (
               <p className="text-base mb-6" style={{ color: finalTextMuted }}>
-                {tagline}
+                {footerDescription}
               </p>
             )}
 
@@ -86,13 +97,13 @@ export function Footer({ config, theme }: FooterProps) {
             )}
           </div>
 
-          {columns?.map((column) => (
+          {footerColumns?.map((column) => (
             <div key={column.id}>
               <h3 className="font-semibold mb-4" style={{ color: finalTextColor }}>
                 {column.title}
               </h3>
               <ul className="space-y-2">
-                {column.links.map((link, idx) => (
+                {column.links?.map((link, idx) => (
                   <li key={idx}>
                     <a
                       href={link.link}
