@@ -9,13 +9,16 @@ interface FooterProps {
   theme?: Theme;
 }
 
-export function Footer({ config, theme }: FooterProps) {
-  const { logo, tagline, description, columns, links, social, copyright, background, spacing } =
-    config;
+export function Footer({ config }: FooterProps) {
+  const { logo, tagline, description, columns, links, social, copyright } = config;
 
   // Support both 'columns' and 'links' keys
   const footerColumns = columns || links || [];
   const footerDescription = description || tagline;
+
+  // Get background and spacing with defaults
+  const background = config.background || { type: "solid", color: "#0f172a" };
+  const spacing = config.spacing || { padding: "xl", margin: "none" };
 
   // Use CSS variables for theme colors
   const textColor = "var(--color-text)";

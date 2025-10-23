@@ -96,7 +96,7 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
   const handleDeleteLink = (groupIndex: number, linkIndex: number) => {
     const group = (footerConfig.links || [])[groupIndex];
     if (!group) return;
-    const updatedItems = group.items.filter((_, i) => i !== linkIndex);
+    const updatedItems = group.items?.filter((_, i) => i !== linkIndex);
     handleUpdateLinkGroup(groupIndex, { items: updatedItems });
   };
 
@@ -203,7 +203,7 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
                 >
                   <GripVertical className="h-4 w-4 text-gray-400" />
                   <CardTitle className="text-sm font-medium">{group.title}</CardTitle>
-                  <span className="text-xs text-gray-500">({group.items.length} links)</span>
+                  <span className="text-xs text-gray-500">({group.items?.length} links)</span>
                 </div>
                 <Button
                   size="sm"
@@ -232,7 +232,7 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <Label className="text-xs">Links ({group.items.length})</Label>
+                    <Label className="text-xs">Links ({group.items?.length})</Label>
                     <Button
                       size="sm"
                       variant="outline"

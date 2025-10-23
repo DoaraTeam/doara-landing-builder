@@ -39,7 +39,24 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
   // Sync local state when component changes (when user clicks different section)
   useEffect(() => {
     setIsLoading(true);
-    setConfig(component.config);
+
+    // Ensure footer components have background and spacing
+    let processedConfig = component.config;
+    if (component.type === "footer") {
+      processedConfig = {
+        ...component.config,
+        background: component.config.background || {
+          type: "solid",
+          color: "#0f172a",
+        },
+        spacing: component.config.spacing || {
+          padding: "xl",
+          margin: "none",
+        },
+      };
+    }
+
+    setConfig(processedConfig);
     setActiveTab("content"); // Reset to content tab when switching components
     // Brief loading state to show component switch
     const timer = setTimeout(() => setIsLoading(false), 100);
@@ -273,23 +290,49 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
           {component.type === "footer" && (
             <div className="space-y-2">
               <FooterLinksEditor
-                footerConfig={
-                  config as {
-                    logo: { text: string; image: string };
-                    description: string;
-                    links: Array<{
-                      title: string;
-                      items: Array<{ text: string; link: string }>;
-                    }>;
-                    social: Array<{
-                      platform: string;
-                      link: string;
-                      icon: string;
-                    }>;
-                    copyright: string;
-                  }
-                }
-                onChange={(footerConfig) => setConfig(footerConfig as never)}
+                footerConfig={{
+                  logo: (config as { logo?: { text: string; image: string } }).logo || {
+                    text: "",
+                    image: "",
+                  },
+                  description: (config as { description?: string }).description || "",
+                  links:
+                    (
+                      config as {
+                        links?: Array<{
+                          title: string;
+                          items: Array<{ text: string; link: string }>;
+                        }>;
+                      }
+                    ).links || [],
+                  social:
+                    (
+                      config as {
+                        social?: Array<{
+                          platform: string;
+                          link: string;
+                          icon: string;
+                        }>;
+                      }
+                    ).social || [],
+                  copyright: (config as { copyright?: string }).copyright || "",
+                }}
+                onChange={(updatedFooterConfig) => {
+                  // Merge footer content with existing or default background/spacing
+                  setConfig({
+                    ...config,
+                    ...updatedFooterConfig,
+                    // Preserve or set default background and spacing
+                    background: (config as { background?: unknown }).background || {
+                      type: "solid",
+                      color: "#0f172a",
+                    },
+                    spacing: (config as { spacing?: unknown }).spacing || {
+                      padding: "xl",
+                      margin: "none",
+                    },
+                  } as never);
+                }}
               />
             </div>
           )}
