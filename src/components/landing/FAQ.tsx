@@ -93,7 +93,7 @@ export function FAQ({ config, theme }: FAQProps) {
 
         {/* FAQ Items */}
         <div className={`grid grid-cols-1 ${columnClass} gap-4`}>
-          {items.map((item) => {
+          {items?.map((item) => {
             const isOpen = openItems.has(item.id);
             return (
               <div
