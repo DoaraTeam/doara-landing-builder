@@ -3,14 +3,24 @@
 import { Theme, CTAConfig } from "@/types/landing";
 import { Button } from "@/components/ui/button";
 import { getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
+import { getLayoutClasses } from "@/lib/layout-utils";
 
 interface CTAProps {
   config: CTAConfig;
   theme?: Theme;
 }
 
-export function CTA({ config, theme }: CTAProps) {
-  const { title, description, primaryCTA, secondaryCTA, background, spacing } = config;
+export function CTA({ config }: CTAProps) {
+  const {
+    title,
+    description,
+    primaryCTA,
+    secondaryCTA,
+    background,
+    spacing,
+    alignment = "center",
+    containerWidth,
+  } = config;
 
   // Use CSS variables for theme colors
   const primaryColor = "var(--color-primary)";
@@ -20,12 +30,12 @@ export function CTA({ config, theme }: CTAProps) {
   const headingFont = "var(--font-heading)";
   const bodyFont = "var(--font-body)";
 
-  const paddingClass = spacing?.padding === "xl" ? "py-20" : "py-16";
   const isDarkBg = isBackgroundDark(background);
+  const layout = getLayoutClasses({ spacing, containerWidth, alignment });
 
   return (
-    <section className={`${paddingClass} px-4`} style={getBackgroundStyle(background, bgColor)}>
-      <div className="container mx-auto text-center max-w-4xl">
+    <section className={`${layout.section}`} style={getBackgroundStyle(background, bgColor)}>
+      <div className={`${layout.container} ${layout.alignment} max-w-4xl`}>
         <h2
           className="text-3xl md:text-4xl font-bold mb-4"
           style={{
@@ -54,7 +64,7 @@ export function CTA({ config, theme }: CTAProps) {
                 size="lg"
                 style={{
                   backgroundColor: isDarkBg ? "#ffffff" : primaryColor,
-                  color: isDarkBg ? primaryColor : "#ffffff",
+                  color: isDarkBg ? "#000000" : "#ffffff",
                 }}
                 className="hover:opacity-90 transition-opacity"
               >
@@ -67,8 +77,9 @@ export function CTA({ config, theme }: CTAProps) {
                 size="lg"
                 variant="outline"
                 style={{
-                  borderColor: isDarkBg ? "#ffffff" : textColor,
-                  color: isDarkBg ? "#ffffff" : textColor,
+                  borderColor: isDarkBg ? "#ffffff" : primaryColor,
+                  color: isDarkBg ? "#ffffff" : primaryColor,
+                  backgroundColor: isDarkBg ? "transparent" : "transparent",
                 }}
                 className="hover:opacity-80 transition-opacity"
               >
