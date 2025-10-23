@@ -55,42 +55,109 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         },
       },
       {
+        type: "logo-cloud",
+        visible: true,
+        config: {
+          title: "Trusted by Leading Companies Worldwide",
+          subtitle: "Join 10,000+ businesses that trust us",
+          logos: [
+            {
+              name: "Microsoft",
+              url: "https://via.placeholder.com/150x50/0078D4/FFF?text=Microsoft",
+              link: "#",
+            },
+            {
+              name: "Google",
+              url: "https://via.placeholder.com/150x50/4285F4/FFF?text=Google",
+              link: "#",
+            },
+            {
+              name: "Amazon",
+              url: "https://via.placeholder.com/150x50/FF9900/FFF?text=Amazon",
+              link: "#",
+            },
+            {
+              name: "IBM",
+              url: "https://via.placeholder.com/150x50/054ADA/FFF?text=IBM",
+              link: "#",
+            },
+            {
+              name: "Oracle",
+              url: "https://via.placeholder.com/150x50/F80000/FFF?text=Oracle",
+              link: "#",
+            },
+            {
+              name: "Salesforce",
+              url: "https://via.placeholder.com/150x50/00A1E0/FFF?text=Salesforce",
+              link: "#",
+            },
+          ],
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          spacing: {
+            padding: "lg" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
         type: "features",
         visible: true,
         config: {
-          title: "Why Choose Us",
+          title: "Powerful Features for Your Business",
           subtitle: "Everything you need to succeed",
-          description: "Comprehensive solutions designed for modern businesses",
+          description:
+            "Comprehensive solutions designed for modern businesses to streamline operations and drive growth",
           features: [
             {
-              title: "Fast & Reliable",
-              description: "Lightning-fast performance with 99.9% uptime guarantee",
+              id: "1",
+              title: "Lightning Fast Performance",
+              description:
+                "Experience blazing-fast load times and real-time data synchronization. Our optimized infrastructure ensures 99.9% uptime with millisecond response times.",
               icon: "⚡",
+              image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
             },
             {
-              title: "Secure & Safe",
-              description: "Enterprise-grade security to protect your data",
+              id: "2",
+              title: "Enterprise Security",
+              description:
+                "Bank-level encryption, SOC 2 Type II certified, GDPR compliant. Multi-factor authentication, role-based access control, and regular security audits keep your data safe.",
               icon: "🔒",
+              image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400",
             },
             {
-              title: "24/7 Support",
-              description: "Round-the-clock customer support whenever you need",
+              id: "3",
+              title: "24/7 Expert Support",
+              description:
+                "Round-the-clock support from our expert team via phone, email, and live chat. Get answers within minutes with our 99% customer satisfaction rating.",
               icon: "💬",
+              image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400",
             },
             {
-              title: "Easy Integration",
-              description: "Seamlessly integrate with your existing tools",
+              id: "4",
+              title: "Seamless Integration",
+              description:
+                "Connect with 500+ popular tools and apps. Pre-built integrations with Slack, Salesforce, HubSpot, Zapier, and more. REST API and webhooks for custom integrations.",
               icon: "🔗",
+              image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400",
             },
             {
-              title: "Analytics Dashboard",
-              description: "Real-time insights and detailed analytics",
+              id: "5",
+              title: "Advanced Analytics",
+              description:
+                "Real-time dashboards, custom reports, and predictive analytics. Track KPIs, identify trends, and make data-driven decisions with actionable insights.",
               icon: "📊",
+              image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
             },
             {
-              title: "Scalable Solution",
-              description: "Grow without limits as your business expands",
+              id: "6",
+              title: "Infinite Scalability",
+              description:
+                "Scale from 10 to 10,000+ users seamlessly. Auto-scaling infrastructure, unlimited storage, and no performance degradation as your business grows.",
               icon: "📈",
+              image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400",
             },
           ],
           layout: "grid" as const,
@@ -103,6 +170,96 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             type: "fadeInUp" as const,
             duration: 600,
             delay: 100,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "stats",
+        visible: true,
+        config: {
+          title: "Trusted by Businesses Worldwide",
+          subtitle: "PROVEN TRACK RECORD",
+          description: "Numbers that speak for themselves",
+          stats: [
+            {
+              id: "1",
+              value: "10K",
+              label: "Active Customers",
+              suffix: "+",
+              prefix: "",
+            },
+            {
+              id: "2",
+              value: "99.9",
+              label: "Uptime SLA",
+              suffix: "%",
+              prefix: "",
+            },
+            {
+              id: "3",
+              value: "4.9",
+              label: "Customer Rating",
+              suffix: "/5",
+              prefix: "",
+            },
+            {
+              id: "4",
+              value: "150",
+              label: "Countries Served",
+              suffix: "+",
+              prefix: "",
+            },
+          ],
+          layout: "grid" as const,
+          columns: 4,
+          background: {
+            type: "gradient" as const,
+            gradient: {
+              from: "#3b82f6",
+              to: "#8b5cf6",
+              direction: "to-r" as const,
+            },
+          },
+          animation: {
+            type: "fadeIn" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "content",
+        visible: true,
+        config: {
+          title: "Built for Modern Teams",
+          subtitle: "COLLABORATION MADE EASY",
+          content:
+            "Empower your team with tools designed for seamless collaboration. From project management to real-time communication, everything you need is in one place. Share files, track progress, and stay aligned with your team's goals effortlessly.",
+          image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
+          imagePosition: "right" as const,
+          features: [
+            "Real-time collaboration tools",
+            "Project management dashboard",
+            "Team communication channels",
+            "File sharing and version control",
+            "Task automation workflows",
+            "Performance tracking metrics",
+          ],
+          cta: {
+            text: "Explore Team Features",
+            link: "#features",
+          },
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
           },
           spacing: {
             padding: "xl" as const,
@@ -197,11 +354,12 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "What Our Clients Say",
-          subtitle: "Trusted by industry leaders",
-          description: "Don't just take our word for it",
+          subtitle: "CUSTOMER TESTIMONIALS",
+          description: "Real feedback from real customers who love our platform",
           testimonials: [
             {
-              content: "This platform has transformed how we do business. The ROI was evident within the first month!",
+              content:
+                "This platform has transformed how we do business. The ROI was evident within the first month! Our team productivity increased by 40% and customer satisfaction scores jumped to 98%.",
               author: "Sarah Johnson",
               role: "CEO",
               company: "TechCorp Inc.",
@@ -209,7 +367,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
               avatar: "https://i.pravatar.cc/150?img=1",
             },
             {
-              content: "Outstanding support team and incredibly powerful features. Highly recommended!",
+              content:
+                "Outstanding support team and incredibly powerful features. The analytics dashboard alone has saved us 20 hours per week. Integration with our existing tools was seamless.",
               author: "Michael Chen",
               role: "Marketing Director",
               company: "GrowthLabs",
@@ -217,12 +376,40 @@ export const landingPageTemplates: LandingPageTemplate[] = [
               avatar: "https://i.pravatar.cc/150?img=2",
             },
             {
-              content: "We've tried many solutions, but this one stands out. It's simply the best in the market.",
+              content:
+                "We've tried many solutions, but this one stands out. It's simply the best in the market. Helped us scale from 10 to 500 customers without any hiccups.",
               author: "Emily Rodriguez",
               role: "Product Manager",
               company: "InnovateCo",
               rating: 5,
               avatar: "https://i.pravatar.cc/150?img=3",
+            },
+            {
+              content:
+                "The automation features have been a game-changer for us. We've reduced manual tasks by 70% and can now focus on strategic initiatives that drive growth.",
+              author: "David Park",
+              role: "Operations Manager",
+              company: "Global Solutions Ltd",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=10",
+            },
+            {
+              content:
+                "Security and compliance were our top priorities. This platform exceeded our expectations with SOC 2 certification and comprehensive audit logs.",
+              author: "Lisa Anderson",
+              role: "CTO",
+              company: "Innovation Labs",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=12",
+            },
+            {
+              content:
+                "Our sales team loves the mobile app and real-time notifications. Response times improved by 60% and deal closure rates are up 35%. Incredible results!",
+              author: "James Wilson",
+              role: "VP of Sales",
+              company: "Enterprise Systems",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=15",
             },
           ],
           layout: "grid" as const,
@@ -234,6 +421,75 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             type: "fadeInUp" as const,
             duration: 600,
             delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "faq",
+        visible: true,
+        config: {
+          title: "Frequently Asked Questions",
+          subtitle: "GOT QUESTIONS?",
+          description: "Find answers to common questions about our platform",
+          faqs: [
+            {
+              id: "1",
+              question: "How long does it take to get started?",
+              answer:
+                "You can start using our platform immediately after signing up. Our intuitive onboarding process takes less than 5 minutes, and you'll have access to all features right away. We also provide guided tours and video tutorials to help you get up to speed quickly.",
+            },
+            {
+              id: "2",
+              question: "Can I migrate my existing data?",
+              answer:
+                "Yes! We provide free data migration services for all paid plans. Our team will work with you to ensure a smooth transition from your current system. We support imports from CSV, Excel, and direct integrations with popular platforms like Salesforce, HubSpot, and more.",
+            },
+            {
+              id: "3",
+              question: "What kind of support do you offer?",
+              answer:
+                "We offer 24/7 support via live chat, email, and phone for all paid plans. Free plan users have access to our comprehensive knowledge base and community forum. Enterprise customers get a dedicated account manager and priority support with guaranteed response times.",
+            },
+            {
+              id: "4",
+              question: "Is my data secure?",
+              answer:
+                "Absolutely. We use bank-level 256-bit encryption, are SOC 2 Type II certified, and fully GDPR compliant. Your data is stored in secure data centers with redundant backups. We also provide single sign-on (SSO), two-factor authentication, and detailed audit logs.",
+            },
+            {
+              id: "5",
+              question: "Can I cancel my subscription anytime?",
+              answer:
+                "Yes, you can cancel your subscription at any time with no penalties or fees. You'll continue to have access until the end of your billing period. We also offer a 30-day money-back guarantee if you're not completely satisfied with our service.",
+            },
+            {
+              id: "6",
+              question: "Do you offer custom integrations?",
+              answer:
+                "Yes! We have a robust REST API and webhooks for custom integrations. Our developer documentation is comprehensive and includes code examples in multiple languages. Enterprise plans include dedicated integration support and custom development services.",
+            },
+            {
+              id: "7",
+              question: "What payment methods do you accept?",
+              answer:
+                "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and wire transfers for annual subscriptions. Enterprise customers can also set up invoicing with NET 30 payment terms.",
+            },
+            {
+              id: "8",
+              question: "Is there a limit on team members or users?",
+              answer:
+                "Free plans include up to 5 users. Professional plans support up to 50 users, and Business plans up to 500 users. Enterprise plans offer unlimited users with custom pricing based on your specific needs. All plans allow you to add or remove users at any time.",
+            },
+          ],
+          layout: "accordion" as const,
+          columns: 2,
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
           },
           spacing: {
             padding: "xl" as const,
@@ -335,24 +591,29 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         type: "hero",
         visible: true,
         config: {
-          title: "The Ultimate SaaS Solution",
+          title: "The Ultimate SaaS Solution for Modern Teams",
           subtitle: "Powerful • Simple • Affordable",
-          description: "Everything you need to run your business in one place. No technical knowledge required.",
+          description:
+            "Everything you need to run your business in one place. Streamline workflows, boost productivity, and scale effortlessly. No technical knowledge required - get started in minutes!",
           primaryCTA: {
-            text: "Try It Free",
+            text: "Start Free 14-Day Trial",
             link: "#signup",
             style: "primary" as const,
           },
           secondaryCTA: {
-            text: "See How It Works",
+            text: "Watch Demo Video",
             link: "#demo",
             style: "secondary" as const,
           },
           image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
           alignment: "left" as const,
           background: {
-            type: "solid" as const,
-            color: "#ffffff",
+            type: "gradient" as const,
+            gradient: {
+              from: "#667eea",
+              to: "#764ba2",
+              direction: "to-br" as const,
+            },
           },
           animation: {
             type: "fadeInUp" as const,
@@ -366,40 +627,113 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         },
       },
       {
+        type: "logo-cloud",
+        visible: true,
+        config: {
+          title: "Trusted by 5,000+ Growing Companies",
+          subtitle: "",
+          logos: [
+            {
+              name: "Shopify",
+              url: "https://via.placeholder.com/150x50/96BF48/FFF?text=Shopify",
+              link: "#",
+            },
+            {
+              name: "Stripe",
+              url: "https://via.placeholder.com/150x50/635BFF/FFF?text=Stripe",
+              link: "#",
+            },
+            {
+              name: "Notion",
+              url: "https://via.placeholder.com/150x50/000000/FFF?text=Notion",
+              link: "#",
+            },
+            {
+              name: "Figma",
+              url: "https://via.placeholder.com/150x50/F24E1E/FFF?text=Figma",
+              link: "#",
+            },
+            {
+              name: "Slack",
+              url: "https://via.placeholder.com/150x50/4A154B/FFF?text=Slack",
+              link: "#",
+            },
+            {
+              name: "Zoom",
+              url: "https://via.placeholder.com/150x50/2D8CFF/FFF?text=Zoom",
+              link: "#",
+            },
+          ],
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          spacing: {
+            padding: "md" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
         type: "features",
         visible: true,
         config: {
-          title: "Everything You Need",
-          subtitle: "Powerful features at your fingertips",
-          description: "Built for modern teams who want to move fast",
+          title: "Everything You Need to Succeed",
+          subtitle: "POWERFUL FEATURES",
+          description:
+            "Built for modern teams who want to move fast without compromising on quality",
           features: [
             {
+              id: "1",
               title: "Real-time Collaboration",
-              description: "Work together seamlessly with your team in real-time",
+              description:
+                "Work together seamlessly with your team in real-time. Share documents, co-edit files, and communicate instantly. See who's online and working on what with live presence indicators.",
               icon: "👥",
               image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400",
             },
             {
-              title: "Automation",
-              description: "Automate repetitive tasks and focus on what matters",
+              id: "2",
+              title: "Smart Automation",
+              description:
+                "Automate repetitive tasks and focus on what matters. Create custom workflows, set up triggers, and let the system handle routine operations. Save 10+ hours per week per team member.",
               icon: "🤖",
               image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400",
             },
             {
+              id: "3",
               title: "Advanced Analytics",
-              description: "Get insights with powerful analytics and reporting",
+              description:
+                "Get insights with powerful analytics and reporting. Track KPIs, monitor performance metrics, and generate custom reports. Export data to Excel, PDF, or integrate with BI tools.",
               icon: "📊",
               image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
             },
             {
-              title: "Integrations",
-              description: "Connect with all your favorite tools and apps",
+              id: "4",
+              title: "200+ Integrations",
+              description:
+                "Connect with all your favorite tools and apps. Pre-built integrations with Slack, Google Workspace, Salesforce, Zapier, and more. Full REST API for custom integrations.",
               icon: "🔌",
               image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400",
             },
+            {
+              id: "5",
+              title: "Mobile Apps",
+              description:
+                "Work from anywhere with native iOS and Android apps. Full feature parity with desktop. Offline mode keeps you productive without internet connection. Push notifications for important updates.",
+              icon: "📱",
+              image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400",
+            },
+            {
+              id: "6",
+              title: "Enterprise Security",
+              description:
+                "Bank-level encryption, SOC 2 Type II certified, GDPR compliant. SSO, 2FA, role-based access control, and detailed audit logs. Your data is safe with us.",
+              icon: "🔒",
+              image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400",
+            },
           ],
           layout: "grid" as const,
-          columns: 2,
+          columns: 3,
           background: {
             type: "solid" as const,
             color: "#f9fafb",
@@ -410,77 +744,50 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             delay: 100,
           },
           spacing: {
-            padding: "xl" as const,
+            padding: "2xl" as const,
             margin: "none" as const,
           },
         },
       },
       {
-        type: "pricing",
+        type: "stats",
         visible: true,
         config: {
-          title: "Choose Your Plan",
-          subtitle: "Start free, upgrade when you grow",
-          description: "All plans include 14-day free trial",
-          plans: [
+          title: "Results That Speak for Themselves",
+          subtitle: "BY THE NUMBERS",
+          description: "See the impact we make on businesses worldwide",
+          stats: [
             {
-              name: "Free",
-              price: "$0",
-              period: "/month",
-              description: "For individuals getting started",
-              features: [
-                "Up to 3 projects",
-                "Basic features",
-                "Community support",
-                "1GB storage",
-              ],
-              cta: {
-                text: "Get Started",
-                link: "#signup",
-              },
-              highlighted: false,
+              id: "1",
+              value: "5K",
+              label: "Happy Customers",
+              suffix: "+",
+              prefix: "",
             },
             {
-              name: "Pro",
-              price: "$49",
-              period: "/month",
-              description: "For professional teams",
-              features: [
-                "Unlimited projects",
-                "All features",
-                "Priority support",
-                "50GB storage",
-                "Advanced analytics",
-                "Custom integrations",
-              ],
-              cta: {
-                text: "Start Free Trial",
-                link: "#signup",
-              },
-              highlighted: true,
-              badge: "Best Value",
+              id: "2",
+              value: "10M",
+              label: "Tasks Completed",
+              suffix: "+",
+              prefix: "",
             },
             {
-              name: "Business",
-              price: "$149",
-              period: "/month",
-              description: "For large organizations",
-              features: [
-                "Everything in Pro",
-                "Dedicated support",
-                "500GB storage",
-                "Custom development",
-                "SLA guarantee",
-                "On-premise option",
-                "Training sessions",
-              ],
-              cta: {
-                text: "Contact Us",
-                link: "#contact",
-              },
-              highlighted: false,
+              id: "3",
+              value: "98",
+              label: "Customer Satisfaction",
+              suffix: "%",
+              prefix: "",
+            },
+            {
+              id: "4",
+              value: "24",
+              label: "Support Availability",
+              suffix: "/7",
+              prefix: "",
             },
           ],
+          layout: "grid" as const,
+          columns: 4,
           background: {
             type: "solid" as const,
             color: "#ffffff",
@@ -497,11 +804,281 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         },
       },
       {
+        type: "content",
+        visible: true,
+        config: {
+          title: "Workflow Automation That Just Works",
+          subtitle: "BOOST PRODUCTIVITY",
+          content:
+            "Say goodbye to repetitive manual tasks. Our intelligent automation engine learns from your team's behavior and suggests optimizations. Create complex workflows with our visual builder - no coding required. Connect triggers, actions, and conditions to automate anything from simple reminders to complex multi-step processes.",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+          imagePosition: "left" as const,
+          features: [
+            "Visual workflow builder with drag & drop",
+            "Pre-built automation templates",
+            "Custom triggers and actions",
+            "Conditional logic and branching",
+            "Schedule automations or run on-demand",
+            "Real-time monitoring and error handling",
+          ],
+          cta: {
+            text: "Explore Automation",
+            link: "#automation",
+          },
+          background: {
+            type: "solid" as const,
+            color: "#f9fafb",
+          },
+          spacing: {
+            padding: "xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "testimonials",
+        visible: true,
+        config: {
+          title: "Loved by Teams Worldwide",
+          subtitle: "CUSTOMER SUCCESS STORIES",
+          description: "Don't just take our word for it - hear from our customers",
+          testimonials: [
+            {
+              content:
+                "Switching to this platform was the best decision we made this year. Our team productivity increased by 45% in just 2 months. The automation features alone save us 15 hours per week!",
+              author: "Alex Thompson",
+              role: "Head of Operations",
+              company: "TechFlow Inc",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=33",
+            },
+            {
+              content:
+                "Finally, a SaaS solution that actually delivers on its promises. The interface is intuitive, onboarding was seamless, and support team is incredibly responsive. We're all in!",
+              author: "Maria Garcia",
+              role: "CEO",
+              company: "StartupHub",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=44",
+            },
+            {
+              content:
+                "We evaluated 10+ tools before choosing this one. The analytics dashboard gives us insights we never had before, and the integrations work flawlessly. Worth every penny!",
+              author: "James Kim",
+              role: "VP of Marketing",
+              company: "GrowthWorks",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=14",
+            },
+            {
+              content:
+                "The mobile apps are fantastic - I can manage my entire workflow on the go. Real-time sync means I'm always up to date no matter which device I'm using. Game changer!",
+              author: "Sophie Laurent",
+              role: "Project Manager",
+              company: "DesignStudio Pro",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=25",
+            },
+            {
+              content:
+                "Security was our biggest concern when choosing a cloud solution. Their SOC 2 certification and robust access controls gave us the confidence we needed. No regrets!",
+              author: "Robert Chang",
+              role: "CTO",
+              company: "SecureData Systems",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=52",
+            },
+            {
+              content:
+                "Customer support is outstanding - they actually care about our success. Had a complex integration question and got a detailed response within 30 minutes. Impressive!",
+              author: "Emma Wilson",
+              role: "Operations Director",
+              company: "CloudScale Partners",
+              rating: 5,
+              avatar: "https://i.pravatar.cc/150?img=16",
+            },
+          ],
+          layout: "grid" as const,
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          animation: {
+            type: "fadeInUp" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "pricing",
+        visible: true,
+        config: {
+          title: "Simple, Transparent Pricing",
+          subtitle: "PLANS FOR EVERY TEAM",
+          description:
+            "All plans include 14-day free trial. No credit card required. Cancel anytime.",
+          plans: [
+            {
+              name: "Starter",
+              price: "$0",
+              period: "/month",
+              description: "Perfect for individuals and small teams",
+              features: [
+                "Up to 5 team members",
+                "3 projects",
+                "10GB storage",
+                "Basic features",
+                "Community support",
+                "Mobile apps",
+              ],
+              cta: {
+                text: "Get Started Free",
+                link: "#signup",
+              },
+              highlighted: false,
+            },
+            {
+              name: "Professional",
+              price: "$49",
+              period: "/month",
+              description: "For growing teams that need more power",
+              features: [
+                "Up to 50 team members",
+                "Unlimited projects",
+                "100GB storage",
+                "All features included",
+                "Priority email support",
+                "Advanced analytics",
+                "API access",
+                "Custom integrations",
+              ],
+              cta: {
+                text: "Start Free Trial",
+                link: "#signup",
+              },
+              highlighted: true,
+              badge: "Most Popular",
+            },
+            {
+              name: "Enterprise",
+              price: "$149",
+              period: "/month",
+              description: "For large organizations with advanced needs",
+              features: [
+                "Unlimited team members",
+                "Unlimited everything",
+                "1TB storage",
+                "Everything in Pro",
+                "24/7 phone support",
+                "Dedicated account manager",
+                "Custom development",
+                "SLA guarantee",
+                "On-premise deployment",
+                "Advanced security",
+              ],
+              cta: {
+                text: "Contact Sales",
+                link: "#contact",
+              },
+              highlighted: false,
+            },
+          ],
+          background: {
+            type: "solid" as const,
+            color: "#f9fafb",
+          },
+          animation: {
+            type: "fadeIn" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "faq",
+        visible: true,
+        config: {
+          title: "Frequently Asked Questions",
+          subtitle: "EVERYTHING YOU NEED TO KNOW",
+          description: "Can't find the answer you're looking for? Contact our support team.",
+          faqs: [
+            {
+              id: "1",
+              question: "How does the free trial work?",
+              answer:
+                "You get full access to all Pro features for 14 days - no credit card required. You can upgrade, downgrade, or cancel anytime during or after the trial. If you don't upgrade, your account automatically converts to the free Starter plan.",
+            },
+            {
+              id: "2",
+              question: "Can I change plans later?",
+              answer:
+                "Absolutely! You can upgrade or downgrade your plan at any time. If you upgrade, you'll be charged the prorated amount for the remainder of your billing cycle. If you downgrade, you'll receive a credit applied to your next bill.",
+            },
+            {
+              id: "3",
+              question: "What payment methods do you accept?",
+              answer:
+                "We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and ACH bank transfers for annual plans. Enterprise customers can also request invoice billing with NET 30 terms.",
+            },
+            {
+              id: "4",
+              question: "How secure is my data?",
+              answer:
+                "Very secure. We use 256-bit AES encryption for data at rest and TLS 1.3 for data in transit. We're SOC 2 Type II certified, GDPR compliant, and regularly undergo third-party security audits. Your data is backed up hourly across multiple data centers.",
+            },
+            {
+              id: "5",
+              question: "Do you offer discounts for nonprofits or educational institutions?",
+              answer:
+                "Yes! We offer 50% discounts for registered nonprofits and educational institutions. Contact our sales team with proof of your nonprofit or educational status to get your discount code.",
+            },
+            {
+              id: "6",
+              question: "Can I import data from other tools?",
+              answer:
+                "Yes, we provide migration tools and support for importing data from most popular platforms. Our support team offers free white-glove migration service for Professional and Enterprise plans to ensure a smooth transition.",
+            },
+            {
+              id: "7",
+              question: "What's your uptime guarantee?",
+              answer:
+                "We guarantee 99.9% uptime for all paid plans, backed by our SLA. Enterprise plans get 99.99% uptime guarantee. We provide real-time status updates at status.yourcompany.com and will credit your account if we fail to meet our SLA commitments.",
+            },
+            {
+              id: "8",
+              question: "How does billing work for adding/removing users?",
+              answer:
+                "We use prorated billing. When you add users mid-cycle, you're charged the prorated amount for the remainder of the billing period. When you remove users, you receive a credit applied to your next bill. You can add or remove users anytime without penalties.",
+            },
+          ],
+          layout: "accordion" as const,
+          columns: 2,
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          spacing: {
+            padding: "xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
         type: "cta",
         visible: true,
         config: {
-          title: "Start Your Free Trial Today",
-          description: "No credit card required. Set up in minutes. Cancel anytime.",
+          title: "Ready to Transform Your Workflow?",
+          description:
+            "Join 5,000+ teams already using our platform. Start your free 14-day trial today - no credit card required.",
           primaryCTA: {
             text: "Get Started Free",
             link: "#signup",
@@ -2660,6 +3237,585 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             { platform: "instagram", link: "#", icon: "instagram" },
           ],
           copyright: "© 2024 AppName. All rights reserved.",
+        },
+      },
+    ],
+  },
+  
+  // ==================== PREMIUM SAAS TEMPLATE ====================
+  {
+    id: "premium-saas",
+    name: "Premium SaaS Platform",
+    description: "Complete SaaS template with all essential sections",
+    category: "saas",
+    components: [
+      {
+        type: "hero",
+        visible: true,
+        config: {
+          title: "Transform Your Workflow with AI-Powered Automation",
+          subtitle: "The Complete Solution for Modern Teams",
+          description: "Streamline operations, boost productivity by 10x, and scale your business with our intelligent automation platform. Trusted by 50,000+ teams worldwide.",
+          primaryCTA: {
+            text: "Start Free 14-Day Trial",
+            link: "#signup",
+            style: "primary" as const,
+          },
+          secondaryCTA: {
+            text: "Watch 2-Min Demo",
+            link: "#demo",
+            style: "secondary" as const,
+          },
+          image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200",
+          alignment: "center" as const,
+          background: {
+            type: "gradient" as const,
+            gradient: {
+              from: "#667eea",
+              to: "#764ba2",
+              direction: "to-br" as const,
+            },
+          },
+          animation: {
+            type: "fadeInUp" as const,
+            duration: 800,
+            delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "logo-cloud",
+        visible: true,
+        config: {
+          title: "Trusted by Industry Leaders Worldwide",
+          subtitle: "Join 50,000+ companies using our platform",
+          logos: [
+            {
+              name: "Google",
+              url: "https://via.placeholder.com/150x50/4285F4/FFF?text=Google",
+              link: "#",
+            },
+            {
+              name: "Microsoft",
+              url: "https://via.placeholder.com/150x50/00A4EF/FFF?text=Microsoft",
+              link: "#",
+            },
+            {
+              name: "Amazon",
+              url: "https://via.placeholder.com/150x50/FF9900/FFF?text=Amazon",
+              link: "#",
+            },
+            {
+              name: "Apple",
+              url: "https://via.placeholder.com/150x50/000000/FFF?text=Apple",
+              link: "#",
+            },
+            {
+              name: "Meta",
+              url: "https://via.placeholder.com/150x50/0668E1/FFF?text=Meta",
+              link: "#",
+            },
+            {
+              name: "Netflix",
+              url: "https://via.placeholder.com/150x50/E50914/FFF?text=Netflix",
+              link: "#",
+            },
+          ],
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          spacing: {
+            padding: "lg" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "features",
+        visible: true,
+        config: {
+          title: "Everything You Need to Succeed",
+          subtitle: "Powerful Features Built for Teams",
+          description: "Our platform combines cutting-edge technology with intuitive design to help you achieve more in less time.",
+          features: [
+            {
+              id: "1",
+              icon: "🤖",
+              title: "AI-Powered Automation",
+              description: "Automate repetitive tasks with intelligent workflows that learn from your behavior and adapt to your needs.",
+              image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400",
+            },
+            {
+              id: "2",
+              icon: "📊",
+              title: "Advanced Analytics",
+              description: "Get real-time insights with customizable dashboards, detailed reports, and predictive analytics.",
+              image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
+            },
+            {
+              id: "3",
+              icon: "🔐",
+              title: "Enterprise Security",
+              description: "Bank-level encryption, SOC 2 certified, GDPR compliant with advanced access controls and audit logs.",
+              image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400",
+            },
+            {
+              id: "4",
+              icon: "🚀",
+              title: "Blazing Fast Performance",
+              description: "Lightning-fast load times and real-time syncing across all devices with 99.99% uptime SLA.",
+              image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
+            },
+            {
+              id: "5",
+              icon: "🌐",
+              title: "Global CDN",
+              description: "Deliver content at lightning speed with our global CDN network spanning 180+ locations worldwide.",
+              image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400",
+            },
+            {
+              id: "6",
+              icon: "🔗",
+              title: "Seamless Integrations",
+              description: "Connect with 1000+ apps including Slack, Salesforce, HubSpot, and all your favorite tools.",
+              image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400",
+            },
+          ],
+          layout: "grid" as const,
+          columns: 3,
+          background: {
+            type: "solid" as const,
+            color: "#f9fafb",
+          },
+          animation: {
+            type: "fadeInUp" as const,
+            duration: 600,
+            delay: 100,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "stats",
+        visible: true,
+        config: {
+          title: "Trusted by Businesses Worldwide",
+          subtitle: "PROVEN RESULTS",
+          description: "Our platform delivers measurable impact for companies of all sizes",
+          stats: [
+            {
+              id: "1",
+              value: "50K",
+              label: "Active Companies",
+              suffix: "+",
+              prefix: "",
+            },
+            {
+              id: "2",
+              value: "99.99",
+              label: "Uptime Guarantee",
+              suffix: "%",
+              prefix: "",
+            },
+            {
+              id: "3",
+              value: "10x",
+              label: "Productivity Boost",
+              suffix: "",
+              prefix: "",
+            },
+            {
+              id: "4",
+              value: "24/7",
+              label: "Customer Support",
+              suffix: "",
+              prefix: "",
+            },
+          ],
+          layout: "grid" as const,
+          columns: 4,
+          background: {
+            type: "gradient" as const,
+            gradient: {
+              from: "#667eea",
+              to: "#764ba2",
+              direction: "to-r" as const,
+            },
+          },
+          animation: {
+            type: "fadeIn" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "content",
+        visible: true,
+        config: {
+          title: "Built for Teams of All Sizes",
+          subtitle: "FROM STARTUPS TO ENTERPRISES",
+          content: "Whether you're a small team or a large enterprise, our platform scales with your needs. Start with essential features and unlock advanced capabilities as you grow. Our flexible architecture ensures you never outgrow the platform.",
+          image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
+          imagePosition: "right" as const,
+          features: [
+            "Unlimited team members",
+            "Role-based permissions",
+            "Custom workflows",
+            "API access",
+            "White-label options",
+          ],
+          cta: {
+            text: "Explore Enterprise Features",
+            link: "#enterprise",
+          },
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          spacing: {
+            padding: "xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "pricing",
+        visible: true,
+        config: {
+          title: "Choose Your Perfect Plan",
+          subtitle: "Flexible pricing that grows with you",
+          description: "Start free, upgrade when you're ready. All plans include 14-day free trial.",
+          plans: [
+            {
+              id: "1",
+              name: "Starter",
+              price: "$0",
+              period: "per month",
+              description: "Perfect for individuals and small teams",
+              features: [
+                "Up to 5 team members",
+                "10 GB storage",
+                "Basic automation",
+                "Email support",
+                "Mobile apps",
+                "100 API calls/day",
+              ],
+              cta: {
+                text: "Start Free",
+                link: "#signup",
+              },
+              highlighted: false,
+            },
+            {
+              id: "2",
+              name: "Professional",
+              price: "$49",
+              period: "per user/month",
+              description: "For growing teams that need more power",
+              features: [
+                "Up to 50 team members",
+                "100 GB storage",
+                "Advanced automation",
+                "Priority email & chat support",
+                "All integrations",
+                "Unlimited API calls",
+                "Custom branding",
+                "Advanced analytics",
+              ],
+              cta: {
+                text: "Start Free Trial",
+                link: "#signup",
+              },
+              highlighted: true,
+              badge: "Most Popular",
+            },
+            {
+              id: "3",
+              name: "Enterprise",
+              price: "Custom",
+              period: "",
+              description: "For organizations with advanced needs",
+              features: [
+                "Unlimited team members",
+                "Unlimited storage",
+                "AI-powered workflows",
+                "24/7 phone & email support",
+                "Dedicated account manager",
+                "Custom SLA",
+                "On-premise deployment",
+                "Advanced security features",
+                "Custom development",
+              ],
+              cta: {
+                text: "Contact Sales",
+                link: "#contact",
+              },
+              highlighted: false,
+            },
+          ],
+          background: {
+            type: "solid" as const,
+            color: "#f9fafb",
+          },
+          animation: {
+            type: "fadeIn" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "testimonials",
+        visible: true,
+        config: {
+          title: "Loved by Teams Worldwide",
+          subtitle: "CUSTOMER SUCCESS STORIES",
+          description: "See what our customers have to say about their experience",
+          testimonials: [
+            {
+              id: "1",
+              content: "This platform has completely transformed how our team works. We've seen a 300% increase in productivity and our clients are happier than ever. The automation features alone have saved us countless hours.",
+              author: "Sarah Chen",
+              role: "VP of Operations",
+              company: "TechFlow Inc.",
+              rating: 5,
+              avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+            },
+            {
+              id: "2",
+              content: "We tried 5 different platforms before finding this one. The difference is night and day. The support team is incredible and the feature set is unmatched. Worth every penny!",
+              author: "Michael Rodriguez",
+              role: "CEO",
+              company: "GrowthLabs",
+              rating: 5,
+              avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+            },
+            {
+              id: "3",
+              content: "The ROI we've seen is incredible. We implemented this 6 months ago and have already reduced operational costs by 40% while improving output quality. Highly recommend to any serious business.",
+              author: "Emily Watson",
+              role: "COO",
+              company: "InnovateCo",
+              rating: 5,
+              avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
+            },
+            {
+              id: "4",
+              content: "Best investment we've made this year. The platform is intuitive, powerful, and the integrations work flawlessly. Our team was up and running in less than a day.",
+              author: "David Park",
+              role: "CTO",
+              company: "StartupXYZ",
+              rating: 5,
+              avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+            },
+            {
+              id: "5",
+              content: "We've been using this for 2 years now and it just keeps getting better. The continuous updates and new features show that the team really cares about their customers.",
+              author: "Lisa Thompson",
+              role: "Director of Marketing",
+              company: "ScaleCorp",
+              rating: 5,
+              avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150",
+            },
+            {
+              id: "6",
+              content: "Game-changing platform! The analytics alone are worth the price. We now have visibility into every aspect of our operations and can make data-driven decisions instantly.",
+              author: "James Miller",
+              role: "Head of Analytics",
+              company: "DataFirst",
+              rating: 5,
+              avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150",
+            },
+          ],
+          layout: "grid" as const,
+          background: {
+            type: "solid" as const,
+            color: "#ffffff",
+          },
+          animation: {
+            type: "fadeInUp" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "faq",
+        visible: true,
+        config: {
+          title: "Frequently Asked Questions",
+          subtitle: "EVERYTHING YOU NEED TO KNOW",
+          description: "Can't find your answer? Contact our support team anytime.",
+          faqs: [
+            {
+              id: "1",
+              question: "How does the 14-day free trial work?",
+              answer: "Start using our platform immediately with full access to all Professional features. No credit card required. After 14 days, choose a plan or downgrade to our free Starter plan. Your data is always safe and exportable.",
+            },
+            {
+              id: "2",
+              question: "Can I change plans at any time?",
+              answer: "Absolutely! Upgrade, downgrade, or cancel anytime. Changes are prorated and reflected in your next billing cycle. There are no cancellation fees or long-term contracts.",
+            },
+            {
+              id: "3",
+              question: "What payment methods do you accept?",
+              answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and for Enterprise customers, we also accept wire transfers and purchase orders.",
+            },
+            {
+              id: "4",
+              question: "Is my data secure?",
+              answer: "Yes! We use bank-level 256-bit encryption, are SOC 2 Type II certified, GDPR compliant, and perform regular security audits. Your data is backed up daily and stored in secure, redundant data centers.",
+            },
+            {
+              id: "5",
+              question: "Do you offer discounts for non-profits or educational institutions?",
+              answer: "Yes! We offer 50% discount for registered non-profit organizations and educational institutions. Contact our sales team with your documentation to qualify.",
+            },
+            {
+              id: "6",
+              question: "What kind of support do you provide?",
+              answer: "Starter plan includes email support (48h response time). Professional plan includes priority email and chat support (4h response time). Enterprise plan includes 24/7 phone and email support with a dedicated account manager.",
+            },
+            {
+              id: "7",
+              question: "Can I import data from other platforms?",
+              answer: "Yes! We offer free data migration assistance and provide import tools for all major platforms. Our team can help you migrate your existing data with zero downtime.",
+            },
+            {
+              id: "8",
+              question: "Do you offer API access?",
+              answer: "Yes! All paid plans include API access. Starter plan has a limit of 100 calls/day, Professional plan has unlimited API calls, and Enterprise plan includes custom API endpoints and webhooks.",
+            },
+          ],
+          columns: 2,
+          background: {
+            type: "solid" as const,
+            color: "#f9fafb",
+          },
+          spacing: {
+            padding: "xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "cta",
+        visible: true,
+        config: {
+          title: "Ready to Transform Your Workflow?",
+          description: "Join 50,000+ teams already using our platform. Start your free 14-day trial today - no credit card required!",
+          primaryCTA: {
+            text: "Start Free Trial Now",
+            link: "#signup",
+            style: "primary" as const,
+          },
+          secondaryCTA: {
+            text: "Schedule a Demo",
+            link: "#demo",
+            style: "outline" as const,
+          },
+          background: {
+            type: "gradient" as const,
+            gradient: {
+              from: "#667eea",
+              to: "#764ba2",
+              direction: "to-r" as const,
+            },
+          },
+          animation: {
+            type: "fadeIn" as const,
+            duration: 600,
+            delay: 0,
+          },
+          spacing: {
+            padding: "2xl" as const,
+            margin: "none" as const,
+          },
+        },
+      },
+      {
+        type: "footer",
+        visible: true,
+        config: {
+          logo: {
+            text: "YourSaaS",
+            image: "",
+          },
+          description: "Empowering teams to work smarter, faster, and better.",
+          links: [
+            {
+              title: "Product",
+              items: [
+                { text: "Features", link: "#features" },
+                { text: "Pricing", link: "#pricing" },
+                { text: "Integrations", link: "#integrations" },
+                { text: "API Documentation", link: "#api" },
+                { text: "Changelog", link: "#changelog" },
+                { text: "Roadmap", link: "#roadmap" },
+              ],
+            },
+            {
+              title: "Resources",
+              items: [
+                { text: "Blog", link: "#blog" },
+                { text: "Help Center", link: "#help" },
+                { text: "Video Tutorials", link: "#tutorials" },
+                { text: "Case Studies", link: "#cases" },
+                { text: "Webinars", link: "#webinars" },
+                { text: "Community", link: "#community" },
+              ],
+            },
+            {
+              title: "Company",
+              items: [
+                { text: "About Us", link: "#about" },
+                { text: "Careers", link: "#careers" },
+                { text: "Press Kit", link: "#press" },
+                { text: "Partners", link: "#partners" },
+                { text: "Contact", link: "#contact" },
+              ],
+            },
+            {
+              title: "Legal",
+              items: [
+                { text: "Privacy Policy", link: "#privacy" },
+                { text: "Terms of Service", link: "#terms" },
+                { text: "Security", link: "#security" },
+                { text: "Cookie Policy", link: "#cookies" },
+                { text: "GDPR", link: "#gdpr" },
+              ],
+            },
+          ],
+          social: [
+            { platform: "twitter", link: "https://twitter.com", icon: "twitter" },
+            { platform: "linkedin", link: "https://linkedin.com", icon: "linkedin" },
+            { platform: "facebook", link: "https://facebook.com", icon: "facebook" },
+            { platform: "github", link: "https://github.com", icon: "github" },
+            { platform: "youtube", link: "https://youtube.com", icon: "youtube" },
+          ],
+          copyright: "© 2024 YourSaaS. All rights reserved.",
         },
       },
     ],
