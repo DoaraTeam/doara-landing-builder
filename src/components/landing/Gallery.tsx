@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { Theme } from "@/types/landing";
+import { BackgroundConfig, getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
 
 interface GalleryItem {
   id: string;
@@ -19,12 +20,10 @@ interface GalleryConfig {
   items: GalleryItem[];
   columns?: 2 | 3 | 4;
   layout?: "grid" | "masonry";
-  background: {
-    type: "solid";
-    color?: string;
-  };
+  aspectRatio?: "square" | "landscape" | "portrait" | "auto";
+  background: BackgroundConfig;
   spacing?: {
-    padding?: "md" | "lg" | "xl";
+    padding?: "md" | "lg" | "xl" | "2xl";
   };
 }
 
@@ -33,14 +32,14 @@ interface GalleryProps {
   theme?: Theme;
 }
 
-export function Gallery({ config, theme }: GalleryProps) {
+export function Gallery({ config }: GalleryProps) {
   const {
     title,
     subtitle,
     description,
-    items,
+    items = [],
     columns = 3,
-    layout = "grid",
+    aspectRatio = "landscape",
     background,
     spacing,
   } = config;
@@ -50,15 +49,11 @@ export function Gallery({ config, theme }: GalleryProps) {
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
   const textMuted = "var(--color-text-muted)";
-  const surfaceColor = "var(--color-surface)";
+  const bgColor = "var(--color-background)";
   const headingFont = "var(--font-heading)";
   const bodyFont = "var(--font-body)";
 
-  const getBackgroundColor = () => {
-    if (background.color === "background") return "var(--color-background)";
-    if (background.color === "surface") return surfaceColor;
-    return background.color || "#ffffff";
-  };
+  const isDarkBg = isBackgroundDark(background);
 
   const gridColsClass = {
     2: "md:grid-cols-2",
@@ -66,18 +61,32 @@ export function Gallery({ config, theme }: GalleryProps) {
     4: "md:grid-cols-2 lg:grid-cols-4",
   };
 
-  const paddingClass = spacing?.padding === "xl" ? "py-20" : "py-16";
+  const aspectRatioClass = {
+    square: "aspect-square",
+    landscape: "aspect-video",
+    portrait: "aspect-[3/4]",
+    auto: "aspect-auto",
+  };
+
+  const paddingClass =
+    spacing?.padding === "2xl"
+      ? "py-24"
+      : spacing?.padding === "xl"
+        ? "py-20"
+        : spacing?.padding === "md"
+          ? "py-12"
+          : "py-16";
 
   return (
     <>
-      <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
+      <section className={`${paddingClass} px-4`} style={getBackgroundStyle(background, bgColor)}>
         <div className="container mx-auto">
           {/* Header */}
           <div className="text-center mb-12 max-w-3xl mx-auto">
             {subtitle && (
               <div
                 className="text-sm font-semibold uppercase tracking-wider mb-4"
-                style={{ color: primaryColor }}
+                style={{ color: isDarkBg ? "#ffffff" : primaryColor }}
               >
                 {subtitle}
               </div>
@@ -85,13 +94,22 @@ export function Gallery({ config, theme }: GalleryProps) {
 
             <h2
               className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ color: textColor, fontFamily: headingFont }}
+              style={{
+                color: isDarkBg ? "#ffffff" : textColor,
+                fontFamily: headingFont,
+              }}
             >
               {title}
             </h2>
 
             {description && (
-              <p className="text-lg" style={{ color: textMuted, fontFamily: bodyFont }}>
+              <p
+                className="text-lg"
+                style={{
+                  color: isDarkBg ? "rgba(255,255,255,0.9)" : textMuted,
+                  fontFamily: bodyFont,
+                }}
+              >
                 {description}
               </p>
             )}
@@ -99,40 +117,49 @@ export function Gallery({ config, theme }: GalleryProps) {
 
           {/* Gallery Grid */}
           <div className={`grid grid-cols-1 ${gridColsClass[columns]} gap-6`}>
-            {items.map((item) => (
-              <div
-                key={item.id}
-                className="relative group overflow-hidden rounded-lg cursor-pointer shadow-md hover:shadow-xl transition-all"
-                onClick={() => setSelectedImage(item)}
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title || "Gallery item"}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                {/* Overlay */}
-                {(item.title || item.description) && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    {item.category && (
-                      <div
-                        className="text-xs font-semibold uppercase tracking-wider mb-2"
-                        style={{ color: primaryColor }}
-                      >
-                        {item.category}
-                      </div>
-                    )}
-                    {item.title && (
-                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                    )}
-                    {item.description && (
-                      <p className="text-sm text-white/90">{item.description}</p>
-                    )}
+            {items && items.length > 0 ? (
+              items.map((item) => (
+                <div
+                  key={item.id}
+                  className="relative group overflow-hidden rounded-lg cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 bg-white"
+                  onClick={() => setSelectedImage(item)}
+                >
+                  <div className={`${aspectRatioClass[aspectRatio]} overflow-hidden`}>
+                    <img
+                      src={item.image}
+                      alt={item.title || "Gallery item"}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://via.placeholder.com/600x400?text=Image+Not+Found";
+                      }}
+                    />
                   </div>
-                )}
+                  {/* Overlay */}
+                  {(item.title || item.description) && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                      {item.category && (
+                        <div className="text-xs font-semibold uppercase tracking-wider mb-2 text-yellow-400">
+                          {item.category}
+                        </div>
+                      )}
+                      {item.title && (
+                        <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                      )}
+                      {item.description && (
+                        <p className="text-sm text-white/90">{item.description}</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p style={{ color: isDarkBg ? "rgba(255,255,255,0.7)" : textMuted }}>
+                  No images to display
+                </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
