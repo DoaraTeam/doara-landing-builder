@@ -9,6 +9,7 @@ import ComponentTemplatesPanel from "./ComponentTemplatesPanel";
 import PageSettingsModal from "./PageSettingsModal";
 import { ExportImportDialog } from "./ExportImportDialog";
 import { KeyboardShortcutsHelp } from "./KeyboardShortcutsHelp";
+import { HiddenComponentsList } from "./HiddenComponentsList";
 import ThemeSelector from "./ThemeSelector";
 import CustomThemeCreator from "./CustomThemeCreator";
 import { EditModeProvider } from "@/contexts/EditModeContext";
@@ -570,6 +571,11 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
             </div>
 
             <div className="flex items-center gap-2">
+              <HiddenComponentsList
+                components={editingPage.components}
+                onToggleVisibility={handleToggleVisibility}
+                onSelectComponent={setSelectedComponentId}
+              />
               <Button
                 variant="outline"
                 size="sm"
