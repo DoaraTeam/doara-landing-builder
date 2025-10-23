@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "lastUpdated": "2025-10-23T08:45:47.084Z",
+    "lastUpdated": "2025-10-23T09:59:49.872Z",
     "totalPages": 5,
     "version": "1.0.0"
   },
@@ -1257,7 +1257,7 @@
       "title": "SaaS Product",
       "description": "",
       "slug": "saas-product",
-      "theme": "modern",
+      "theme": "nature",
       "status": "draft",
       "seo": {
         "title": "SaaS Product",
@@ -1292,7 +1292,7 @@
                 "to": "#400080",
                 "direction": "to-br"
               },
-              "color": "#f49a9a"
+              "color": "#ffffff"
             },
             "animation": {
               "type": "fadeInUp",
@@ -1306,6 +1306,62 @@
           },
           "id": "comp-1761186403200-0",
           "order": 0
+        },
+        {
+          "type": "stats",
+          "visible": true,
+          "config": {
+            "title": "Results That Speak for Themselves",
+            "subtitle": "BY THE NUMBERS",
+            "description": "See the impact we make on businesses worldwide",
+            "stats": [
+              {
+                "id": "1",
+                "value": "5K",
+                "label": "Happy Customers",
+                "suffix": "+",
+                "prefix": ""
+              },
+              {
+                "id": "2",
+                "value": "10M",
+                "label": "Tasks Completed",
+                "suffix": "+",
+                "prefix": ""
+              },
+              {
+                "id": "3",
+                "value": "98",
+                "label": "Customer Satisfaction",
+                "suffix": "%",
+                "prefix": ""
+              },
+              {
+                "id": "4",
+                "value": "24",
+                "label": "Support Availability",
+                "suffix": "/7",
+                "prefix": ""
+              }
+            ],
+            "layout": "grid",
+            "columns": 4,
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeIn",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761186403200-3",
+          "order": 1
         },
         {
           "type": "features",
@@ -1378,62 +1434,6 @@
           "order": 2
         },
         {
-          "type": "stats",
-          "visible": true,
-          "config": {
-            "title": "Results That Speak for Themselves",
-            "subtitle": "BY THE NUMBERS",
-            "description": "See the impact we make on businesses worldwide",
-            "stats": [
-              {
-                "id": "1",
-                "value": "5K",
-                "label": "Happy Customers",
-                "suffix": "+",
-                "prefix": ""
-              },
-              {
-                "id": "2",
-                "value": "10M",
-                "label": "Tasks Completed",
-                "suffix": "+",
-                "prefix": ""
-              },
-              {
-                "id": "3",
-                "value": "98",
-                "label": "Customer Satisfaction",
-                "suffix": "%",
-                "prefix": ""
-              },
-              {
-                "id": "4",
-                "value": "24",
-                "label": "Support Availability",
-                "suffix": "/7",
-                "prefix": ""
-              }
-            ],
-            "layout": "grid",
-            "columns": 4,
-            "background": {
-              "type": "solid",
-              "color": "#ffffff"
-            },
-            "animation": {
-              "type": "fadeIn",
-              "duration": 600,
-              "delay": 0
-            },
-            "spacing": {
-              "padding": "xl",
-              "margin": "none"
-            }
-          },
-          "id": "comp-1761186403200-3",
-          "order": 3
-        },
-        {
           "type": "content",
           "visible": true,
           "config": {
@@ -1464,7 +1464,7 @@
             }
           },
           "id": "comp-1761186403200-4",
-          "order": 4
+          "order": 3
         },
         {
           "type": "testimonials",
@@ -1539,7 +1539,7 @@
             }
           },
           "id": "comp-1761186403200-5",
-          "order": 5
+          "order": 4
         },
         {
           "type": "pricing",
@@ -1629,70 +1629,7 @@
             }
           },
           "id": "comp-1761186403200-6",
-          "order": 6
-        },
-        {
-          "type": "faq",
-          "visible": true,
-          "config": {
-            "title": "Frequently Asked Questions",
-            "subtitle": "EVERYTHING YOU NEED TO KNOW",
-            "description": "Can't find the answer you're looking for? Contact our support team.",
-            "faqs": [
-              {
-                "id": "1",
-                "question": "How does the free trial work?",
-                "answer": "You get full access to all Pro features for 14 days - no credit card required. You can upgrade, downgrade, or cancel anytime during or after the trial. If you don't upgrade, your account automatically converts to the free Starter plan."
-              },
-              {
-                "id": "2",
-                "question": "Can I change plans later?",
-                "answer": "Absolutely! You can upgrade or downgrade your plan at any time. If you upgrade, you'll be charged the prorated amount for the remainder of your billing cycle. If you downgrade, you'll receive a credit applied to your next bill."
-              },
-              {
-                "id": "3",
-                "question": "What payment methods do you accept?",
-                "answer": "We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and ACH bank transfers for annual plans. Enterprise customers can also request invoice billing with NET 30 terms."
-              },
-              {
-                "id": "4",
-                "question": "How secure is my data?",
-                "answer": "Very secure. We use 256-bit AES encryption for data at rest and TLS 1.3 for data in transit. We're SOC 2 Type II certified, GDPR compliant, and regularly undergo third-party security audits. Your data is backed up hourly across multiple data centers."
-              },
-              {
-                "id": "5",
-                "question": "Do you offer discounts for nonprofits or educational institutions?",
-                "answer": "Yes! We offer 50% discounts for registered nonprofits and educational institutions. Contact our sales team with proof of your nonprofit or educational status to get your discount code."
-              },
-              {
-                "id": "6",
-                "question": "Can I import data from other tools?",
-                "answer": "Yes, we provide migration tools and support for importing data from most popular platforms. Our support team offers free white-glove migration service for Professional and Enterprise plans to ensure a smooth transition."
-              },
-              {
-                "id": "7",
-                "question": "What's your uptime guarantee?",
-                "answer": "We guarantee 99.9% uptime for all paid plans, backed by our SLA. Enterprise plans get 99.99% uptime guarantee. We provide real-time status updates at status.yourcompany.com and will credit your account if we fail to meet our SLA commitments."
-              },
-              {
-                "id": "8",
-                "question": "How does billing work for adding/removing users?",
-                "answer": "We use prorated billing. When you add users mid-cycle, you're charged the prorated amount for the remainder of the billing period. When you remove users, you receive a credit applied to your next bill. You can add or remove users anytime without penalties."
-              }
-            ],
-            "layout": "accordion",
-            "columns": 2,
-            "background": {
-              "type": "solid",
-              "color": "#ffffff"
-            },
-            "spacing": {
-              "padding": "xl",
-              "margin": "none"
-            }
-          },
-          "id": "comp-1761186403200-7",
-          "order": 7
+          "order": 5
         },
         {
           "type": "cta",
@@ -1724,7 +1661,7 @@
             }
           },
           "id": "comp-1761186403200-8",
-          "order": 8
+          "order": 7
         },
         {
           "type": "logo-cloud",
@@ -1755,7 +1692,7 @@
             "gridColumns": 4
           },
           "id": "comp-1761188226627-egk9wtxvo",
-          "order": 10
+          "order": 8
         },
         {
           "type": "footer",
@@ -1828,14 +1765,22 @@
                 "url": "#"
               }
             ],
-            "copyright": "© 2024 Your Company. All rights reserved."
+            "copyright": "© 2024 Your Company. All rights reserved.",
+            "background": {
+              "type": "solid",
+              "color": "#f6fbfe"
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
           },
           "id": "comp-1761189596421-psgdi25tj",
-          "order": 11
+          "order": 9
         }
       ],
       "createdAt": "2025-10-23T02:26:43.200Z",
-      "updatedAt": "2025-10-23T03:20:20.934Z"
+      "updatedAt": "2025-10-23T09:59:49.872Z"
     },
     "page-1761189736786": {
       "id": "page-1761189736786",
