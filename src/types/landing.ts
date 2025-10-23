@@ -65,6 +65,22 @@ export interface SpacingConfig {
   margin?: "none" | "sm" | "md" | "lg" | "xl" | "2xl";
 }
 
+/**
+ * Container width options
+ */
+export type ContainerWidth =
+  | "xs" // 448px - Extra small, perfect for forms
+  | "sm" // 512px - Small, good for focused content
+  | "md" // 672px - Medium, blog posts
+  | "narrow" // 768px - Narrow, single column content
+  | "lg" // 896px - Large, articles
+  | "default" // 1280px - Default container
+  | "wide" // 1536px - Wide layouts
+  | "xl" // 1600px - Extra wide
+  | "2xl" // 1800px - Ultra wide
+  | "full" // Full width with padding
+  | "fullscreen"; // True fullscreen, no padding
+
 // ========================
 // COMPONENT CONFIGS
 // ========================
@@ -88,6 +104,7 @@ export interface HeroConfig {
   };
   image?: string;
   alignment?: "left" | "center" | "right";
+  containerWidth?: ContainerWidth;
   background: BackgroundConfig;
   animation: AnimationConfig;
   spacing: SpacingConfig;
@@ -114,6 +131,7 @@ export interface FeaturesConfig {
   features: FeatureItem[];
   layout?: "grid" | "list" | "carousel";
   columns?: 2 | 3 | 4;
+  containerWidth?: ContainerWidth;
   background: BackgroundConfig;
   animation: AnimationConfig;
   spacing: SpacingConfig;
@@ -142,6 +160,7 @@ export interface PricingConfig {
   subtitle?: string;
   description?: string;
   plans: PricingPlan[];
+  containerWidth?: ContainerWidth;
   background: BackgroundConfig;
   animation: AnimationConfig;
   spacing: SpacingConfig;
@@ -169,6 +188,8 @@ export interface TestimonialsConfig {
   description?: string;
   testimonials: TestimonialItem[];
   layout?: "grid" | "carousel" | "masonry";
+  columns?: 2 | 3 | 4;
+  containerWidth?: ContainerWidth;
   background: BackgroundConfig;
   animation: AnimationConfig;
   spacing: SpacingConfig;
@@ -190,6 +211,8 @@ export interface CTAConfig {
     link: string;
     style?: "primary" | "secondary" | "outline";
   };
+  alignment?: "left" | "center" | "right";
+  containerWidth?: ContainerWidth;
   background: BackgroundConfig;
   animation: AnimationConfig;
   spacing: SpacingConfig;
@@ -224,9 +247,14 @@ export interface SocialLink {
  * Footer configuration
  */
 export interface FooterConfig {
-  logo?: string;
+  logo?: {
+    text: string;
+    image: string;
+  };
+  description?: string; // Alternative to tagline
   tagline?: string;
-  columns: FooterColumn[];
+  columns?: FooterColumn[];
+  links?: FooterColumn[]; // Alternative to columns
   social?: SocialLink[];
   copyright?: string;
   background: BackgroundConfig;
@@ -319,6 +347,30 @@ export interface Navigation {
 }
 
 /**
+ * Loading spinner type
+ */
+export type LoadingSpinnerType =
+  | "spin"
+  | "pulse"
+  | "dots"
+  | "bounce"
+  | "square-corners"
+  | "dual-ring"
+  | "bars"
+  | "ripple";
+
+/**
+ * Loading configuration
+ */
+export interface LoadingConfig {
+  enabled: boolean;
+  type: LoadingSpinnerType;
+  color?: string;
+  duration?: number; // milliseconds, default 1000
+  minDuration?: number; // minimum loading time in ms, default 500
+}
+
+/**
  * Landing page configuration
  */
 export interface LandingPage {
@@ -329,6 +381,7 @@ export interface LandingPage {
   theme: string; // Reference to theme ID
   seo: SEOConfig;
   components: ComponentConfig[];
+  loading?: LoadingConfig;
   createdAt?: string;
   updatedAt?: string;
   status?: "draft" | "published" | "archived";
