@@ -4,7 +4,8 @@
 import { Theme, HeroConfig } from "@/types/landing";
 import { Button } from "@/components/ui/button";
 import { useEditMode } from "@/contexts/EditModeContext";
-import { getBackgroundStyle } from "@/lib/background-utils";
+import { getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
+import { getLayoutClasses } from "@/lib/layout-utils";
 
 interface HeroProps {
   config: HeroConfig;
@@ -23,6 +24,7 @@ export function Hero({ config, theme }: HeroProps) {
     alignment = "center",
     background,
     spacing,
+    containerWidth,
   } = config;
 
   // Use CSS variables for theme colors (these are set by applyTheme())
@@ -32,35 +34,22 @@ export function Hero({ config, theme }: HeroProps) {
   const headingFont = "var(--font-heading)";
   const bodyFont = "var(--font-body)";
 
-  // Alignment classes
-  const alignmentClasses = {
-    left: "text-left items-start",
-    center: "text-center items-center",
-    right: "text-right items-end",
-  };
+  // Check if background is dark
+  const isDarkBg = isBackgroundDark(background);
 
-  // Spacing classes
-  const paddingClass = spacing?.padding ? `py-${spacing.padding === "2xl" ? "24" : "20"}` : "py-20";
+  // Layout classes
+  const layout = getLayoutClasses({ spacing, containerWidth, alignment });
 
   return (
     <section
-      className={`relative ${paddingClass} px-4 overflow-hidden`}
+      className={`relative ${layout.section} overflow-hidden`}
       style={getBackgroundStyle(background, theme?.colors.background)}
     >
-      {/* Overlay for image backgrounds */}
-      {background.type === "image" && background.image?.overlay && (
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundColor: background.image.overlay,
-            opacity: background.image.opacity || 0.5,
-          }}
-        />
-      )}
+      {/* Overlay for image backgrounds - handled in getBackgroundStyle */}
 
       <div
-        className={`relative z-10 flex flex-col ${alignmentClasses[alignment]} ${
-          isEditMode && sidebarOpen ? "px-4 mx-auto max-w-none" : "container mx-auto"
+        className={`relative z-10 flex flex-col ${layout.alignment} ${
+          isEditMode && sidebarOpen ? "px-4 mx-auto max-w-none" : layout.container
         }`}
       >
         {/* Subtitle */}
@@ -68,7 +57,7 @@ export function Hero({ config, theme }: HeroProps) {
           <div
             className="text-sm font-semibold uppercase tracking-wider mb-4"
             style={{
-              color: background.type === "gradient" ? "#ffffff" : primaryColor,
+              color: isDarkBg ? "#ffffff" : primaryColor,
             }}
           >
             {subtitle}
@@ -79,8 +68,7 @@ export function Hero({ config, theme }: HeroProps) {
         <h1
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl"
           style={{
-            color:
-              background.type === "gradient" || background.type === "image" ? "#ffffff" : textColor,
+            color: isDarkBg ? "#ffffff" : textColor,
             fontFamily: headingFont,
           }}
         >
@@ -91,10 +79,7 @@ export function Hero({ config, theme }: HeroProps) {
         <p
           className="text-lg md:text-xl mb-8 max-w-2xl"
           style={{
-            color:
-              background.type === "gradient" || background.type === "image"
-                ? "rgba(255,255,255,0.9)"
-                : textMuted,
+            color: isDarkBg ? "rgba(255,255,255,0.9)" : textMuted,
             fontFamily: bodyFont,
           }}
         >
@@ -109,8 +94,8 @@ export function Hero({ config, theme }: HeroProps) {
                 asChild
                 size="lg"
                 style={{
-                  backgroundColor: primaryColor,
-                  color: "#ffffff",
+                  backgroundColor: isDarkBg ? "#ffffff" : primaryColor,
+                  color: isDarkBg ? "#000000" : "#ffffff",
                 }}
                 className="hover:opacity-90 transition-opacity"
               >
@@ -123,8 +108,9 @@ export function Hero({ config, theme }: HeroProps) {
                 size="lg"
                 variant="outline"
                 style={{
-                  borderColor: background.type === "gradient" ? "#ffffff" : primaryColor,
-                  color: background.type === "gradient" ? "#ffffff" : primaryColor,
+                  borderColor: isDarkBg ? "#ffffff" : primaryColor,
+                  color: isDarkBg ? "#ffffff" : primaryColor,
+                  backgroundColor: "transparent",
                 }}
                 className="hover:opacity-80 transition-opacity"
               >
