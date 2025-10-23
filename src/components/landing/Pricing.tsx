@@ -5,36 +5,28 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
+import { getLayoutClasses } from "@/lib/layout-utils";
+import { getBackgroundStyle } from "@/lib/background-utils";
 
 interface PricingProps {
   config: PricingConfig;
   theme?: Theme;
 }
 
-export function Pricing({ config, theme }: PricingProps) {
-  const { title, subtitle, description, plans, background, spacing } = config;
+export function Pricing({ config }: PricingProps) {
+  const { title, subtitle, description, plans, background, spacing, containerWidth } = config;
 
   // Use CSS variables for theme colors
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
   const textMuted = "var(--color-text-muted)";
-  const surfaceColor = "var(--color-surface)";
   const bgColor = "var(--color-background)";
 
-  const getBackgroundColor = () => {
-    if (background.type === "solid") {
-      if (background.color === "background") return bgColor;
-      if (background.color === "surface") return surfaceColor;
-      return background.color;
-    }
-    return bgColor;
-  };
-
-  const paddingClass = spacing?.padding === "xl" ? "py-20" : "py-16";
+  const layout = getLayoutClasses({ spacing, containerWidth });
 
   return (
-    <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
-      <div className="container mx-auto">
+    <section className={`${layout.section}`} style={getBackgroundStyle(background, bgColor)}>
+      <div className={layout.container}>
         <div className="text-center mb-12 max-w-3xl mx-auto">
           {subtitle && (
             <div
