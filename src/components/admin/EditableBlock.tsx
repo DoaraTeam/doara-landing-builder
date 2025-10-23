@@ -70,7 +70,7 @@ export function EditableBlock({
       style={style}
       className={`relative group transition-all ${
         isSelected ? "ring-2 ring-blue-500 ring-offset-2" : "hover:ring-2 hover:ring-gray-300"
-      } ${!component.visible ? "opacity-50" : ""} ${isDragging ? "opacity-50 ring-2 ring-blue-400" : ""}`}
+      } ${!component.visible ? "opacity-60 border-4 border-dashed border-orange-400" : ""} ${isDragging ? "opacity-50 ring-2 ring-blue-400" : ""}`}
       onClick={onSelect}
     >
       {/* Component Content */}
@@ -159,17 +159,21 @@ export function EditableBlock({
           <Button
             size="sm"
             variant="ghost"
-            className="h-7 w-7 p-0 hover:bg-gray-100"
+            className={`h-7 w-7 p-0 ${
+              component.visible
+                ? "hover:bg-gray-100"
+                : "hover:bg-green-50 bg-orange-50 border border-orange-200"
+            }`}
             onClick={(e) => {
               e.stopPropagation();
               onToggleVisibility();
             }}
-            title={component.visible ? "Hide" : "Show"}
+            title={component.visible ? "Hide component" : "Show component (Click to unhide)"}
           >
             {component.visible ? (
               <Eye className="h-3.5 w-3.5" />
             ) : (
-              <EyeOff className="h-3.5 w-3.5 text-gray-400" />
+              <EyeOff className="h-3.5 w-3.5 text-orange-600" />
             )}
           </Button>
 
@@ -219,8 +223,16 @@ export function EditableBlock({
       {/* Hidden Badge - Shows when component is hidden */}
       {!component.visible && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="bg-gray-900 bg-opacity-80 text-white px-4 py-2 rounded-lg text-sm font-medium">
-            Hidden Component
+          <div className="bg-gray-900 bg-opacity-90 text-white px-6 py-3 rounded-lg shadow-lg">
+            <div className="flex items-center gap-3">
+              <EyeOff className="h-5 w-5" />
+              <div>
+                <div className="text-sm font-bold">Component Hidden</div>
+                <div className="text-xs text-gray-300 mt-0.5">
+                  Click the eye icon above to show it again
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
