@@ -79,7 +79,7 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
   ) => {
     const group = (footerConfig.links || [])[groupIndex];
     if (!group) return;
-    const updatedItems = group.items.map((item, i) =>
+    const updatedItems = group.items?.map((item, i) =>
       i === linkIndex ? { ...item, ...updates } : item
     );
     handleUpdateLinkGroup(groupIndex, { items: updatedItems });
@@ -243,7 +243,7 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
                       Add Link
                     </Button>
                   </div>
-                  {group.items.map((link, linkIndex) => (
+                  {group.items?.map((link, linkIndex) => (
                     <div key={linkIndex} className="grid grid-cols-2 gap-2">
                       <Input
                         value={link.text}
