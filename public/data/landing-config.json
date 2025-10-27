@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "lastUpdated": "2025-10-23T09:59:49.872Z",
+    "lastUpdated": "2025-10-27T02:24:42.032Z",
     "totalPages": 5,
     "version": "1.0.0"
   },
@@ -116,110 +116,45 @@
           "type": "features",
           "visible": true,
           "config": {
-            "title": "Why Shop With Us",
-            "subtitle": "Customer satisfaction is our priority",
-            "description": "Experience the best shopping journey",
+            "title": "Powerful Capabilities",
+            "subtitle": "Built for Performance",
             "features": [
               {
-                "title": "Free Shipping",
-                "description": "Free delivery on all orders over $50",
-                "icon": "🚚"
+                "id": "1",
+                "icon": "🚀",
+                "title": "Fast",
+                "description": "Optimized for speed"
               },
               {
-                "title": "Secure Payment",
-                "description": "100% secure payment with SSL encryption",
-                "icon": "💳"
+                "id": "2",
+                "icon": "💪",
+                "title": "Powerful",
+                "description": "Enterprise features"
               },
               {
-                "title": "30-Day Returns",
-                "description": "Easy returns within 30 days of purchase",
-                "icon": "↩️"
+                "id": "3",
+                "icon": "🎯",
+                "title": "Precise",
+                "description": "Pixel-perfect design"
               },
               {
-                "title": "24/7 Support",
-                "description": "Dedicated customer support team",
-                "icon": "💬"
-              },
-              {
-                "title": "Quality Guarantee",
-                "description": "All products are quality checked",
-                "icon": "✓"
-              },
-              {
-                "title": "Best Prices",
-                "description": "Competitive prices with regular discounts",
-                "icon": "💰"
+                "id": "4",
+                "icon": "📈",
+                "title": "Scalable",
+                "description": "Grows with you"
               }
             ],
-            "layout": "grid",
-            "columns": 3,
+            "columns": 4,
             "background": {
               "type": "solid",
-              "color": "#f9fafb"
-            },
-            "animation": {
-              "type": "fadeInUp",
-              "duration": 600,
-              "delay": 100
+              "color": "surface"
             },
             "spacing": {
-              "padding": "xl",
-              "margin": "none"
+              "padding": "lg"
             }
           },
-          "id": "comp-1761116686839-1",
+          "id": "comp-1761529464698-gc7aqwour",
           "order": 1
-        },
-        {
-          "type": "testimonials",
-          "visible": true,
-          "config": {
-            "title": "Happy Customers",
-            "subtitle": "See what our customers say",
-            "description": "Join thousands of satisfied shoppers",
-            "testimonials": [
-              {
-                "content": "Love the quality and fast shipping! Will definitely order again.",
-                "author": "Emma Wilson",
-                "role": "Verified Buyer",
-                "company": "Fashion Lover",
-                "rating": 5,
-                "avatar": "https://i.pravatar.cc/150?img=5"
-              },
-              {
-                "content": "Best online shopping experience. Great products and customer service!",
-                "author": "James Brown",
-                "role": "Verified Buyer",
-                "company": "Tech Enthusiast",
-                "rating": 5,
-                "avatar": "https://i.pravatar.cc/150?img=6"
-              },
-              {
-                "content": "Amazing deals and quick delivery. Highly recommend to everyone!",
-                "author": "Sophia Martinez",
-                "role": "Verified Buyer",
-                "company": "Regular Customer",
-                "rating": 5,
-                "avatar": "https://i.pravatar.cc/150?img=7"
-              }
-            ],
-            "layout": "grid",
-            "background": {
-              "type": "solid",
-              "color": "#ffffff"
-            },
-            "animation": {
-              "type": "fadeInUp",
-              "duration": 600,
-              "delay": 0
-            },
-            "spacing": {
-              "padding": "xl",
-              "margin": "none"
-            }
-          },
-          "id": "comp-1761116686839-2",
-          "order": 2
         },
         {
           "type": "footer",
@@ -315,11 +250,11 @@
             "copyright": "© 2024 ShopStyle. All rights reserved."
           },
           "id": "comp-1761116686839-4",
-          "order": 3
+          "order": 2
         }
       ],
       "createdAt": "2025-10-22T07:04:46.839Z",
-      "updatedAt": "2025-10-23T08:45:47.084Z",
+      "updatedAt": "2025-10-27T01:44:37.770Z",
       "loading": {
         "enabled": true,
         "type": "spin",
@@ -1787,7 +1722,7 @@
       "title": "Modern Business",
       "description": "",
       "slug": "modern-business",
-      "theme": "minimal",
+      "theme": "nature",
       "status": "published",
       "seo": {
         "metaTitle": "Modern Business",
@@ -1836,6 +1771,56 @@
           },
           "id": "comp-1761189736786-0",
           "order": 0
+        },
+        {
+          "type": "stats",
+          "visible": true,
+          "config": {
+            "title": "Our Impact",
+            "subtitle": "BY THE NUMBERS",
+            "description": "Trusted by thousands worldwide",
+            "stats": [
+              {
+                "id": "1",
+                "value": "10K",
+                "label": "Active Users",
+                "suffix": "+"
+              },
+              {
+                "id": "2",
+                "value": "99.9",
+                "label": "Uptime",
+                "suffix": "%"
+              },
+              {
+                "id": "3",
+                "value": "24",
+                "label": "Support",
+                "suffix": "/7"
+              },
+              {
+                "id": "4",
+                "value": "150",
+                "label": "Countries",
+                "suffix": "+"
+              }
+            ],
+            "layout": "grid",
+            "columns": 4,
+            "background": {
+              "type": "solid",
+              "gradient": {
+                "from": "#3b82f6",
+                "to": "#8b5cf6",
+                "direction": "to-br"
+              }
+            },
+            "spacing": {
+              "padding": "xl"
+            }
+          },
+          "id": "comp-1761192285869-8as6nj372",
+          "order": 1
         },
         {
           "type": "features",
@@ -1888,39 +1873,6 @@
             "containerWidth": "lg"
           },
           "id": "comp-1761189736786-2",
-          "order": 1
-        },
-        {
-          "type": "content",
-          "visible": true,
-          "config": {
-            "title": "Built for Modern Teams",
-            "subtitle": "COLLABORATION MADE EASY",
-            "content": "Empower your team with tools designed for seamless collaboration. From project management to real-time communication, everything you need is in one place. Share files, track progress, and stay aligned with your team's goals effortlessly.",
-            "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
-            "imagePosition": "right",
-            "features": [
-              "Real-time collaboration tools",
-              "Project management dashboard",
-              "Team communication channels",
-              "File sharing and version control",
-              "Task automation workflows",
-              "Performance tracking metrics"
-            ],
-            "cta": {
-              "text": "Explore Team Features",
-              "link": "#features"
-            },
-            "background": {
-              "type": "solid",
-              "color": "#ffffff"
-            },
-            "spacing": {
-              "padding": "xl",
-              "margin": "none"
-            }
-          },
-          "id": "comp-1761189736786-4",
           "order": 2
         },
         {
@@ -2008,6 +1960,39 @@
           "order": 3
         },
         {
+          "type": "content",
+          "visible": true,
+          "config": {
+            "title": "Built for Modern Teams",
+            "subtitle": "COLLABORATION MADE EASY",
+            "content": "Empower your team with tools designed for seamless collaboration. From project management to real-time communication, everything you need is in one place. Share files, track progress, and stay aligned with your team's goals effortlessly.",
+            "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
+            "imagePosition": "right",
+            "features": [
+              "Real-time collaboration tools",
+              "Project management dashboard",
+              "Team communication channels",
+              "File sharing and version control",
+              "Task automation workflows",
+              "Performance tracking metrics"
+            ],
+            "cta": {
+              "text": "Explore Team Features",
+              "link": "#features"
+            },
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761189736786-4",
+          "order": 4
+        },
+        {
           "type": "testimonials",
           "visible": true,
           "config": {
@@ -2056,56 +2041,6 @@
             }
           },
           "id": "comp-1761189736786-6",
-          "order": 4
-        },
-        {
-          "type": "stats",
-          "visible": true,
-          "config": {
-            "title": "Our Impact",
-            "subtitle": "BY THE NUMBERS",
-            "description": "Trusted by thousands worldwide",
-            "stats": [
-              {
-                "id": "1",
-                "value": "10K",
-                "label": "Active Users",
-                "suffix": "+"
-              },
-              {
-                "id": "2",
-                "value": "99.9",
-                "label": "Uptime",
-                "suffix": "%"
-              },
-              {
-                "id": "3",
-                "value": "24",
-                "label": "Support",
-                "suffix": "/7"
-              },
-              {
-                "id": "4",
-                "value": "150",
-                "label": "Countries",
-                "suffix": "+"
-              }
-            ],
-            "layout": "grid",
-            "columns": 4,
-            "background": {
-              "type": "solid",
-              "gradient": {
-                "from": "#3b82f6",
-                "to": "#8b5cf6",
-                "direction": "to-br"
-              }
-            },
-            "spacing": {
-              "padding": "xl"
-            }
-          },
-          "id": "comp-1761192285869-8as6nj372",
           "order": 5
         },
         {
@@ -2204,14 +2139,29 @@
                 "icon": "github"
               }
             ],
-            "copyright": "© 2024 YourBrand. All rights reserved."
+            "copyright": "© 2025 YourBrand. All rights reserved.",
+            "background": {
+              "type": "solid",
+              "color": "#000000"
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
           },
           "id": "comp-1761189736786-9",
           "order": 6
         }
       ],
       "createdAt": "2025-10-23T03:22:16.786Z",
-      "updatedAt": "2025-10-23T06:41:25.594Z"
+      "updatedAt": "2025-10-27T02:24:42.032Z",
+      "loading": {
+        "enabled": true,
+        "type": "ripple",
+        "color": "#2dd100",
+        "duration": 1000,
+        "minDuration": 500
+      }
     }
   },
   "navigation": {

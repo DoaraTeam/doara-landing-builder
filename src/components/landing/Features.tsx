@@ -38,7 +38,11 @@ export function Features({ config }: FeaturesProps) {
   const layout = getLayoutClasses({ spacing, containerWidth, columns });
 
   return (
-    <section className={`${layout.section}`} style={getBackgroundStyle(background, bgColor)}>
+    <section
+      id="features"
+      className={`${layout.section}`}
+      style={getBackgroundStyle(background, bgColor)}
+    >
       <div className={layout.container}>
         {/* Header */}
         <div className="text-center mb-12 max-w-2xl mx-auto">

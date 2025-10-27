@@ -87,7 +87,7 @@ export function Footer({ config }: FooterProps) {
                 {social.map((link) => (
                   <a
                     key={link.platform}
-                    href={link.url}
+                    href={link.url || link.link || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:opacity-70 transition-opacity"
@@ -100,26 +100,31 @@ export function Footer({ config }: FooterProps) {
             )}
           </div>
 
-          {footerColumns?.map((column) => (
-            <div key={column.id}>
-              <h3 className="font-semibold mb-4" style={{ color: finalTextColor }}>
-                {column.title}
-              </h3>
-              <ul className="space-y-2">
-                {column.links?.map((link, idx) => (
-                  <li key={idx}>
-                    <a
-                      href={link.link}
-                      className="hover:opacity-70 transition-opacity"
-                      style={{ color: finalTextMuted }}
-                    >
-                      {link.text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {footerColumns?.map((column) => {
+            // Support both 'items' and 'links' keys in columns
+            const columnLinks = column.items || column.links || [];
+
+            return (
+              <div key={column.id || column.title}>
+                <h3 className="font-semibold mb-4" style={{ color: finalTextColor }}>
+                  {column.title}
+                </h3>
+                <ul className="space-y-2">
+                  {columnLinks?.map((link, idx) => (
+                    <li key={idx}>
+                      <a
+                        href={link.link}
+                        className="hover:opacity-70 transition-opacity"
+                        style={{ color: finalTextMuted }}
+                      >
+                        {link.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
 
         {copyright && (

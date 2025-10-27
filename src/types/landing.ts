@@ -171,12 +171,14 @@ export interface PricingConfig {
  */
 export interface TestimonialItem {
   id: string;
-  name: string;
+  name?: string;
+  author?: string; // Alternative to name
   role?: string;
   company?: string;
   avatar?: string;
   rating?: number; // 1-5
-  text: string;
+  text?: string;
+  content?: string; // Alternative to text
 }
 
 /**
@@ -230,9 +232,10 @@ export interface FooterLink {
  * Footer column
  */
 export interface FooterColumn {
-  id: string;
+  id?: string;
   title: string;
-  links: FooterLink[];
+  links?: FooterLink[];
+  items?: FooterLink[]; // Alternative to links
 }
 
 /**
@@ -240,7 +243,8 @@ export interface FooterColumn {
  */
 export interface SocialLink {
   platform: "facebook" | "twitter" | "instagram" | "linkedin" | "youtube" | "github";
-  url: string;
+  url?: string;
+  link?: string; // Alternative to url
 }
 
 /**

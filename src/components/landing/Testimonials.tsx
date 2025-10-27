@@ -76,21 +76,21 @@ export function Testimonials({ config, theme }: TestimonialsProps) {
                 )}
 
                 <p className="text-base mb-6 italic" style={{ color: textColor }}>
-                  &quot;{testimonial.text}&quot;
+                  &quot;{testimonial.content || testimonial.text}&quot;
                 </p>
 
                 <div className="flex items-center gap-3">
                   {testimonial.avatar && (
                     <img
                       src={testimonial.avatar}
-                      alt={testimonial.name}
+                      alt={testimonial.name || testimonial.author || ""}
                       className="w-12 h-12 rounded-full object-cover"
                     />
                   )}
 
                   <div>
                     <div className="font-semibold" style={{ color: textColor }}>
-                      {testimonial.name}
+                      {testimonial.name || testimonial.author}
                     </div>
                     {(testimonial.role || testimonial.company) && (
                       <div className="text-sm" style={{ color: textMuted }}>
