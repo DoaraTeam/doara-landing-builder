@@ -218,21 +218,23 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
             </div>
           )}
 
-          {"features" in config && Array.isArray(config.features) && (
-            <div className="space-y-2">
-              <FeaturesArrayEditor
-                features={
-                  config.features as Array<{
-                    icon?: string;
-                    title: string;
-                    description: string;
-                    image?: string;
-                  }>
-                }
-                onChange={(features) => handleChange("features", features)}
-              />
-            </div>
-          )}
+          {component.type === "features" &&
+            "features" in config &&
+            Array.isArray(config.features) && (
+              <div className="space-y-2">
+                <FeaturesArrayEditor
+                  features={
+                    config.features as Array<{
+                      icon?: string;
+                      title: string;
+                      description: string;
+                      image?: string;
+                    }>
+                  }
+                  onChange={(features) => handleChange("features", features)}
+                />
+              </div>
+            )}
 
           {"logos" in config && Array.isArray(config.logos) && (
             <div className="space-y-2">
