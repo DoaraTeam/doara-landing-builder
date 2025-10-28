@@ -68,20 +68,39 @@ export function EditableBlock({
     <div
       ref={setNodeRef}
       style={style}
-      className={`relative group transition-all ${
-        isSelected ? "ring-2 ring-blue-500 ring-offset-2" : "hover:ring-2 hover:ring-gray-300"
-      } ${!component.visible ? "opacity-60 border-4 border-dashed border-orange-400" : ""} ${isDragging ? "opacity-50 ring-2 ring-blue-400" : ""}`}
+      className={`relative group transition-all duration-200 ${isSelected ? "shadow-xl z-30" : "hover:shadow-md"} ${!component.visible ? "opacity-60" : ""} ${isDragging ? "opacity-50 scale-105" : ""}`}
       onClick={onSelect}
     >
       {/* Component Content */}
       <div className="pointer-events-none">{children}</div>
 
+      {/* Border Indicator - Clean solid border when selected */}
+      <div
+        className={`absolute inset-0 pointer-events-none transition-all duration-200 ${
+          isSelected
+            ? "border-2 border-blue-500"
+            : "border-2 border-transparent group-hover:border-gray-300"
+        } ${!component.visible ? "border-2 border-dashed !border-orange-400" : ""}`}
+      />
+
       {/* Edit Overlay - Shows on hover or when selected */}
       <div
-        className={`absolute inset-0 bg-blue-500 bg-opacity-0 transition-opacity pointer-events-none ${
-          isSelected ? "bg-opacity-5" : "group-hover:bg-opacity-5"
+        className={`absolute inset-0 pointer-events-none transition-all duration-200 ${
+          isSelected
+            ? "bg-blue-500 bg-opacity-5"
+            : "bg-blue-500 bg-opacity-0 group-hover:bg-opacity-3"
         }`}
       />
+
+      {/* Corner Indicators when selected - Smaller and more elegant */}
+      {isSelected && (
+        <>
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-[3px] border-l-[3px] border-blue-500 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-4 h-4 border-t-[3px] border-r-[3px] border-blue-500 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-[3px] border-l-[3px] border-blue-500 pointer-events-none"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-[3px] border-r-[3px] border-blue-500 pointer-events-none"></div>
+        </>
+      )}
 
       {/* Toolbar - Shows on hover or when selected */}
       <div
