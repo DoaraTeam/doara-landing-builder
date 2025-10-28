@@ -168,14 +168,6 @@ export default function AdminDashboard() {
               <FileText className="h-5 w-5" />
               <span className="font-medium">Pages</span>
             </button>
-            <button className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors w-full">
-              <Palette className="h-5 w-5" />
-              <span>Themes</span>
-            </button>
-            <button className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors w-full">
-              <Settings className="h-5 w-5" />
-              <span>Settings</span>
-            </button>
           </nav>
         </div>
 
