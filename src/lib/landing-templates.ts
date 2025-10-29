@@ -22,7 +22,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         config: {
           title: "Transform Your Business Today",
           subtitle: "Innovation • Growth • Success",
-          description: "We help businesses scale with cutting-edge solutions and expert guidance. Join thousands of satisfied clients worldwide.",
+          description:
+            "We help businesses scale with cutting-edge solutions and expert guidance. Join thousands of satisfied clients worldwide.",
           primaryCTA: {
             text: "Get Started Free",
             link: "#contact",
@@ -502,7 +503,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Ready to Get Started?",
-          description: "Join thousands of successful businesses using our platform. Start your free trial today!",
+          description:
+            "Join thousands of successful businesses using our platform. Start your free trial today!",
           primaryCTA: {
             text: "Start Free Trial",
             link: "#signup",
@@ -1160,7 +1162,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         config: {
           title: "Creative Agency That Delivers",
           subtitle: "Design • Develop • Deliver",
-          description: "We create stunning digital experiences that captivate your audience and drive results.",
+          description:
+            "We create stunning digital experiences that captivate your audience and drive results.",
           primaryCTA: {
             text: "View Our Work",
             link: "#portfolio",
@@ -1256,7 +1259,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           description: "See what our clients have to say",
           testimonials: [
             {
-              content: "The team delivered beyond our expectations. Our website traffic increased by 300%!",
+              content:
+                "The team delivered beyond our expectations. Our website traffic increased by 300%!",
               author: "Alex Thompson",
               role: "Founder",
               company: "StartupXYZ",
@@ -1478,8 +1482,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           description: "Join thousands of satisfied shoppers",
           testimonials: [
             {
-              content:
-                "Love the quality and fast shipping! Will definitely order again.",
+              content: "Love the quality and fast shipping! Will definitely order again.",
               author: "Emma Wilson",
               role: "Verified Buyer",
               company: "Fashion Lover",
@@ -1487,8 +1490,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
               avatar: "https://i.pravatar.cc/150?img=5",
             },
             {
-              content:
-                "Best online shopping experience. Great products and customer service!",
+              content: "Best online shopping experience. Great products and customer service!",
               author: "James Brown",
               role: "Verified Buyer",
               company: "Tech Enthusiast",
@@ -1496,8 +1498,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
               avatar: "https://i.pravatar.cc/150?img=6",
             },
             {
-              content:
-                "Amazing deals and quick delivery. Highly recommend to everyone!",
+              content: "Amazing deals and quick delivery. Highly recommend to everyone!",
               author: "Sophia Martinez",
               role: "Verified Buyer",
               company: "Regular Customer",
@@ -1526,8 +1527,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Start Shopping Today!",
-          description:
-            "Get 20% off your first order. Use code: WELCOME20 at checkout.",
+          description: "Get 20% off your first order. Use code: WELCOME20 at checkout.",
           primaryCTA: {
             text: "Browse Products",
             link: "#products",
@@ -1834,8 +1834,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             link: "#demo",
             style: "secondary" as const,
           },
-          image:
-            "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+          image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
           alignment: "center" as const,
           background: {
             type: "gradient" as const,
@@ -1869,32 +1868,25 @@ export const landingPageTemplates: LandingPageTemplate[] = [
               description:
                 "Advanced NLP for text analysis, sentiment detection, and language understanding",
               icon: "🧠",
-              image:
-                "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80",
             },
             {
               title: "Computer Vision",
-              description:
-                "State-of-the-art image recognition and object detection models",
+              description: "State-of-the-art image recognition and object detection models",
               icon: "👁️",
-              image:
-                "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=400&q=80",
             },
             {
               title: "Predictive Analytics",
-              description:
-                "Machine learning models that predict trends and outcomes with accuracy",
+              description: "Machine learning models that predict trends and outcomes with accuracy",
               icon: "📊",
-              image:
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80",
             },
             {
               title: "AutoML Platform",
-              description:
-                "Build and deploy ML models without coding expertise required",
+              description: "Build and deploy ML models without coding expertise required",
               icon: "⚡",
-              image:
-                "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&q=80",
             },
           ],
           layout: "grid" as const,
@@ -2158,8 +2150,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             link: "#menu",
             style: "outline" as const,
           },
-          image:
-            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+          image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
           alignment: "center" as const,
           background: {
             type: "solid" as const,
@@ -2186,33 +2177,27 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           features: [
             {
               title: "Fresh Local Ingredients",
-              description:
-                "We source the finest ingredients from local farms daily",
+              description: "We source the finest ingredients from local farms daily",
               icon: "🌿",
-              image:
-                "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=80",
             },
             {
               title: "Award-Winning Chef",
               description: "Michelin-trained chef with 20+ years experience",
               icon: "👨‍🍳",
-              image:
-                "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80",
             },
             {
               title: "Elegant Atmosphere",
-              description:
-                "Beautiful ambiance perfect for any special occasion",
+              description: "Beautiful ambiance perfect for any special occasion",
               icon: "✨",
-              image:
-                "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80",
             },
             {
               title: "Private Events",
               description: "Host your special events in our private dining room",
               icon: "🎉",
-              image:
-                "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80",
             },
           ],
           layout: "grid" as const,
@@ -2289,8 +2274,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Reserve Your Table Today",
-          description:
-            "Don't miss out on an extraordinary dining experience. Book your table now!",
+          description: "Don't miss out on an extraordinary dining experience. Book your table now!",
           primaryCTA: {
             text: "Make a Reservation",
             link: "#reservation",
@@ -2388,8 +2372,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             link: "#classes",
             style: "secondary" as const,
           },
-          image:
-            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+          image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
           alignment: "left" as const,
           background: {
             type: "gradient" as const,
@@ -2420,14 +2403,12 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           features: [
             {
               title: "Expert Personal Trainers",
-              description:
-                "Certified trainers with years of experience to guide your journey",
+              description: "Certified trainers with years of experience to guide your journey",
               icon: "💪",
             },
             {
               title: "Modern Equipment",
-              description:
-                "Latest fitness equipment and technology for optimal results",
+              description: "Latest fitness equipment and technology for optimal results",
               icon: "🏋️",
             },
             {
@@ -2606,8 +2587,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Ready to Start Your Fitness Journey?",
-          description:
-            "Get 7 days free trial - No credit card required. Experience FitLife today!",
+          description: "Get 7 days free trial - No credit card required. Experience FitLife today!",
           primaryCTA: {
             text: "Start Free Trial",
             link: "#trial",
@@ -2709,8 +2689,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             link: "#contact",
             style: "outline" as const,
           },
-          image:
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+          image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
           alignment: "center" as const,
           background: {
             type: "gradient" as const,
@@ -2741,35 +2720,27 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           features: [
             {
               title: "Exclusive Listings",
-              description:
-                "Access to premium properties not available elsewhere",
+              description: "Access to premium properties not available elsewhere",
               icon: "🏡",
-              image:
-                "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&q=80",
             },
             {
               title: "Expert Agents",
-              description:
-                "Experienced agents with local market expertise",
+              description: "Experienced agents with local market expertise",
               icon: "👔",
-              image:
-                "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80",
             },
             {
               title: "Virtual Tours",
-              description:
-                "3D virtual tours of properties from anywhere",
+              description: "3D virtual tours of properties from anywhere",
               icon: "🎥",
-              image:
-                "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&q=80",
             },
             {
               title: "Market Insights",
-              description:
-                "Real-time market data and investment analysis",
+              description: "Real-time market data and investment analysis",
               icon: "📈",
-              image:
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80",
+              image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80",
             },
           ],
           layout: "grid" as const,
@@ -2846,8 +2817,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Ready to Find Your Perfect Property?",
-          description:
-            "Schedule a free consultation with one of our expert agents today.",
+          description: "Schedule a free consultation with one of our expert agents today.",
           primaryCTA: {
             text: "Schedule Consultation",
             link: "#consultation",
@@ -2945,8 +2915,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             link: "#playstore",
             style: "secondary" as const,
           },
-          image:
-            "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+          image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
           alignment: "center" as const,
           background: {
             type: "gradient" as const,
@@ -2977,38 +2946,32 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           features: [
             {
               title: "Lightning Fast",
-              description:
-                "Optimized performance for instant loading and smooth experience",
+              description: "Optimized performance for instant loading and smooth experience",
               icon: "⚡",
             },
             {
               title: "Secure & Private",
-              description:
-                "Bank-level encryption to keep your data safe and secure",
+              description: "Bank-level encryption to keep your data safe and secure",
               icon: "🔒",
             },
             {
               title: "Offline Mode",
-              description:
-                "Access your content anywhere, even without internet",
+              description: "Access your content anywhere, even without internet",
               icon: "📴",
             },
             {
               title: "Smart Sync",
-              description:
-                "Seamlessly sync across all your devices in real-time",
+              description: "Seamlessly sync across all your devices in real-time",
               icon: "🔄",
             },
             {
               title: "Beautiful Design",
-              description:
-                "Intuitive interface that's a joy to use every day",
+              description: "Intuitive interface that's a joy to use every day",
               icon: "🎨",
             },
             {
               title: "Always Updated",
-              description:
-                "Regular updates with new features and improvements",
+              description: "Regular updates with new features and improvements",
               icon: "🚀",
             },
           ],
@@ -3042,12 +3005,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
               price: "$0",
               period: "/forever",
               description: "Perfect for trying out",
-              features: [
-                "Basic features",
-                "Up to 5 projects",
-                "1GB storage",
-                "Community support",
-              ],
+              features: ["Basic features", "Up to 5 projects", "1GB storage", "Community support"],
               cta: {
                 text: "Download Free",
                 link: "#download",
@@ -3167,8 +3125,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Download Now and Get Started!",
-          description:
-            "Join 5 million+ users worldwide. Free to download, instant to set up.",
+          description: "Join 5 million+ users worldwide. Free to download, instant to set up.",
           primaryCTA: {
             text: "Download App",
             link: "#download",
@@ -3241,7 +3198,7 @@ export const landingPageTemplates: LandingPageTemplate[] = [
       },
     ],
   },
-  
+
   // ==================== PREMIUM SAAS TEMPLATE ====================
   {
     id: "premium-saas",
@@ -3255,7 +3212,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         config: {
           title: "Transform Your Workflow with AI-Powered Automation",
           subtitle: "The Complete Solution for Modern Teams",
-          description: "Streamline operations, boost productivity by 10x, and scale your business with our intelligent automation platform. Trusted by 50,000+ teams worldwide.",
+          description:
+            "Streamline operations, boost productivity by 10x, and scale your business with our intelligent automation platform. Trusted by 50,000+ teams worldwide.",
           primaryCTA: {
             text: "Start Free 14-Day Trial",
             link: "#signup",
@@ -3341,48 +3299,55 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         config: {
           title: "Everything You Need to Succeed",
           subtitle: "Powerful Features Built for Teams",
-          description: "Our platform combines cutting-edge technology with intuitive design to help you achieve more in less time.",
+          description:
+            "Our platform combines cutting-edge technology with intuitive design to help you achieve more in less time.",
           features: [
             {
               id: "1",
               icon: "🤖",
               title: "AI-Powered Automation",
-              description: "Automate repetitive tasks with intelligent workflows that learn from your behavior and adapt to your needs.",
+              description:
+                "Automate repetitive tasks with intelligent workflows that learn from your behavior and adapt to your needs.",
               image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400",
             },
             {
               id: "2",
               icon: "📊",
               title: "Advanced Analytics",
-              description: "Get real-time insights with customizable dashboards, detailed reports, and predictive analytics.",
+              description:
+                "Get real-time insights with customizable dashboards, detailed reports, and predictive analytics.",
               image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
             },
             {
               id: "3",
               icon: "🔐",
               title: "Enterprise Security",
-              description: "Bank-level encryption, SOC 2 certified, GDPR compliant with advanced access controls and audit logs.",
+              description:
+                "Bank-level encryption, SOC 2 certified, GDPR compliant with advanced access controls and audit logs.",
               image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400",
             },
             {
               id: "4",
               icon: "🚀",
               title: "Blazing Fast Performance",
-              description: "Lightning-fast load times and real-time syncing across all devices with 99.99% uptime SLA.",
+              description:
+                "Lightning-fast load times and real-time syncing across all devices with 99.99% uptime SLA.",
               image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
             },
             {
               id: "5",
               icon: "🌐",
               title: "Global CDN",
-              description: "Deliver content at lightning speed with our global CDN network spanning 180+ locations worldwide.",
+              description:
+                "Deliver content at lightning speed with our global CDN network spanning 180+ locations worldwide.",
               image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400",
             },
             {
               id: "6",
               icon: "🔗",
               title: "Seamless Integrations",
-              description: "Connect with 1000+ apps including Slack, Salesforce, HubSpot, and all your favorite tools.",
+              description:
+                "Connect with 1000+ apps including Slack, Salesforce, HubSpot, and all your favorite tools.",
               image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400",
             },
           ],
@@ -3467,7 +3432,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         config: {
           title: "Built for Teams of All Sizes",
           subtitle: "FROM STARTUPS TO ENTERPRISES",
-          content: "Whether you're a small team or a large enterprise, our platform scales with your needs. Start with essential features and unlock advanced capabilities as you grow. Our flexible architecture ensures you never outgrow the platform.",
+          content:
+            "Whether you're a small team or a large enterprise, our platform scales with your needs. Start with essential features and unlock advanced capabilities as you grow. Our flexible architecture ensures you never outgrow the platform.",
           image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
           imagePosition: "right" as const,
           features: [
@@ -3497,7 +3463,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         config: {
           title: "Choose Your Perfect Plan",
           subtitle: "Flexible pricing that grows with you",
-          description: "Start free, upgrade when you're ready. All plans include 14-day free trial.",
+          description:
+            "Start free, upgrade when you're ready. All plans include 14-day free trial.",
           plans: [
             {
               id: "1",
@@ -3591,7 +3558,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
           testimonials: [
             {
               id: "1",
-              content: "This platform has completely transformed how our team works. We've seen a 300% increase in productivity and our clients are happier than ever. The automation features alone have saved us countless hours.",
+              content:
+                "This platform has completely transformed how our team works. We've seen a 300% increase in productivity and our clients are happier than ever. The automation features alone have saved us countless hours.",
               author: "Sarah Chen",
               role: "VP of Operations",
               company: "TechFlow Inc.",
@@ -3600,7 +3568,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             },
             {
               id: "2",
-              content: "We tried 5 different platforms before finding this one. The difference is night and day. The support team is incredible and the feature set is unmatched. Worth every penny!",
+              content:
+                "We tried 5 different platforms before finding this one. The difference is night and day. The support team is incredible and the feature set is unmatched. Worth every penny!",
               author: "Michael Rodriguez",
               role: "CEO",
               company: "GrowthLabs",
@@ -3609,7 +3578,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             },
             {
               id: "3",
-              content: "The ROI we've seen is incredible. We implemented this 6 months ago and have already reduced operational costs by 40% while improving output quality. Highly recommend to any serious business.",
+              content:
+                "The ROI we've seen is incredible. We implemented this 6 months ago and have already reduced operational costs by 40% while improving output quality. Highly recommend to any serious business.",
               author: "Emily Watson",
               role: "COO",
               company: "InnovateCo",
@@ -3618,7 +3588,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             },
             {
               id: "4",
-              content: "Best investment we've made this year. The platform is intuitive, powerful, and the integrations work flawlessly. Our team was up and running in less than a day.",
+              content:
+                "Best investment we've made this year. The platform is intuitive, powerful, and the integrations work flawlessly. Our team was up and running in less than a day.",
               author: "David Park",
               role: "CTO",
               company: "StartupXYZ",
@@ -3627,7 +3598,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             },
             {
               id: "5",
-              content: "We've been using this for 2 years now and it just keeps getting better. The continuous updates and new features show that the team really cares about their customers.",
+              content:
+                "We've been using this for 2 years now and it just keeps getting better. The continuous updates and new features show that the team really cares about their customers.",
               author: "Lisa Thompson",
               role: "Director of Marketing",
               company: "ScaleCorp",
@@ -3636,7 +3608,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             },
             {
               id: "6",
-              content: "Game-changing platform! The analytics alone are worth the price. We now have visibility into every aspect of our operations and can make data-driven decisions instantly.",
+              content:
+                "Game-changing platform! The analytics alone are worth the price. We now have visibility into every aspect of our operations and can make data-driven decisions instantly.",
               author: "James Miller",
               role: "Head of Analytics",
               company: "DataFirst",
@@ -3671,42 +3644,50 @@ export const landingPageTemplates: LandingPageTemplate[] = [
             {
               id: "1",
               question: "How does the 14-day free trial work?",
-              answer: "Start using our platform immediately with full access to all Professional features. No credit card required. After 14 days, choose a plan or downgrade to our free Starter plan. Your data is always safe and exportable.",
+              answer:
+                "Start using our platform immediately with full access to all Professional features. No credit card required. After 14 days, choose a plan or downgrade to our free Starter plan. Your data is always safe and exportable.",
             },
             {
               id: "2",
               question: "Can I change plans at any time?",
-              answer: "Absolutely! Upgrade, downgrade, or cancel anytime. Changes are prorated and reflected in your next billing cycle. There are no cancellation fees or long-term contracts.",
+              answer:
+                "Absolutely! Upgrade, downgrade, or cancel anytime. Changes are prorated and reflected in your next billing cycle. There are no cancellation fees or long-term contracts.",
             },
             {
               id: "3",
               question: "What payment methods do you accept?",
-              answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and for Enterprise customers, we also accept wire transfers and purchase orders.",
+              answer:
+                "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and for Enterprise customers, we also accept wire transfers and purchase orders.",
             },
             {
               id: "4",
               question: "Is my data secure?",
-              answer: "Yes! We use bank-level 256-bit encryption, are SOC 2 Type II certified, GDPR compliant, and perform regular security audits. Your data is backed up daily and stored in secure, redundant data centers.",
+              answer:
+                "Yes! We use bank-level 256-bit encryption, are SOC 2 Type II certified, GDPR compliant, and perform regular security audits. Your data is backed up daily and stored in secure, redundant data centers.",
             },
             {
               id: "5",
               question: "Do you offer discounts for non-profits or educational institutions?",
-              answer: "Yes! We offer 50% discount for registered non-profit organizations and educational institutions. Contact our sales team with your documentation to qualify.",
+              answer:
+                "Yes! We offer 50% discount for registered non-profit organizations and educational institutions. Contact our sales team with your documentation to qualify.",
             },
             {
               id: "6",
               question: "What kind of support do you provide?",
-              answer: "Starter plan includes email support (48h response time). Professional plan includes priority email and chat support (4h response time). Enterprise plan includes 24/7 phone and email support with a dedicated account manager.",
+              answer:
+                "Starter plan includes email support (48h response time). Professional plan includes priority email and chat support (4h response time). Enterprise plan includes 24/7 phone and email support with a dedicated account manager.",
             },
             {
               id: "7",
               question: "Can I import data from other platforms?",
-              answer: "Yes! We offer free data migration assistance and provide import tools for all major platforms. Our team can help you migrate your existing data with zero downtime.",
+              answer:
+                "Yes! We offer free data migration assistance and provide import tools for all major platforms. Our team can help you migrate your existing data with zero downtime.",
             },
             {
               id: "8",
               question: "Do you offer API access?",
-              answer: "Yes! All paid plans include API access. Starter plan has a limit of 100 calls/day, Professional plan has unlimited API calls, and Enterprise plan includes custom API endpoints and webhooks.",
+              answer:
+                "Yes! All paid plans include API access. Starter plan has a limit of 100 calls/day, Professional plan has unlimited API calls, and Enterprise plan includes custom API endpoints and webhooks.",
             },
           ],
           columns: 2,
@@ -3725,7 +3706,8 @@ export const landingPageTemplates: LandingPageTemplate[] = [
         visible: true,
         config: {
           title: "Ready to Transform Your Workflow?",
-          description: "Join 50,000+ teams already using our platform. Start your free 14-day trial today - no credit card required!",
+          description:
+            "Join 50,000+ teams already using our platform. Start your free 14-day trial today - no credit card required!",
           primaryCTA: {
             text: "Start Free Trial Now",
             link: "#signup",
