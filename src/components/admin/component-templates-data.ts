@@ -42,6 +42,7 @@ const categories: ComponentCategory[] = [
               color: "#ffffff",
             },
             spacing: { padding: "2xl" },
+            animation: { type: "fadeInUp", duration: 800, delay: 200 },
           },
         },
       },
@@ -62,6 +63,7 @@ const categories: ComponentCategory[] = [
             image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
             background: { type: "solid", color: "#ffffff" },
             spacing: { padding: "xl" },
+            animation: { type: "fadeInUp", duration: 800, delay: 200 },
           },
         },
       },
@@ -79,6 +81,7 @@ const categories: ComponentCategory[] = [
             alignment: "center",
             primaryCTA: { text: "Get Started", link: "#" },
             background: { type: "solid", color: "#ffffff" },
+            animation: { type: "fadeInUp", duration: 800, delay: 200 },
             spacing: { padding: "xl" },
           },
         },
@@ -92,7 +95,8 @@ const categories: ComponentCategory[] = [
           config: {
             title: "Experience Excellence",
             subtitle: "Premium Quality",
-            description: "Discover the difference that quality makes. Elevate your experience today.",
+            description:
+              "Discover the difference that quality makes. Elevate your experience today.",
             alignment: "center",
             primaryCTA: { text: "Explore Now", link: "#" },
             image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200",
@@ -168,6 +172,7 @@ const categories: ComponentCategory[] = [
             columns: 4,
             background: { type: "solid", color: "#ffffff" },
             spacing: { padding: "lg" },
+            animation: { type: "fadeInUp", duration: 600, delay: 0 },
           },
         },
       },
@@ -310,12 +315,7 @@ const categories: ComponentCategory[] = [
                 price: "$29",
                 period: "per month",
                 description: "Perfect for individuals",
-                features: [
-                  "Up to 10 projects",
-                  "5GB storage",
-                  "Email support",
-                  "Basic analytics",
-                ],
+                features: ["Up to 10 projects", "5GB storage", "Email support", "Basic analytics"],
                 cta: { text: "Start Free Trial", link: "#" },
                 highlighted: false,
               },
@@ -477,8 +477,7 @@ const categories: ComponentCategory[] = [
             subtitle: "Trusted by thousands",
             testimonials: [
               {
-                content:
-                  "This platform has transformed how we work. Simply amazing results!",
+                content: "This platform has transformed how we work. Simply amazing results!",
                 author: "Sarah Johnson",
                 role: "CEO",
                 company: "TechCorp",
@@ -651,9 +650,15 @@ const categories: ComponentCategory[] = [
             title: "Frequently Asked Questions",
             description: "Find answers to common questions",
             faqs: [
-              { question: "How does the free trial work?", answer: "Full access for 14 days, no credit card required." },
+              {
+                question: "How does the free trial work?",
+                answer: "Full access for 14 days, no credit card required.",
+              },
               { question: "Can I change plans?", answer: "Yes! Upgrade or downgrade anytime." },
-              { question: "What payment methods?", answer: "We accept all major credit cards and PayPal." },
+              {
+                question: "What payment methods?",
+                answer: "We accept all major credit cards and PayPal.",
+              },
               { question: "Is my data secure?", answer: "Bank-level encryption, SOC 2 certified." },
             ],
             background: { type: "solid", color: "#ffffff" },
@@ -671,7 +676,10 @@ const categories: ComponentCategory[] = [
             description: "Quick answers to help you",
             columns: 2,
             faqs: [
-              { question: "What is included?", answer: "All features, unlimited users, 24/7 support." },
+              {
+                question: "What is included?",
+                answer: "All features, unlimited users, 24/7 support.",
+              },
               { question: "How to get started?", answer: "Sign up and start building!" },
               { question: "Can I cancel anytime?", answer: "Yes, cancel with no penalties." },
               { question: "Do you offer support?", answer: "24/7 email and chat support." },
@@ -701,12 +709,30 @@ const categories: ComponentCategory[] = [
             description: "Recent projects showcase",
             columns: 3,
             images: [
-              { url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", title: "Dashboard Design" },
-              { url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80", title: "Mobile App" },
-              { url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80", title: "Brand Strategy" },
-              { url: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80", title: "Team Collaboration" },
-              { url: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", title: "Analytics Platform" },
-              { url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", title: "E-commerce Site" },
+              {
+                url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                title: "Dashboard Design",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+                title: "Mobile App",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+                title: "Brand Strategy",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80",
+                title: "Team Collaboration",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+                title: "Analytics Platform",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+                title: "E-commerce Site",
+              },
             ],
             background: { type: "solid", color: "#ffffff" },
           },
@@ -722,10 +748,22 @@ const categories: ComponentCategory[] = [
             title: "Portfolio",
             columns: 4,
             images: [
-              { url: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80", title: "Project 1" },
-              { url: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80", title: "Project 2" },
-              { url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80", title: "Project 3" },
-              { url: "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&q=80", title: "Project 4" },
+              {
+                url: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80",
+                title: "Project 1",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80",
+                title: "Project 2",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80",
+                title: "Project 3",
+              },
+              {
+                url: "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&q=80",
+                title: "Project 4",
+              },
             ],
             background: { type: "solid", color: "#ffffff" },
           },
@@ -750,10 +788,22 @@ const categories: ComponentCategory[] = [
           config: {
             title: "Trusted by Industry Leaders",
             logos: [
-              { name: "Company A", url: "https://via.placeholder.com/150x50/4A90E2/FFF?text=Logo+A" },
-              { name: "Company B", url: "https://via.placeholder.com/150x50/E94B3C/FFF?text=Logo+B" },
-              { name: "Company C", url: "https://via.placeholder.com/150x50/50C878/FFF?text=Logo+C" },
-              { name: "Company D", url: "https://via.placeholder.com/150x50/FFB347/FFF?text=Logo+D" },
+              {
+                name: "Company A",
+                url: "https://via.placeholder.com/150x50/4A90E2/FFF?text=Logo+A",
+              },
+              {
+                name: "Company B",
+                url: "https://via.placeholder.com/150x50/E94B3C/FFF?text=Logo+B",
+              },
+              {
+                name: "Company C",
+                url: "https://via.placeholder.com/150x50/50C878/FFF?text=Logo+C",
+              },
+              {
+                name: "Company D",
+                url: "https://via.placeholder.com/150x50/FFB347/FFF?text=Logo+D",
+              },
             ],
             background: { type: "solid", color: "#ffffff" },
           },
@@ -945,11 +995,32 @@ const categories: ComponentCategory[] = [
             logo: "Your Company",
             tagline: "Building the future",
             columns: [
-              { title: "Product", links: [{ text: "Features", url: "#" }, { text: "Pricing", url: "#" }] },
-              { title: "Company", links: [{ text: "About", url: "#" }, { text: "Blog", url: "#" }] },
-              { title: "Legal", links: [{ text: "Privacy", url: "#" }, { text: "Terms", url: "#" }] },
+              {
+                title: "Product",
+                links: [
+                  { text: "Features", url: "#" },
+                  { text: "Pricing", url: "#" },
+                ],
+              },
+              {
+                title: "Company",
+                links: [
+                  { text: "About", url: "#" },
+                  { text: "Blog", url: "#" },
+                ],
+              },
+              {
+                title: "Legal",
+                links: [
+                  { text: "Privacy", url: "#" },
+                  { text: "Terms", url: "#" },
+                ],
+              },
             ],
-            social: [{ platform: "twitter", url: "#" }, { platform: "linkedin", url: "#" }],
+            social: [
+              { platform: "twitter", url: "#" },
+              { platform: "linkedin", url: "#" },
+            ],
             copyright: "© 2024 Your Company. All rights reserved.",
           },
         },
@@ -978,4 +1049,3 @@ const categories: ComponentCategory[] = [
 ];
 
 export const componentCategories: ComponentCategory[] = categories;
-
