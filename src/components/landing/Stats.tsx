@@ -3,6 +3,9 @@
 
 import { Theme } from "@/types/landing";
 import { BackgroundConfig, getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
+import { motion } from "framer-motion";
+import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
+import { ensureAnimation } from "@/lib/animation-defaults";
 
 interface Stat {
   id: string;
@@ -23,6 +26,18 @@ interface StatsConfig {
   spacing?: {
     padding?: "md" | "lg" | "xl" | "2xl";
   };
+  animation?: {
+    type?:
+      | "fadeIn"
+      | "fadeInUp"
+      | "fadeInDown"
+      | "slideInLeft"
+      | "slideInRight"
+      | "zoomIn"
+      | "none";
+    duration?: number;
+    delay?: number;
+  };
 }
 
 interface StatsProps {
@@ -31,6 +46,7 @@ interface StatsProps {
 }
 
 export function Stats({ config, theme }: StatsProps) {
+  const configWithAnimation = ensureAnimation(config, "stats");
   const {
     title,
     subtitle,
@@ -40,7 +56,9 @@ export function Stats({ config, theme }: StatsProps) {
     columns = 4,
     background,
     spacing,
-  } = config;
+  } = configWithAnimation;
+
+  const stagger = useStaggerAnimation(configWithAnimation.animation, 0.1);
 
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
@@ -101,13 +119,17 @@ export function Stats({ config, theme }: StatsProps) {
         )}
 
         {/* Stats */}
-        <div
+        <motion.div
           className={`grid grid-cols-1 ${
             layout === "horizontal" ? "md:grid-cols-" + stats.length : gridColsClass[columns]
           } gap-8`}
+          variants={stagger.containerVariants}
+          initial="hidden"
+          animate={stagger.controls}
+          ref={stagger.ref}
         >
           {stats.map((stat) => (
-            <div key={stat.id} className="text-center">
+            <motion.div key={stat.id} className="text-center" variants={stagger.itemVariants}>
               <div
                 className="text-4xl md:text-5xl font-bold mb-2"
                 style={{
@@ -128,9 +150,9 @@ export function Stats({ config, theme }: StatsProps) {
               >
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

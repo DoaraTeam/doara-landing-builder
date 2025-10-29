@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "lastUpdated": "2025-10-28T10:54:44.769Z",
+    "lastUpdated": "2025-10-29T07:31:10.323Z",
     "totalPages": 6,
     "version": "1.0.0"
   },
@@ -1270,6 +1270,11 @@
             "spacing": {
               "padding": "xl",
               "margin": "none"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 1700,
+              "delay": 100
             }
           },
           "id": "comp-1761186403200-4",
@@ -1498,7 +1503,12 @@
             ],
             "logoSize": "large",
             "logoSpacing": "relaxed",
-            "gridColumns": 4
+            "gridColumns": 4,
+            "animation": {
+              "type": "slideInLeft",
+              "duration": 700,
+              "delay": 0
+            }
           },
           "id": "comp-1761188226627-egk9wtxvo",
           "order": 8
@@ -1582,6 +1592,11 @@
             "spacing": {
               "padding": "xl",
               "margin": "none"
+            },
+            "animation": {
+              "type": "fadeInDown",
+              "duration": 1900,
+              "delay": 500
             }
           },
           "id": "comp-1761189596421-psgdi25tj",
@@ -1589,7 +1604,7 @@
         }
       ],
       "createdAt": "2025-10-23T02:26:43.200Z",
-      "updatedAt": "2025-10-23T09:59:49.872Z"
+      "updatedAt": "2025-10-29T07:31:10.323Z"
     },
     "page-1761189736786": {
       "id": "page-1761189736786",
@@ -1630,7 +1645,8 @@
                 "from": "#3b82f6",
                 "to": "#8b5cf6",
                 "direction": "to-br"
-              }
+              },
+              "color": "#ffffff"
             },
             "animation": {
               "type": "fadeInDown",
@@ -1688,7 +1704,7 @@
             "animation": {
               "type": "slideInRight",
               "duration": 2000,
-              "delay": 1500
+              "delay": 100
             },
             "spacing": {
               "padding": "xl",
@@ -1698,56 +1714,6 @@
           },
           "id": "comp-1761189736786-2",
           "order": 1
-        },
-        {
-          "type": "stats",
-          "visible": true,
-          "config": {
-            "title": "Our Impact",
-            "subtitle": "BY THE NUMBERS",
-            "description": "Trusted by thousands worldwide",
-            "stats": [
-              {
-                "id": "1",
-                "value": "10K",
-                "label": "Active Users",
-                "suffix": "+"
-              },
-              {
-                "id": "2",
-                "value": "99.9",
-                "label": "Uptime",
-                "suffix": "%"
-              },
-              {
-                "id": "3",
-                "value": "24",
-                "label": "Support",
-                "suffix": "/7"
-              },
-              {
-                "id": "4",
-                "value": "150",
-                "label": "Countries",
-                "suffix": "+"
-              }
-            ],
-            "layout": "grid",
-            "columns": 4,
-            "background": {
-              "type": "solid",
-              "gradient": {
-                "from": "#3b82f6",
-                "to": "#8b5cf6",
-                "direction": "to-br"
-              }
-            },
-            "spacing": {
-              "padding": "xl"
-            }
-          },
-          "id": "comp-1761192285869-8as6nj372",
-          "order": 2
         },
         {
           "type": "pricing",
@@ -1823,7 +1789,7 @@
             "animation": {
               "type": "fadeInUp",
               "duration": 2000,
-              "delay": 2000
+              "delay": 0
             },
             "spacing": {
               "padding": "xl",
@@ -1831,137 +1797,7 @@
             }
           },
           "id": "comp-1761189736786-5",
-          "order": 3
-        },
-        {
-          "type": "footer",
-          "visible": true,
-          "config": {
-            "logo": "Your Company",
-            "tagline": "Building the future",
-            "columns": [
-              {
-                "title": "Product",
-                "links": [
-                  {
-                    "text": "Features",
-                    "url": "#"
-                  },
-                  {
-                    "text": "Pricing",
-                    "url": "#"
-                  }
-                ]
-              },
-              {
-                "title": "Company",
-                "links": [
-                  {
-                    "text": "About",
-                    "url": "#"
-                  },
-                  {
-                    "text": "Blog",
-                    "url": "#"
-                  }
-                ]
-              },
-              {
-                "title": "Legal",
-                "links": [
-                  {
-                    "text": "Privacy",
-                    "url": "#"
-                  },
-                  {
-                    "text": "Terms",
-                    "url": "#"
-                  }
-                ]
-              }
-            ],
-            "social": [
-              {
-                "platform": "twitter",
-                "url": "#"
-              },
-              {
-                "platform": "linkedin",
-                "url": "#"
-              }
-            ],
-            "copyright": "© 2024 Your Company. All rights reserved."
-          },
-          "id": "comp-1761648567372-95z0qamif",
-          "order": 4
-        },
-        {
-          "type": "features",
-          "visible": true,
-          "config": {
-            "title": "Amazing Features",
-            "subtitle": "Everything you need to succeed",
-            "description": "Our platform provides all the tools you need to grow your business.",
-            "features": [
-              {
-                "id": "1",
-                "icon": "⚡",
-                "title": "Lightning Fast",
-                "description": "Blazing fast performance for the best user experience."
-              },
-              {
-                "id": "2",
-                "icon": "🔒",
-                "title": "Secure & Reliable",
-                "description": "Enterprise-grade security to keep your data safe."
-              },
-              {
-                "icon": "⭐",
-                "title": "New Feature",
-                "description": "Feature description goes here"
-              },
-              {
-                "icon": "⭐",
-                "title": "New Feature",
-                "description": "Feature description goes here"
-              },
-              {
-                "icon": "⭐",
-                "title": "New Feature",
-                "description": "Feature description goes here"
-              },
-              {
-                "icon": "⭐",
-                "title": "New Feature",
-                "description": "Feature description goes here"
-              },
-              {
-                "icon": "⭐",
-                "title": "New Feature",
-                "description": "Feature description goes here"
-              },
-              {
-                "icon": "⭐",
-                "title": "New Feature",
-                "description": "Feature description goes here"
-              }
-            ],
-            "columns": 4,
-            "background": {
-              "type": "solid",
-              "color": "#ffffff"
-            },
-            "spacing": {
-              "padding": "xl"
-            },
-            "animation": {
-              "type": "fadeInUp",
-              "duration": 600,
-              "delay": 0
-            }
-          },
-          "id": "comp-1761648014746-61qi9g4k0",
-          "order": 5
+          "order": 2
         },
         {
           "type": "content",
@@ -2023,10 +1859,15 @@
               "padding": "lg",
               "margin": "none"
             },
-            "alignment": "right"
+            "alignment": "right",
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 2000,
+              "delay": 2000
+            }
           },
           "id": "comp-1761189736786-4",
-          "order": 6
+          "order": 3
         },
         {
           "type": "testimonials",
@@ -2068,7 +1909,7 @@
             },
             "animation": {
               "type": "fadeInUp",
-              "duration": 600,
+              "duration": 1600,
               "delay": 0
             },
             "spacing": {
@@ -2077,7 +1918,7 @@
             }
           },
           "id": "comp-1761189736786-6",
-          "order": 7
+          "order": 4
         },
         {
           "type": "footer",
@@ -2186,95 +2027,11 @@
             }
           },
           "id": "comp-1761189736786-9",
-          "order": 8
-        },
-        {
-          "type": "features",
-          "visible": true,
-          "config": {
-            "title": "Powerful Features for Your Business",
-            "subtitle": "Everything you need to succeed",
-            "description": "Comprehensive solutions designed for modern businesses to streamline operations and drive growth",
-            "features": [
-              {
-                "id": "1",
-                "title": "Lightning Fast Performance",
-                "description": "Experience blazing-fast load times and real-time data synchronization. Our optimized infrastructure ensures 99.9% uptime with millisecond response times.",
-                "icon": "",
-                "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400"
-              },
-              {
-                "id": "2",
-                "title": "Enterprise Security",
-                "description": "Bank-level encryption, SOC 2 Type II certified, GDPR compliant. Multi-factor authentication, role-based access control, and regular security audits keep your data safe.",
-                "icon": "🔒",
-                "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400"
-              },
-              {
-                "id": "3",
-                "title": "24/7 Expert Support",
-                "description": "Round-the-clock support from our expert team via phone, email, and live chat. Get answers within minutes with our 99% customer satisfaction rating.",
-                "icon": "💬",
-                "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400"
-              }
-            ],
-            "layout": "carousel",
-            "columns": 4,
-            "background": {
-              "type": "solid",
-              "color": "#a30000",
-              "image": {
-                "url": "/assets/images/image-1761201685440-84qvxe2.jpg"
-              }
-            },
-            "animation": {
-              "type": "slideInRight",
-              "duration": 2000,
-              "delay": 1500
-            },
-            "spacing": {
-              "padding": "2xl",
-              "margin": "none"
-            },
-            "containerWidth": "narrow"
-          },
-          "id": "comp-1761648115251-9tzc24grh",
-          "order": 9
-        },
-        {
-          "type": "footer",
-          "visible": true,
-          "config": {
-            "logo": "Brand",
-            "style": "minimal",
-            "links": [
-              {
-                "text": "About",
-                "url": "#"
-              },
-              {
-                "text": "Privacy",
-                "url": "#"
-              },
-              {
-                "text": "Terms",
-                "url": "#"
-              }
-            ],
-            "social": [
-              {
-                "platform": "twitter",
-                "url": "#"
-              }
-            ],
-            "copyright": "© 2024 Brand"
-          },
-          "id": "comp-1761648597942-6rq6eb4jd",
-          "order": 10
+          "order": 5
         }
       ],
       "createdAt": "2025-10-23T03:22:16.786Z",
-      "updatedAt": "2025-10-28T10:50:15.527Z",
+      "updatedAt": "2025-10-29T04:35:46.138Z",
       "loading": {
         "enabled": true,
         "type": "square-corners",

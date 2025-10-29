@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { Theme } from "@/types/landing";
+import { AnimatedSection } from "./AnimatedSection";
 
 interface VideoConfig {
   title?: string;
@@ -19,6 +20,18 @@ interface VideoConfig {
   };
   spacing?: {
     padding?: "md" | "lg" | "xl";
+  };
+  animation?: {
+    type?:
+      | "fadeIn"
+      | "fadeInUp"
+      | "fadeInDown"
+      | "slideInLeft"
+      | "slideInRight"
+      | "zoomIn"
+      | "none";
+    duration?: number;
+    delay?: number;
   };
 }
 
@@ -79,77 +92,79 @@ export function Video({ config, theme }: VideoProps) {
     spacing?.padding === "xl" ? "py-20" : spacing?.padding === "md" ? "py-12" : "py-16";
 
   return (
-    <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
-      <div className="container mx-auto max-w-5xl">
-        {/* Header */}
-        {(title || subtitle || description) && (
-          <div className="text-center mb-12 max-w-3xl mx-auto">
-            {subtitle && (
-              <div
-                className="text-sm font-semibold uppercase tracking-wider mb-4"
-                style={{ color: primaryColor }}
-              >
-                {subtitle}
-              </div>
-            )}
-
-            {title && (
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ color: textColor, fontFamily: headingFont }}
-              >
-                {title}
-              </h2>
-            )}
-
-            {description && (
-              <p className="text-lg" style={{ color: textMuted, fontFamily: bodyFont }}>
-                {description}
-              </p>
-            )}
-          </div>
-        )}
-
-        {/* Video */}
-        <div className="relative rounded-xl overflow-hidden shadow-2xl">
-          {!playing && thumbnail ? (
-            <div
-              className={`relative ${aspectRatioClass[aspectRatio]} cursor-pointer group`}
-              onClick={() => setPlaying(true)}
-            >
-              <img
-                src={thumbnail}
-                alt={title || "Video thumbnail"}
-                className="w-full h-full object-cover"
-              />
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+    <AnimatedSection animation={config.animation}>
+      <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
+        <div className="container mx-auto max-w-5xl">
+          {/* Header */}
+          {(title || subtitle || description) && (
+            <div className="text-center mb-12 max-w-3xl mx-auto">
+              {subtitle && (
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform"
-                  style={{ backgroundColor: primaryColor }}
+                  className="text-sm font-semibold uppercase tracking-wider mb-4"
+                  style={{ color: primaryColor }}
                 >
-                  <svg
-                    className="w-10 h-10 text-white ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  {subtitle}
                 </div>
-              </div>
-            </div>
-          ) : (
-            <div className={aspectRatioClass[aspectRatio]}>
-              <iframe
-                src={getEmbedUrl()}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              )}
+
+              {title && (
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-4"
+                  style={{ color: textColor, fontFamily: headingFont }}
+                >
+                  {title}
+                </h2>
+              )}
+
+              {description && (
+                <p className="text-lg" style={{ color: textMuted, fontFamily: bodyFont }}>
+                  {description}
+                </p>
+              )}
             </div>
           )}
+
+          {/* Video */}
+          <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            {!playing && thumbnail ? (
+              <div
+                className={`relative ${aspectRatioClass[aspectRatio]} cursor-pointer group`}
+                onClick={() => setPlaying(true)}
+              >
+                <img
+                  src={thumbnail}
+                  alt={title || "Video thumbnail"}
+                  className="w-full h-full object-cover"
+                />
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                  <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform"
+                    style={{ backgroundColor: primaryColor }}
+                  >
+                    <svg
+                      className="w-10 h-10 text-white ml-1"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className={aspectRatioClass[aspectRatio]}>
+                <iframe
+                  src={getEmbedUrl()}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </AnimatedSection>
   );
 }

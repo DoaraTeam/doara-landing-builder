@@ -3,6 +3,7 @@
 
 import { Theme } from "@/types/landing";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "./AnimatedSection";
 
 interface ContentConfig {
   title: string;
@@ -26,6 +27,18 @@ interface ContentConfig {
   };
   spacing?: {
     padding?: "md" | "lg" | "xl";
+  };
+  animation?: {
+    type?:
+      | "fadeIn"
+      | "fadeInUp"
+      | "fadeInDown"
+      | "slideInLeft"
+      | "slideInRight"
+      | "zoomIn"
+      | "none";
+    duration?: number;
+    delay?: number;
   };
 }
 
@@ -141,47 +154,49 @@ export function Content({ config, theme }: ContentProps) {
   };
 
   return (
-    <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
-      <div className="container mx-auto max-w-6xl">
-        {imageData ? (
-          renderWithImage()
-        ) : (
-          <div className="max-w-4xl mx-auto">
-            {/* Header */}
-            <div className="mb-8">
-              {subtitle && (
-                <div
-                  className="text-sm font-semibold uppercase tracking-wider mb-4"
-                  style={{ color: primaryColor }}
+    <AnimatedSection animation={config.animation}>
+      <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
+        <div className="container mx-auto max-w-6xl">
+          {imageData ? (
+            renderWithImage()
+          ) : (
+            <div className="max-w-4xl mx-auto">
+              {/* Header */}
+              <div className="mb-8">
+                {subtitle && (
+                  <div
+                    className="text-sm font-semibold uppercase tracking-wider mb-4"
+                    style={{ color: primaryColor }}
+                  >
+                    {subtitle}
+                  </div>
+                )}
+
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-6"
+                  style={{ color: textColor, fontFamily: headingFont }}
                 >
-                  {subtitle}
-                </div>
+                  {title}
+                </h2>
+              </div>
+
+              {/* Content */}
+              <div
+                className="prose prose-lg max-w-none mb-8"
+                style={{ color: textMuted, fontFamily: bodyFont }}
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
+
+              {/* CTA */}
+              {cta && (
+                <Button asChild size="lg" style={{ backgroundColor: primaryColor }}>
+                  <a href={cta.link}>{cta.text}</a>
+                </Button>
               )}
-
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-6"
-                style={{ color: textColor, fontFamily: headingFont }}
-              >
-                {title}
-              </h2>
             </div>
-
-            {/* Content */}
-            <div
-              className="prose prose-lg max-w-none mb-8"
-              style={{ color: textMuted, fontFamily: bodyFont }}
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-
-            {/* CTA */}
-            {cta && (
-              <Button asChild size="lg" style={{ backgroundColor: primaryColor }}>
-                <a href={cta.link}>{cta.text}</a>
-              </Button>
-            )}
-          </div>
-        )}
-      </div>
-    </section>
+          )}
+        </div>
+      </section>
+    </AnimatedSection>
   );
 }

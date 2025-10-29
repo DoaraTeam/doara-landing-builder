@@ -3,6 +3,8 @@
 
 import { Theme } from "@/types/landing";
 import { BackgroundConfig, getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
+import { motion } from "framer-motion";
+import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
 
 interface LogoItem {
   name: string;
@@ -27,6 +29,18 @@ interface LogoCloudConfig {
   spacing?: {
     padding?: "sm" | "md" | "lg" | "xl";
   };
+  animation?: {
+    type?:
+      | "fadeIn"
+      | "fadeInUp"
+      | "fadeInDown"
+      | "slideInLeft"
+      | "slideInRight"
+      | "zoomIn"
+      | "none";
+    duration?: number;
+    delay?: number;
+  };
 }
 
 interface LogoCloudProps {
@@ -50,7 +64,10 @@ export function LogoCloud({ config }: LogoCloudProps) {
     logoBg = "none",
     background,
     spacing,
+    animation,
   } = config;
+
+  const stagger = useStaggerAnimation(animation, 0.08);
 
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
@@ -159,11 +176,18 @@ export function LogoCloud({ config }: LogoCloudProps) {
         {logos && logos.length > 0 ? (
           <>
             {layout === "grid" && (
-              <div className={`grid ${getGridColsClass()} ${spacingClass} items-center`}>
+              <motion.div
+                className={`grid ${getGridColsClass()} ${spacingClass} items-center`}
+                variants={stagger.containerVariants}
+                initial="hidden"
+                animate={stagger.animate}
+                ref={stagger.ref}
+              >
                 {logos.map((logo, index) => (
-                  <div
+                  <motion.div
                     key={`${logo.name}-${index}`}
                     className={`flex items-center justify-center h-20 p-4 transition-all ${getHoverEffectClass()} ${logoBgClass}`}
+                    variants={stagger.itemVariants}
                   >
                     {logo.link ? (
                       <a href={logo.link} target="_blank" rel="noopener noreferrer">
@@ -190,9 +214,9 @@ export function LogoCloud({ config }: LogoCloudProps) {
                         }}
                       />
                     )}
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
 
             {/* Scrolling Logos */}

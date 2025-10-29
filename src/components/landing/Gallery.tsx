@@ -4,6 +4,9 @@
 import { useState } from "react";
 import { Theme } from "@/types/landing";
 import { BackgroundConfig, getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
+import { motion } from "framer-motion";
+import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
+import { ensureAnimation } from "@/lib/animation-defaults";
 
 interface GalleryItem {
   id: string;
@@ -25,6 +28,18 @@ interface GalleryConfig {
   spacing?: {
     padding?: "md" | "lg" | "xl" | "2xl";
   };
+  animation?: {
+    type?:
+      | "fadeIn"
+      | "fadeInUp"
+      | "fadeInDown"
+      | "slideInLeft"
+      | "slideInRight"
+      | "zoomIn"
+      | "none";
+    duration?: number;
+    delay?: number;
+  };
 }
 
 interface GalleryProps {
@@ -33,6 +48,7 @@ interface GalleryProps {
 }
 
 export function Gallery({ config }: GalleryProps) {
+  const configWithAnimation = ensureAnimation(config);
   const {
     title,
     subtitle,
@@ -42,9 +58,10 @@ export function Gallery({ config }: GalleryProps) {
     aspectRatio = "landscape",
     background,
     spacing,
-  } = config;
+  } = configWithAnimation;
 
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const stagger = useStaggerAnimation(configWithAnimation.animation, 0.1);
 
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
@@ -116,13 +133,20 @@ export function Gallery({ config }: GalleryProps) {
           </div>
 
           {/* Gallery Grid */}
-          <div className={`grid grid-cols-1 ${gridColsClass[columns]} gap-6`}>
+          <motion.div
+            className={`grid grid-cols-1 ${gridColsClass[columns]} gap-6`}
+            variants={stagger.containerVariants}
+            initial="hidden"
+            animate={stagger.animate}
+            ref={stagger.ref}
+          >
             {items && items.length > 0 ? (
               items.map((item) => (
-                <div
+                <motion.div
                   key={item.id}
                   className="relative group overflow-hidden rounded-lg cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 bg-white"
                   onClick={() => setSelectedImage(item)}
+                  variants={stagger.itemVariants}
                 >
                   <div className={`${aspectRatioClass[aspectRatio]} overflow-hidden`}>
                     <img
@@ -151,7 +175,7 @@ export function Gallery({ config }: GalleryProps) {
                       )}
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))
             ) : (
               <div className="col-span-full text-center py-12">
@@ -160,7 +184,7 @@ export function Gallery({ config }: GalleryProps) {
                 </p>
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </section>
 

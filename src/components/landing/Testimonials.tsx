@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { motion } from "framer-motion";
 import { Theme, TestimonialsConfig } from "@/types/landing";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
 
 interface TestimonialsProps {
   config: TestimonialsConfig;
@@ -11,7 +13,12 @@ interface TestimonialsProps {
 }
 
 export function Testimonials({ config, theme }: TestimonialsProps) {
-  const { title, subtitle, description, testimonials, background, spacing } = config;
+  const { title, subtitle, description, testimonials, background, spacing, animation } = config;
+
+  const stagger = useStaggerAnimation({
+    animation: animation || { type: "fadeInUp", duration: 700, delay: 100 },
+    staggerDelay: 0.12,
+  });
 
   // Use CSS variables for theme colors
   const primaryColor = "var(--color-primary)";
@@ -55,56 +62,60 @@ export function Testimonials({ config, theme }: TestimonialsProps) {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          ref={stagger.ref}
+          initial="hidden"
+          animate={stagger.animate}
+          variants={stagger.containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {testimonials.map((testimonial) => (
-            <Card
-              key={testimonial.id}
-              className="border-none shadow-sm"
-              style={{ backgroundColor: surfaceColor }}
-            >
-              <CardContent className="p-6">
-                {testimonial.rating && (
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-5 w-5 fill-current"
-                        style={{ color: primaryColor }}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                <p className="text-base mb-6 italic" style={{ color: textColor }}>
-                  &quot;{testimonial.content || testimonial.text}&quot;
-                </p>
-
-                <div className="flex items-center gap-3">
-                  {testimonial.avatar && (
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name || testimonial.author || ""}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
+            <motion.div key={testimonial.id} variants={stagger.itemVariants}>
+              <Card className="border-none shadow-sm" style={{ backgroundColor: surfaceColor }}>
+                <CardContent className="p-6">
+                  {testimonial.rating && (
+                    <div className="flex gap-1 mb-4">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-5 w-5 fill-current"
+                          style={{ color: primaryColor }}
+                        />
+                      ))}
+                    </div>
                   )}
 
-                  <div>
-                    <div className="font-semibold" style={{ color: textColor }}>
-                      {testimonial.name || testimonial.author}
-                    </div>
-                    {(testimonial.role || testimonial.company) && (
-                      <div className="text-sm" style={{ color: textMuted }}>
-                        {testimonial.role}
-                        {testimonial.role && testimonial.company && ", "}
-                        {testimonial.company}
-                      </div>
+                  <p className="text-base mb-6 italic" style={{ color: textColor }}>
+                    &quot;{testimonial.content || testimonial.text}&quot;
+                  </p>
+
+                  <div className="flex items-center gap-3">
+                    {testimonial.avatar && (
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name || testimonial.author || ""}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
                     )}
+
+                    <div>
+                      <div className="font-semibold" style={{ color: textColor }}>
+                        {testimonial.name || testimonial.author}
+                      </div>
+                      {(testimonial.role || testimonial.company) && (
+                        <div className="text-sm" style={{ color: textMuted }}>
+                          {testimonial.role}
+                          {testimonial.role && testimonial.company && ", "}
+                          {testimonial.company}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

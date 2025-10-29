@@ -30,10 +30,10 @@ const DEFAULT_ANIMATIONS: Record<string, AnimationConfig> = {
  * If animation doesn't exist, adds default based on component type
  */
 export function ensureAnimation(component: ComponentConfig): ComponentConfig {
-  const config = component.config as Record<string, unknown>;
+  const config = (component.config as Record<string, unknown>) || {};
 
   // If animation already exists, return as is
-  if ("animation" in config && config.animation) {
+  if (config && "animation" in config && config.animation) {
     return component;
   }
 
