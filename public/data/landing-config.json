@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
   "metadata": {
-    "lastUpdated": "2025-10-27T02:24:42.032Z",
-    "totalPages": 5,
+    "lastUpdated": "2025-10-28T10:54:44.769Z",
+    "totalPages": 6,
     "version": "1.0.0"
   },
   "themes": {
@@ -100,7 +100,7 @@
               "color": "#ffffff"
             },
             "animation": {
-              "type": "fadeInUp",
+              "type": "fadeInDown",
               "duration": 800,
               "delay": 0
             },
@@ -147,13 +147,13 @@
             "columns": 4,
             "background": {
               "type": "solid",
-              "color": "surface"
+              "color": "#ffffff"
             },
             "spacing": {
               "padding": "lg"
             }
           },
-          "id": "comp-1761529464698-gc7aqwour",
+          "id": "comp-1761638656080-gx9qnx8gd",
           "order": 1
         },
         {
@@ -254,7 +254,7 @@
         }
       ],
       "createdAt": "2025-10-22T07:04:46.839Z",
-      "updatedAt": "2025-10-27T01:44:37.770Z",
+      "updatedAt": "2025-10-28T08:07:55.225Z",
       "loading": {
         "enabled": true,
         "type": "spin",
@@ -499,7 +499,7 @@
       "title": "Premium SaaS Platform",
       "description": "",
       "slug": "premium-saas-platform",
-      "theme": "dark",
+      "theme": "nature",
       "status": "draft",
       "seo": {
         "title": "Premium SaaS Platform",
@@ -533,7 +533,8 @@
                 "from": "#667eea",
                 "to": "#764ba2",
                 "direction": "to-br"
-              }
+              },
+              "color": "#ffffff"
             },
             "animation": {
               "type": "fadeInUp",
@@ -547,56 +548,6 @@
           },
           "id": "comp-1761185956920-0",
           "order": 0
-        },
-        {
-          "type": "logo-cloud",
-          "visible": true,
-          "config": {
-            "title": "Trusted by Industry Leaders Worldwide",
-            "subtitle": "Join 50,000+ companies using our platform",
-            "logos": [
-              {
-                "name": "Google",
-                "url": "https://via.placeholder.com/150x50/4285F4/FFF?text=Google",
-                "link": "#"
-              },
-              {
-                "name": "Microsoft",
-                "url": "https://via.placeholder.com/150x50/00A4EF/FFF?text=Microsoft",
-                "link": "#"
-              },
-              {
-                "name": "Amazon",
-                "url": "https://via.placeholder.com/150x50/FF9900/FFF?text=Amazon",
-                "link": "#"
-              },
-              {
-                "name": "Apple",
-                "url": "https://via.placeholder.com/150x50/000000/FFF?text=Apple",
-                "link": "#"
-              },
-              {
-                "name": "Meta",
-                "url": "https://via.placeholder.com/150x50/0668E1/FFF?text=Meta",
-                "link": "#"
-              },
-              {
-                "name": "Netflix",
-                "url": "https://via.placeholder.com/150x50/E50914/FFF?text=Netflix",
-                "link": "#"
-              }
-            ],
-            "background": {
-              "type": "solid",
-              "color": "#ffffff"
-            },
-            "spacing": {
-              "padding": "lg",
-              "margin": "none"
-            }
-          },
-          "id": "comp-1761185956920-1",
-          "order": 1
         },
         {
           "type": "features",
@@ -667,66 +618,6 @@
           },
           "id": "comp-1761185956920-2",
           "order": 2
-        },
-        {
-          "type": "stats",
-          "visible": true,
-          "config": {
-            "title": "Trusted by Businesses Worldwide",
-            "subtitle": "PROVEN RESULTS",
-            "description": "Our platform delivers measurable impact for companies of all sizes",
-            "stats": [
-              {
-                "id": "1",
-                "value": "50K",
-                "label": "Active Companies",
-                "suffix": "+",
-                "prefix": ""
-              },
-              {
-                "id": "2",
-                "value": "99.99",
-                "label": "Uptime Guarantee",
-                "suffix": "%",
-                "prefix": ""
-              },
-              {
-                "id": "3",
-                "value": "10x",
-                "label": "Productivity Boost",
-                "suffix": "",
-                "prefix": ""
-              },
-              {
-                "id": "4",
-                "value": "24/7",
-                "label": "Customer Support",
-                "suffix": "",
-                "prefix": ""
-              }
-            ],
-            "layout": "grid",
-            "columns": 4,
-            "background": {
-              "type": "gradient",
-              "gradient": {
-                "from": "#667eea",
-                "to": "#764ba2",
-                "direction": "to-r"
-              }
-            },
-            "animation": {
-              "type": "fadeIn",
-              "duration": 600,
-              "delay": 0
-            },
-            "spacing": {
-              "padding": "xl",
-              "margin": "none"
-            }
-          },
-          "id": "comp-1761185956920-3",
-          "order": 3
         },
         {
           "type": "content",
@@ -1124,31 +1015,6 @@
                     "link": "#contact"
                   }
                 ]
-              },
-              {
-                "title": "Legal",
-                "items": [
-                  {
-                    "text": "Privacy Policy",
-                    "link": "#privacy"
-                  },
-                  {
-                    "text": "Terms of Service",
-                    "link": "#terms"
-                  },
-                  {
-                    "text": "Security",
-                    "link": "#security"
-                  },
-                  {
-                    "text": "Cookie Policy",
-                    "link": "#cookies"
-                  },
-                  {
-                    "text": "GDPR",
-                    "link": "#gdpr"
-                  }
-                ]
               }
             ],
             "social": [
@@ -1178,14 +1044,22 @@
                 "icon": "youtube"
               }
             ],
-            "copyright": "© 2024 YourSaaS. All rights reserved."
+            "copyright": "© 2024 YourSaaS. All rights reserved.",
+            "background": {
+              "type": "solid",
+              "color": "#0f172a"
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
           },
           "id": "comp-1761185956920-9",
           "order": 9
         }
       ],
       "createdAt": "2025-10-23T02:19:16.920Z",
-      "updatedAt": "2025-10-23T02:21:51.109Z"
+      "updatedAt": "2025-10-27T03:02:01.857Z"
     },
     "page-1761186403200": {
       "id": "page-1761186403200",
@@ -1759,9 +1633,9 @@
               }
             },
             "animation": {
-              "type": "fadeInUp",
-              "duration": 800,
-              "delay": 0
+              "type": "fadeInDown",
+              "duration": 2000,
+              "delay": 2000
             },
             "spacing": {
               "padding": "lg",
@@ -1771,6 +1645,59 @@
           },
           "id": "comp-1761189736786-0",
           "order": 0
+        },
+        {
+          "type": "features",
+          "visible": true,
+          "config": {
+            "title": "Powerful Features for Your Business",
+            "subtitle": "Everything you need to succeed",
+            "description": "Comprehensive solutions designed for modern businesses to streamline operations and drive growth",
+            "features": [
+              {
+                "id": "1",
+                "title": "Lightning Fast Performance",
+                "description": "Experience blazing-fast load times and real-time data synchronization. Our optimized infrastructure ensures 99.9% uptime with millisecond response times.",
+                "icon": "⚡",
+                "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400"
+              },
+              {
+                "id": "2",
+                "title": "Enterprise Security",
+                "description": "Bank-level encryption, SOC 2 Type II certified, GDPR compliant. Multi-factor authentication, role-based access control, and regular security audits keep your data safe.",
+                "icon": "🔒",
+                "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400"
+              },
+              {
+                "id": "3",
+                "title": "24/7 Expert Support",
+                "description": "Round-the-clock support from our expert team via phone, email, and live chat. Get answers within minutes with our 99% customer satisfaction rating.",
+                "icon": "💬",
+                "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400"
+              }
+            ],
+            "layout": "carousel",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#ffffff",
+              "image": {
+                "url": "/assets/images/image-1761201685440-84qvxe2.jpg"
+              }
+            },
+            "animation": {
+              "type": "slideInRight",
+              "duration": 2000,
+              "delay": 1500
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            },
+            "containerWidth": "lg"
+          },
+          "id": "comp-1761189736786-2",
+          "order": 1
         },
         {
           "type": "stats",
@@ -1820,59 +1747,6 @@
             }
           },
           "id": "comp-1761192285869-8as6nj372",
-          "order": 1
-        },
-        {
-          "type": "features",
-          "visible": true,
-          "config": {
-            "title": "Powerful Features for Your Business",
-            "subtitle": "Everything you need to succeed",
-            "description": "Comprehensive solutions designed for modern businesses to streamline operations and drive growth",
-            "features": [
-              {
-                "id": "1",
-                "title": "Lightning Fast Performance",
-                "description": "Experience blazing-fast load times and real-time data synchronization. Our optimized infrastructure ensures 99.9% uptime with millisecond response times.",
-                "icon": "⚡",
-                "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400"
-              },
-              {
-                "id": "2",
-                "title": "Enterprise Security",
-                "description": "Bank-level encryption, SOC 2 Type II certified, GDPR compliant. Multi-factor authentication, role-based access control, and regular security audits keep your data safe.",
-                "icon": "🔒",
-                "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400"
-              },
-              {
-                "id": "3",
-                "title": "24/7 Expert Support",
-                "description": "Round-the-clock support from our expert team via phone, email, and live chat. Get answers within minutes with our 99% customer satisfaction rating.",
-                "icon": "💬",
-                "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400"
-              }
-            ],
-            "layout": "carousel",
-            "columns": 3,
-            "background": {
-              "type": "solid",
-              "color": "#000000",
-              "image": {
-                "url": "/assets/images/image-1761201685440-84qvxe2.jpg"
-              }
-            },
-            "animation": {
-              "type": "fadeInUp",
-              "duration": 600,
-              "delay": 100
-            },
-            "spacing": {
-              "padding": "xl",
-              "margin": "none"
-            },
-            "containerWidth": "lg"
-          },
-          "id": "comp-1761189736786-2",
           "order": 2
         },
         {
@@ -1947,9 +1821,9 @@
               "color": "#ffffff"
             },
             "animation": {
-              "type": "fadeIn",
-              "duration": 600,
-              "delay": 0
+              "type": "fadeInUp",
+              "duration": 2000,
+              "delay": 2000
             },
             "spacing": {
               "padding": "xl",
@@ -1960,6 +1834,136 @@
           "order": 3
         },
         {
+          "type": "footer",
+          "visible": true,
+          "config": {
+            "logo": "Your Company",
+            "tagline": "Building the future",
+            "columns": [
+              {
+                "title": "Product",
+                "links": [
+                  {
+                    "text": "Features",
+                    "url": "#"
+                  },
+                  {
+                    "text": "Pricing",
+                    "url": "#"
+                  }
+                ]
+              },
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "text": "About",
+                    "url": "#"
+                  },
+                  {
+                    "text": "Blog",
+                    "url": "#"
+                  }
+                ]
+              },
+              {
+                "title": "Legal",
+                "links": [
+                  {
+                    "text": "Privacy",
+                    "url": "#"
+                  },
+                  {
+                    "text": "Terms",
+                    "url": "#"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "twitter",
+                "url": "#"
+              },
+              {
+                "platform": "linkedin",
+                "url": "#"
+              }
+            ],
+            "copyright": "© 2024 Your Company. All rights reserved."
+          },
+          "id": "comp-1761648567372-95z0qamif",
+          "order": 4
+        },
+        {
+          "type": "features",
+          "visible": true,
+          "config": {
+            "title": "Amazing Features",
+            "subtitle": "Everything you need to succeed",
+            "description": "Our platform provides all the tools you need to grow your business.",
+            "features": [
+              {
+                "id": "1",
+                "icon": "⚡",
+                "title": "Lightning Fast",
+                "description": "Blazing fast performance for the best user experience."
+              },
+              {
+                "id": "2",
+                "icon": "🔒",
+                "title": "Secure & Reliable",
+                "description": "Enterprise-grade security to keep your data safe."
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              },
+              {
+                "icon": "⭐",
+                "title": "New Feature",
+                "description": "Feature description goes here"
+              }
+            ],
+            "columns": 4,
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "spacing": {
+              "padding": "xl"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 0
+            }
+          },
+          "id": "comp-1761648014746-61qi9g4k0",
+          "order": 5
+        },
+        {
           "type": "content",
           "visible": true,
           "config": {
@@ -1967,9 +1971,40 @@
             "subtitle": "COLLABORATION MADE EASY",
             "content": "Empower your team with tools designed for seamless collaboration. From project management to real-time communication, everything you need is in one place. Share files, track progress, and stay aligned with your team's goals effortlessly.",
             "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
-            "imagePosition": "right",
+            "imagePosition": "left",
             "features": [
-              "Real-time collaboration tools",
+              {
+                "0": "R",
+                "1": "e",
+                "2": "a",
+                "3": "l",
+                "4": "-",
+                "5": "t",
+                "6": "i",
+                "7": "m",
+                "8": "e",
+                "9": " ",
+                "10": "c",
+                "11": "o",
+                "12": "l",
+                "13": "l",
+                "14": "a",
+                "15": "b",
+                "16": "o",
+                "17": "r",
+                "18": "a",
+                "19": "t",
+                "20": "i",
+                "21": "o",
+                "22": "n",
+                "23": " ",
+                "24": "t",
+                "25": "o",
+                "26": "o",
+                "27": "l",
+                "28": "s",
+                "title": "áasa"
+              },
               "Project management dashboard",
               "Team communication channels",
               "File sharing and version control",
@@ -1985,12 +2020,13 @@
               "color": "#ffffff"
             },
             "spacing": {
-              "padding": "xl",
+              "padding": "lg",
               "margin": "none"
-            }
+            },
+            "alignment": "right"
           },
           "id": "comp-1761189736786-4",
-          "order": 4
+          "order": 6
         },
         {
           "type": "testimonials",
@@ -2041,7 +2077,7 @@
             }
           },
           "id": "comp-1761189736786-6",
-          "order": 5
+          "order": 7
         },
         {
           "type": "footer",
@@ -2142,7 +2178,7 @@
             "copyright": "© 2025 YourBrand. All rights reserved.",
             "background": {
               "type": "solid",
-              "color": "#000000"
+              "color": "#ffffff"
             },
             "spacing": {
               "padding": "xl",
@@ -2150,18 +2186,393 @@
             }
           },
           "id": "comp-1761189736786-9",
-          "order": 6
+          "order": 8
+        },
+        {
+          "type": "features",
+          "visible": true,
+          "config": {
+            "title": "Powerful Features for Your Business",
+            "subtitle": "Everything you need to succeed",
+            "description": "Comprehensive solutions designed for modern businesses to streamline operations and drive growth",
+            "features": [
+              {
+                "id": "1",
+                "title": "Lightning Fast Performance",
+                "description": "Experience blazing-fast load times and real-time data synchronization. Our optimized infrastructure ensures 99.9% uptime with millisecond response times.",
+                "icon": "",
+                "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400"
+              },
+              {
+                "id": "2",
+                "title": "Enterprise Security",
+                "description": "Bank-level encryption, SOC 2 Type II certified, GDPR compliant. Multi-factor authentication, role-based access control, and regular security audits keep your data safe.",
+                "icon": "🔒",
+                "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400"
+              },
+              {
+                "id": "3",
+                "title": "24/7 Expert Support",
+                "description": "Round-the-clock support from our expert team via phone, email, and live chat. Get answers within minutes with our 99% customer satisfaction rating.",
+                "icon": "💬",
+                "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400"
+              }
+            ],
+            "layout": "carousel",
+            "columns": 4,
+            "background": {
+              "type": "solid",
+              "color": "#a30000",
+              "image": {
+                "url": "/assets/images/image-1761201685440-84qvxe2.jpg"
+              }
+            },
+            "animation": {
+              "type": "slideInRight",
+              "duration": 2000,
+              "delay": 1500
+            },
+            "spacing": {
+              "padding": "2xl",
+              "margin": "none"
+            },
+            "containerWidth": "narrow"
+          },
+          "id": "comp-1761648115251-9tzc24grh",
+          "order": 9
+        },
+        {
+          "type": "footer",
+          "visible": true,
+          "config": {
+            "logo": "Brand",
+            "style": "minimal",
+            "links": [
+              {
+                "text": "About",
+                "url": "#"
+              },
+              {
+                "text": "Privacy",
+                "url": "#"
+              },
+              {
+                "text": "Terms",
+                "url": "#"
+              }
+            ],
+            "social": [
+              {
+                "platform": "twitter",
+                "url": "#"
+              }
+            ],
+            "copyright": "© 2024 Brand"
+          },
+          "id": "comp-1761648597942-6rq6eb4jd",
+          "order": 10
         }
       ],
       "createdAt": "2025-10-23T03:22:16.786Z",
-      "updatedAt": "2025-10-27T02:24:42.032Z",
+      "updatedAt": "2025-10-28T10:50:15.527Z",
       "loading": {
         "enabled": true,
-        "type": "ripple",
-        "color": "#2dd100",
+        "type": "square-corners",
+        "color": "#5dfeb3",
         "duration": 1000,
         "minDuration": 500
       }
+    },
+    "page-1761648884750": {
+      "id": "page-1761648884750",
+      "title": "E-Commerce Store",
+      "description": "",
+      "slug": "e-commerce-store-2",
+      "theme": "modern",
+      "status": "draft",
+      "seo": {
+        "title": "E-Commerce Store",
+        "description": "",
+        "keywords": [],
+        "ogImage": ""
+      },
+      "components": [
+        {
+          "type": "hero",
+          "visible": true,
+          "config": {
+            "title": "Shop The Latest Collection",
+            "subtitle": "Quality • Style • Value",
+            "description": "Discover amazing products at unbeatable prices. Free shipping on orders over $50.",
+            "primaryCTA": {
+              "text": "Shop Now",
+              "link": "#products",
+              "style": "primary"
+            },
+            "secondaryCTA": {
+              "text": "View Catalog",
+              "link": "#catalog",
+              "style": "outline"
+            },
+            "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800",
+            "alignment": "left",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 800,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "2xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761648884750-0",
+          "order": 0
+        },
+        {
+          "type": "features",
+          "visible": true,
+          "config": {
+            "title": "Why Shop With Us",
+            "subtitle": "Customer satisfaction is our priority",
+            "description": "Experience the best shopping journey",
+            "features": [
+              {
+                "title": "Free Shipping",
+                "description": "Free delivery on all orders over $50",
+                "icon": "🚚"
+              },
+              {
+                "title": "Secure Payment",
+                "description": "100% secure payment with SSL encryption",
+                "icon": "💳"
+              },
+              {
+                "title": "30-Day Returns",
+                "description": "Easy returns within 30 days of purchase",
+                "icon": "↩️"
+              },
+              {
+                "title": "24/7 Support",
+                "description": "Dedicated customer support team",
+                "icon": "💬"
+              },
+              {
+                "title": "Quality Guarantee",
+                "description": "All products are quality checked",
+                "icon": "✓"
+              },
+              {
+                "title": "Best Prices",
+                "description": "Competitive prices with regular discounts",
+                "icon": "💰"
+              }
+            ],
+            "layout": "grid",
+            "columns": 3,
+            "background": {
+              "type": "solid",
+              "color": "#f9fafb"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 100
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761648884750-1",
+          "order": 1
+        },
+        {
+          "type": "testimonials",
+          "visible": true,
+          "config": {
+            "title": "Happy Customers",
+            "subtitle": "See what our customers say",
+            "description": "Join thousands of satisfied shoppers",
+            "testimonials": [
+              {
+                "content": "Love the quality and fast shipping! Will definitely order again.",
+                "author": "Emma Wilson",
+                "role": "Verified Buyer",
+                "company": "Fashion Lover",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=5"
+              },
+              {
+                "content": "Best online shopping experience. Great products and customer service!",
+                "author": "James Brown",
+                "role": "Verified Buyer",
+                "company": "Tech Enthusiast",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=6"
+              },
+              {
+                "content": "Amazing deals and quick delivery. Highly recommend to everyone!",
+                "author": "Sophia Martinez",
+                "role": "Verified Buyer",
+                "company": "Regular Customer",
+                "rating": 5,
+                "avatar": "https://i.pravatar.cc/150?img=7"
+              }
+            ],
+            "layout": "grid",
+            "background": {
+              "type": "solid",
+              "color": "#ffffff"
+            },
+            "animation": {
+              "type": "fadeInUp",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761648884750-2",
+          "order": 2
+        },
+        {
+          "type": "cta",
+          "visible": true,
+          "config": {
+            "title": "Start Shopping Today!",
+            "description": "Get 20% off your first order. Use code: WELCOME20 at checkout.",
+            "primaryCTA": {
+              "text": "Browse Products",
+              "link": "#products",
+              "style": "primary"
+            },
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "from": "#ec4899",
+                "to": "#8b5cf6",
+                "direction": "to-r"
+              }
+            },
+            "animation": {
+              "type": "fadeIn",
+              "duration": 600,
+              "delay": 0
+            },
+            "spacing": {
+              "padding": "xl",
+              "margin": "none"
+            }
+          },
+          "id": "comp-1761648884750-3",
+          "order": 3
+        },
+        {
+          "type": "footer",
+          "visible": true,
+          "config": {
+            "logo": {
+              "text": "ShopStyle",
+              "image": ""
+            },
+            "description": "Your trusted online shopping destination.",
+            "links": [
+              {
+                "title": "Shop",
+                "items": [
+                  {
+                    "text": "New Arrivals",
+                    "link": "#new"
+                  },
+                  {
+                    "text": "Best Sellers",
+                    "link": "#bestsellers"
+                  },
+                  {
+                    "text": "Sale",
+                    "link": "#sale"
+                  },
+                  {
+                    "text": "Categories",
+                    "link": "#categories"
+                  }
+                ]
+              },
+              {
+                "title": "Customer Service",
+                "items": [
+                  {
+                    "text": "Contact Us",
+                    "link": "#contact"
+                  },
+                  {
+                    "text": "Shipping Info",
+                    "link": "#shipping"
+                  },
+                  {
+                    "text": "Returns",
+                    "link": "#returns"
+                  },
+                  {
+                    "text": "Track Order",
+                    "link": "#track"
+                  }
+                ]
+              },
+              {
+                "title": "Company",
+                "items": [
+                  {
+                    "text": "About Us",
+                    "link": "#about"
+                  },
+                  {
+                    "text": "Careers",
+                    "link": "#careers"
+                  },
+                  {
+                    "text": "Blog",
+                    "link": "#blog"
+                  },
+                  {
+                    "text": "Press",
+                    "link": "#press"
+                  }
+                ]
+              }
+            ],
+            "social": [
+              {
+                "platform": "facebook",
+                "link": "#",
+                "icon": "facebook"
+              },
+              {
+                "platform": "instagram",
+                "link": "#",
+                "icon": "instagram"
+              },
+              {
+                "platform": "twitter",
+                "link": "#",
+                "icon": "twitter"
+              }
+            ],
+            "copyright": "© 2024 ShopStyle. All rights reserved."
+          },
+          "id": "comp-1761648884750-4",
+          "order": 4
+        }
+      ],
+      "createdAt": "2025-10-28T10:54:44.750Z",
+      "updatedAt": "2025-10-28T10:54:44.769Z"
     }
   },
   "navigation": {
