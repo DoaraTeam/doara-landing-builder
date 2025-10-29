@@ -20,6 +20,7 @@ import { PricingArrayEditor } from "./PricingArrayEditor";
 import { TestimonialsArrayEditor } from "./TestimonialsArrayEditor";
 import { FooterLinksEditor } from "./FooterLinksEditor";
 import { LogoArrayEditor } from "./LogoArrayEditor";
+import { ensureAnimation } from "@/lib/animation-defaults";
 
 interface ComponentEditorProps {
   component: ComponentConfig;
@@ -40,16 +41,19 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
   useEffect(() => {
     setIsLoading(true);
 
+    // Ensure component has animation config
+    const componentWithAnimation = ensureAnimation(component);
+
     // Ensure footer components have background and spacing
-    let processedConfig = component.config;
+    let processedConfig = componentWithAnimation.config;
     if (component.type === "footer") {
       processedConfig = {
-        ...component.config,
-        background: component.config.background || {
+        ...componentWithAnimation.config,
+        background: componentWithAnimation.config.background || {
           type: "solid",
           color: "#0f172a",
         },
-        spacing: component.config.spacing || {
+        spacing: componentWithAnimation.config.spacing || {
           padding: "xl",
           margin: "none",
         },
