@@ -1,137 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Margin Demo - Landing Builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .section-box {
-            outline: 2px dashed #3b82f6;
-            background: rgba(59, 130, 246, 0.05);
-        }
-        .content-box {
-            background: white;
-            border: 2px solid #10b981;
-        }
+      .section-box {
+        outline: 2px dashed #3b82f6;
+        background: rgba(59, 130, 246, 0.05);
+      }
+      .content-box {
+        background: white;
+        border: 2px solid #10b981;
+      }
     </style>
-</head>
-<body class="bg-gray-100 p-8">
+  </head>
+  <body class="bg-gray-100 p-8">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-8 text-center">Margin vs Padding Demo</h1>
-        
-        <!-- Example 1: No Margin -->
-        <div class="mb-12">
-            <h2 class="text-xl font-semibold mb-4">1. No Margin (margin: "none")</h2>
-            <div class="space-y-0">
-                <section class="py-16 px-4 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 1</h3>
-                        <p>This has padding but NO margin</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 (padding only)</p>
-                    </div>
-                </section>
-                
-                <section class="py-16 px-4 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 2</h3>
-                        <p>Components are touching each other</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 (padding only)</p>
-                    </div>
-                </section>
+      <h1 class="text-3xl font-bold mb-8 text-center">Margin vs Padding Demo</h1>
+
+      <!-- Example 1: No Margin -->
+      <div class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">1. No Margin (margin: "none")</h2>
+        <div class="space-y-0">
+          <section class="py-16 px-4 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 1</h3>
+              <p>This has padding but NO margin</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 (padding only)</p>
             </div>
+          </section>
+
+          <section class="py-16 px-4 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 2</h3>
+              <p>Components are touching each other</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 (padding only)</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Example 2: Small Margin -->
+      <div class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">2. Small Margin (margin: "sm" = my-4)</h2>
+        <div>
+          <section class="py-16 px-4 my-4 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 1</h3>
+              <p>This has 1rem margin top & bottom</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-4</p>
+            </div>
+          </section>
+
+          <section class="py-16 px-4 my-4 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 2</h3>
+              <p>Notice the gap between components</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-4</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Example 3: Large Margin -->
+      <div class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">3. Large Margin (margin: "lg" = my-12)</h2>
+        <div>
+          <section class="py-16 px-4 my-12 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 1</h3>
+              <p>This has 3rem margin top & bottom</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-12</p>
+            </div>
+          </section>
+
+          <section class="py-16 px-4 my-12 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 2</h3>
+              <p>Much larger gap between components</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-12</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Example 4: Extra Large Margin -->
+      <div class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">4. Extra Large Margin (margin: "xl" = my-16)</h2>
+        <div>
+          <section class="py-16 px-4 my-16 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 1</h3>
+              <p>This has 4rem margin top & bottom</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-16</p>
+            </div>
+          </section>
+
+          <section class="py-16 px-4 my-16 section-box">
+            <div class="content-box p-8">
+              <h3 class="font-bold">Component 2</h3>
+              <p>Very large gap between components</p>
+              <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-16</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="mt-12 p-6 bg-white rounded-lg shadow">
+        <h3 class="text-lg font-bold mb-4">Legend:</h3>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 border-2 border-dashed border-blue-500 bg-blue-50"></div>
+            <span>Blue dashed outline = Section (includes padding + margin)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 border-2 border-green-500 bg-white"></div>
+            <span>Green solid border = Content area (inside padding)</span>
+          </div>
         </div>
 
-        <!-- Example 2: Small Margin -->
-        <div class="mb-12">
-            <h2 class="text-xl font-semibold mb-4">2. Small Margin (margin: "sm" = my-4)</h2>
-            <div>
-                <section class="py-16 px-4 my-4 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 1</h3>
-                        <p>This has 1rem margin top & bottom</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-4</p>
-                    </div>
-                </section>
-                
-                <section class="py-16 px-4 my-4 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 2</h3>
-                        <p>Notice the gap between components</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-4</p>
-                    </div>
-                </section>
-            </div>
+        <div class="mt-6 p-4 bg-gray-50 rounded">
+          <h4 class="font-semibold mb-2">Tailwind Classes Used:</h4>
+          <ul class="text-sm space-y-1">
+            <li>
+              <code class="bg-gray-200 px-2 py-1 rounded">my-4</code> = margin-top: 1rem;
+              margin-bottom: 1rem;
+            </li>
+            <li>
+              <code class="bg-gray-200 px-2 py-1 rounded">my-8</code> = margin-top: 2rem;
+              margin-bottom: 2rem;
+            </li>
+            <li>
+              <code class="bg-gray-200 px-2 py-1 rounded">my-12</code> = margin-top: 3rem;
+              margin-bottom: 3rem;
+            </li>
+            <li>
+              <code class="bg-gray-200 px-2 py-1 rounded">my-16</code> = margin-top: 4rem;
+              margin-bottom: 4rem;
+            </li>
+          </ul>
         </div>
-
-        <!-- Example 3: Large Margin -->
-        <div class="mb-12">
-            <h2 class="text-xl font-semibold mb-4">3. Large Margin (margin: "lg" = my-12)</h2>
-            <div>
-                <section class="py-16 px-4 my-12 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 1</h3>
-                        <p>This has 3rem margin top & bottom</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-12</p>
-                    </div>
-                </section>
-                
-                <section class="py-16 px-4 my-12 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 2</h3>
-                        <p>Much larger gap between components</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-12</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- Example 4: Extra Large Margin -->
-        <div class="mb-12">
-            <h2 class="text-xl font-semibold mb-4">4. Extra Large Margin (margin: "xl" = my-16)</h2>
-            <div>
-                <section class="py-16 px-4 my-16 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 1</h3>
-                        <p>This has 4rem margin top & bottom</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-16</p>
-                    </div>
-                </section>
-                
-                <section class="py-16 px-4 my-16 section-box">
-                    <div class="content-box p-8">
-                        <h3 class="font-bold">Component 2</h3>
-                        <p>Very large gap between components</p>
-                        <p class="text-sm text-gray-600 mt-2">py-16 px-4 my-16</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- Legend -->
-        <div class="mt-12 p-6 bg-white rounded-lg shadow">
-            <h3 class="text-lg font-bold mb-4">Legend:</h3>
-            <div class="space-y-2">
-                <div class="flex items-center gap-2">
-                    <div class="w-4 h-4 border-2 border-dashed border-blue-500 bg-blue-50"></div>
-                    <span>Blue dashed outline = Section (includes padding + margin)</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-4 h-4 border-2 border-green-500 bg-white"></div>
-                    <span>Green solid border = Content area (inside padding)</span>
-                </div>
-            </div>
-            
-            <div class="mt-6 p-4 bg-gray-50 rounded">
-                <h4 class="font-semibold mb-2">Tailwind Classes Used:</h4>
-                <ul class="text-sm space-y-1">
-                    <li><code class="bg-gray-200 px-2 py-1 rounded">my-4</code> = margin-top: 1rem; margin-bottom: 1rem;</li>
-                    <li><code class="bg-gray-200 px-2 py-1 rounded">my-8</code> = margin-top: 2rem; margin-bottom: 2rem;</li>
-                    <li><code class="bg-gray-200 px-2 py-1 rounded">my-12</code> = margin-top: 3rem; margin-bottom: 3rem;</li>
-                    <li><code class="bg-gray-200 px-2 py-1 rounded">my-16</code> = margin-top: 4rem; margin-bottom: 4rem;</li>
-                </ul>
-            </div>
-        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
