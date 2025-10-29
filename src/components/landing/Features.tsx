@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { motion } from "framer-motion";
 import { Theme, FeaturesConfig } from "@/types/landing";
 import { getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
 import { getLayoutClasses } from "@/lib/layout-utils";
+import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
 
 interface FeaturesProps {
   config: FeaturesConfig;
@@ -20,7 +22,14 @@ export function Features({ config }: FeaturesProps) {
     background,
     spacing,
     containerWidth,
+    animation,
   } = config;
+
+  // Use stagger animation for the features grid
+  const stagger = useStaggerAnimation({
+    animation: animation || { type: "fadeInUp", duration: 600 },
+    staggerDelay: 0.1,
+  });
 
   // Use CSS variables for theme colors
   const primaryColor = "var(--color-primary)";
@@ -75,11 +84,18 @@ export function Features({ config }: FeaturesProps) {
           )}
         </div>
 
-        {/* Features Grid */}
-        <div className={`grid ${layout.grid} gap-6`}>
+        {/* Features Grid with Stagger Animation */}
+        <motion.div
+          ref={stagger.ref}
+          initial="hidden"
+          animate={stagger.animate}
+          variants={stagger.containerVariants}
+          className={`grid ${layout.grid} gap-6`}
+        >
           {features.map((feature) => (
-            <div
+            <motion.div
               key={feature.id}
+              variants={stagger.itemVariants}
               className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
               style={{
                 backgroundColor: isDarkBg ? "rgba(255,255,255,0.08)" : surfaceColor,
@@ -118,9 +134,9 @@ export function Features({ config }: FeaturesProps) {
               >
                 {feature.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
