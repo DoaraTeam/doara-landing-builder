@@ -23,7 +23,8 @@ function Hero() {
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div>
             <Button variant="secondary" size="sm" className="gap-4">
-              Learn how our CMS works <MoveRight className="w-4 h-4" />
+              Learn how our CMS works
+              <MoveRight className="w-4 h-4" />
             </Button>
           </div>
 
