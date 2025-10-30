@@ -13,7 +13,7 @@ interface VideoConfig {
   videoType?: "youtube" | "vimeo" | "direct";
   thumbnail?: string;
   autoPlay?: boolean;
-  aspectRatio?: "16/9" | "4/3" | "1/1";
+  aspectRatio?: "16:9" | "4:3" | "21:9" | "1:1";
   background: {
     type: "solid";
     color?: string;
@@ -40,7 +40,7 @@ interface VideoProps {
   theme?: Theme;
 }
 
-export function Video({ config, theme }: VideoProps) {
+export function Video({ config }: VideoProps) {
   const {
     title,
     subtitle,
@@ -55,6 +55,11 @@ export function Video({ config, theme }: VideoProps) {
   } = config;
 
   const [playing, setPlaying] = useState(autoPlay);
+
+  // Normalize animation config to have default type
+  const normalizedAnimation = config.animation
+    ? { type: "fadeInUp" as const, ...config.animation }
+    : undefined;
 
   const primaryColor = "var(--color-primary)";
   const textColor = "var(--color-text)";
@@ -82,17 +87,20 @@ export function Video({ config, theme }: VideoProps) {
     return videoUrl;
   };
 
-  const aspectRatioClass = {
-    "16/9": "aspect-video",
-    "4/3": "aspect-[4/3]",
-    "1/1": "aspect-square",
+  const aspectRatioClass: Record<string, string> = {
+    "16:9": "aspect-video",
+    "16/9": "aspect-video", // backward compatibility
+    "4:3": "aspect-[4/3]",
+    "4/3": "aspect-[4/3]", // backward compatibility
+    "21:9": "aspect-[21/9]",
+    "1:1": "aspect-square",
   };
 
   const paddingClass =
     spacing?.padding === "xl" ? "py-20" : spacing?.padding === "md" ? "py-12" : "py-16";
 
   return (
-    <AnimatedSection animation={config.animation}>
+    <AnimatedSection animation={normalizedAnimation}>
       <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
         <div className="container mx-auto max-w-5xl">
           {/* Header */}
