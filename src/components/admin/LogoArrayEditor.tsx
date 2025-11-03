@@ -196,7 +196,7 @@ export function LogoArrayEditor({ logos = [], onChange }: LogoArrayEditorProps) 
 
         {logos.length === 0 && (
           <div className="text-center py-8 text-gray-500 text-sm border-2 border-dashed border-gray-200 rounded-lg">
-            No logos added yet. Click "Add Logo" to get started.
+            No logos added yet. Click &quot;Add Logo&quot; to get started.
           </div>
         )}
       </div>
