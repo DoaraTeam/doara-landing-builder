@@ -1,6 +1,7 @@
 "use client";
 
 import { ComponentConfig, Theme } from "@/types/landing";
+import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { Features } from "./Features";
 import { Pricing } from "./Pricing";
@@ -27,58 +28,92 @@ interface ComponentRendererProps {
  * This is the main router for rendering landing page components
  */
 export function ComponentRenderer({ component, theme }: ComponentRendererProps) {
-  const { type, config, visible } = component;
+  const { id, type, config, visible } = component;
 
   // Don't render invisible components in public view
   if (visible === false) {
     return null;
   }
 
+  // Wrap each component in a div with ID for scroll navigation
+  const wrapWithId = (children: React.ReactNode) => {
+    // Don't add ID wrapper for header (it's the navigation itself)
+    if (type === "header") {
+      return children;
+    }
+    return (
+      <div id={id} className="scroll-mt-20">
+        {children}
+      </div>
+    );
+  };
+
+  let componentElement: React.ReactNode;
+
   switch (type) {
+    case "header":
+      componentElement = <Header config={config as never} theme={theme} />;
+      break;
+
     case "hero":
-      return <Hero config={config as never} theme={theme} />;
+      componentElement = <Hero config={config as never} theme={theme} />;
+      break;
 
     case "features":
-      return <Features config={config as never} theme={theme} />;
+      componentElement = <Features config={config as never} theme={theme} />;
+      break;
 
     case "pricing":
-      return <Pricing config={config as never} theme={theme} />;
+      componentElement = <Pricing config={config as never} theme={theme} />;
+      break;
 
     case "testimonials":
-      return <Testimonials config={config as never} theme={theme} />;
+      componentElement = <Testimonials config={config as never} theme={theme} />;
+      break;
 
     case "cta":
-      return <CTA config={config as never} theme={theme} />;
+      componentElement = <CTA config={config as never} theme={theme} />;
+      break;
 
     case "footer":
-      return <Footer config={config as never} theme={theme} />;
+      componentElement = <Footer config={config as never} theme={theme} />;
+      break;
 
     case "stats":
-      return <Stats config={config as never} theme={theme} />;
+      componentElement = <Stats config={config as never} theme={theme} />;
+      break;
 
     case "team":
-      return <Team config={config as never} theme={theme} />;
+      componentElement = <Team config={config as never} theme={theme} />;
+      break;
 
     case "faq":
-      return <FAQ config={config as never} theme={theme} />;
+      componentElement = <FAQ config={config as never} theme={theme} />;
+      break;
 
     case "gallery":
-      return <Gallery config={config as never} theme={theme} />;
+      componentElement = <Gallery config={config as never} theme={theme} />;
+      break;
 
     case "logo-cloud":
-      return <LogoCloud config={config as never} theme={theme} />;
+      componentElement = <LogoCloud config={config as never} theme={theme} />;
+      break;
 
     case "contact":
-      return <Contact config={config as never} theme={theme} />;
+      componentElement = <Contact config={config as never} theme={theme} />;
+      break;
 
     case "content":
-      return <Content config={config as never} theme={theme} />;
+      componentElement = <Content config={config as never} theme={theme} />;
+      break;
 
     case "newsletter":
-      return <Newsletter config={config as never} theme={theme} />;
+      componentElement = <Newsletter config={config as never} theme={theme} />;
+      break;
 
     case "video":
-      return <Video config={config as never} theme={theme} />;
+      componentElement = <Video config={config as never} theme={theme} />;
+      break;
 
     // Add more component types here as needed
     case "gym-hero":
@@ -89,18 +124,21 @@ export function ComponentRenderer({ component, theme }: ComponentRendererProps) 
     case "gym-about":
     case "gym-contact":
       // TODO: Implement gym-specific components
-      return (
+      componentElement = (
         <div className="py-20 px-4 text-center bg-gray-100">
           <p className="text-gray-500">Component type &quot;{type}&quot; not yet implemented</p>
         </div>
       );
+      break;
 
     default:
       console.warn(`Unknown component type: ${type}`);
-      return (
+      componentElement = (
         <div className="py-20 px-4 text-center bg-red-50">
           <p className="text-red-500">Unknown component type: {type}</p>
         </div>
       );
   }
+
+  return wrapWithId(componentElement);
 }
