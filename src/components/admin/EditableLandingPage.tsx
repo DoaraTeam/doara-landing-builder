@@ -179,9 +179,12 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
       c.id === componentId ? { ...c, visible: !c.visible } : c
     );
 
+    // Auto-sync header tabs if header exists
+    const syncedComponents = syncHeaderTabs(updatedComponents);
+
     setEditingPage({
       ...editingPage,
-      components: updatedComponents,
+      components: syncedComponents,
     });
 
     toast({
@@ -195,9 +198,12 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
   const handleDeleteComponent = (componentId: string) => {
     const updatedComponents = editingPage.components.filter((c) => c.id !== componentId);
 
+    // Auto-sync header tabs if header exists
+    const syncedComponents = syncHeaderTabs(updatedComponents);
+
     setEditingPage({
       ...editingPage,
-      components: updatedComponents,
+      components: syncedComponents,
     });
 
     if (selectedComponentId === componentId) {
@@ -212,24 +218,116 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
     });
   };
 
-  // Add a new component
-  const handleAddComponent = (component: ComponentConfig) => {
-    const maxOrder = Math.max(0, ...editingPage.components.map((c) => c.order));
-    const newComponent = {
-      ...component,
-      order: maxOrder + 1,
+  // Auto-sync header tabs with components
+  const syncHeaderTabs = (components: ComponentConfig[]) => {
+    const headerComponent = components.find((c) => c.type === "header");
+    if (!headerComponent) return components;
+
+    // Get all visible non-header components
+    const visibleComponents = components.filter(
+      (c) => c.type !== "header" && c.visible && c.type !== "footer"
+    );
+
+    // Create tabs for each component
+    const newTabs = visibleComponents.map((comp) => ({
+      id: comp.id,
+      text: getComponentDisplayName(comp),
+      link: `#${comp.id}`,
+    }));
+
+    // Update header config with new tabs
+    const updatedHeader = {
+      ...headerComponent,
+      config: {
+        ...headerComponent.config,
+        tabs: newTabs,
+      },
     };
 
-    setEditingPage({
-      ...editingPage,
-      components: [...editingPage.components, newComponent],
-    });
+    return components.map((c) => (c.id === headerComponent.id ? updatedHeader : c));
+  };
 
-    toast({
-      title: "➕ Component Added",
-      description: `${component.type} component has been added to your page`,
-      duration: 3000,
-    });
+  // Get display name for component type
+  const getComponentDisplayName = (component: ComponentConfig): string => {
+    const typeNames: Record<string, string> = {
+      hero: "Home",
+      features: "Features",
+      pricing: "Pricing",
+      testimonials: "Testimonials",
+      cta: "Get Started",
+      stats: "Stats",
+      team: "Team",
+      faq: "FAQ",
+      gallery: "Gallery",
+      "logo-cloud": "Partners",
+      contact: "Contact",
+      content: "About",
+      newsletter: "Newsletter",
+      video: "Video",
+    };
+
+    // Check if component has a title in config
+    const config = component.config as Record<string, unknown>;
+    if (config?.title && typeof config.title === "string") {
+      return config.title;
+    }
+
+    return typeNames[component.type] || component.type;
+  };
+
+  // Add a new component
+  const handleAddComponent = (component: ComponentConfig) => {
+    // Header components should always be at the top
+    if (component.type === "header") {
+      const newComponent = {
+        ...component,
+        order: 0,
+      };
+
+      // Reorder all existing components
+      const reorderedComponents = editingPage.components.map((c) => ({
+        ...c,
+        order: c.order + 1,
+      }));
+
+      // Sync header tabs with existing components
+      const allComponents = [newComponent, ...reorderedComponents];
+      const syncedComponents = syncHeaderTabs(allComponents);
+
+      setEditingPage({
+        ...editingPage,
+        components: syncedComponents,
+      });
+
+      toast({
+        title: "📱 Header Added",
+        description: "Header component has been added with navigation tabs",
+        duration: 3000,
+      });
+    } else {
+      // For other components, add to the end
+      const maxOrder = Math.max(0, ...editingPage.components.map((c) => c.order));
+      const newComponent = {
+        ...component,
+        order: maxOrder + 1,
+      };
+
+      const updatedComponents = [...editingPage.components, newComponent];
+
+      // Auto-sync header tabs if header exists
+      const syncedComponents = syncHeaderTabs(updatedComponents);
+
+      setEditingPage({
+        ...editingPage,
+        components: syncedComponents,
+      });
+
+      toast({
+        title: "➕ Component Added",
+        description: `${component.type} component has been added to your page`,
+        duration: 3000,
+      });
+    }
   };
 
   // Duplicate a component
@@ -689,7 +787,19 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
                       canMoveUp={index > 0}
                       canMoveDown={index < sortedComponents.length - 1}
                     >
-                      <div className="w-full overflow-hidden">
+                      {/* Special wrapper for header to ensure EditableBlock features work properly */}
+                      <div
+                        className={`w-full ${component.type === "header" ? "relative" : "overflow-hidden"}`}
+                        style={
+                          component.type === "header"
+                            ? {
+                                // Contain header within EditableBlock bounds
+                                position: "relative",
+                                isolation: "isolate",
+                              }
+                            : undefined
+                        }
+                      >
                         <ComponentRenderer component={component} theme={theme} />
                       </div>
                     </EditableBlock>
