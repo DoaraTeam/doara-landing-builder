@@ -20,6 +20,7 @@ import { PricingArrayEditor } from "./PricingArrayEditor";
 import { TestimonialsArrayEditor } from "./TestimonialsArrayEditor";
 import { FooterLinksEditor } from "./FooterLinksEditor";
 import { LogoArrayEditor } from "./LogoArrayEditor";
+import { HeaderTabsEditor } from "./HeaderTabsEditor";
 import { ensureAnimation } from "@/lib/animation-defaults";
 
 interface ComponentEditorProps {
@@ -87,6 +88,7 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
 
   const getComponentIcon = (type: string) => {
     const icons: Record<string, string> = {
+      header: "📱",
       hero: "🦸",
       features: "✨",
       pricing: "💰",
@@ -143,8 +145,130 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
             isLoading ? "opacity-50" : "opacity-100"
           }`}
         >
+          {/* Header Component Fields */}
+          {component.type === "header" && (
+            <>
+              {/* Logo Configuration */}
+              <div className="space-y-3 p-3 border border-gray-200 rounded-lg">
+                <Label className="text-sm font-semibold">Logo</Label>
+                <div className="space-y-2">
+                  <Label className="text-xs">Type</Label>
+                  <Select
+                    value={(config.logo as { type?: string })?.type || "text"}
+                    onValueChange={(value) => handleChange("logo.type", value)}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="text">Text Logo</SelectItem>
+                      <SelectItem value="image">Image Logo</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {(config.logo as { type?: string })?.type === "text" && (
+                    <div className="space-y-2">
+                      <Label className="text-xs">Logo Text</Label>
+                      <Input
+                        value={(config.logo as { text?: string })?.text || ""}
+                        onChange={(e) => handleChange("logo.text", e.target.value)}
+                        placeholder="Your Brand"
+                      />
+                    </div>
+                  )}
+
+                  {(config.logo as { type?: string })?.type === "image" && (
+                    <ImageUpload
+                      label="Logo Image"
+                      value={(config.logo as { image?: string })?.image || ""}
+                      onChange={(url) => handleChange("logo.image", url)}
+                    />
+                  )}
+
+                  <div className="space-y-2">
+                    <Label className="text-xs">Logo Link</Label>
+                    <Input
+                      value={(config.logo as { link?: string })?.link || "/"}
+                      onChange={(e) => handleChange("logo.link", e.target.value)}
+                      placeholder="/"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation Tabs */}
+              {"tabs" in config && Array.isArray(config.tabs) && (
+                <HeaderTabsEditor
+                  tabs={config.tabs}
+                  onChange={(tabs) => handleChange("tabs", tabs)}
+                />
+              )}
+
+              {/* CTA Button */}
+              <div className="space-y-3 p-3 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <Label className="text-sm font-semibold">CTA Button (Optional)</Label>
+                  {config.ctaButton ? (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => handleChange("ctaButton", undefined)}
+                    >
+                      Remove
+                    </Button>
+                  ) : (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() =>
+                        handleChange("ctaButton", {
+                          text: "Get Started",
+                          link: "#",
+                          style: "primary",
+                        })
+                      }
+                    >
+                      Add CTA
+                    </Button>
+                  )}
+                </div>
+
+                {config.ctaButton && (
+                  <div className="space-y-2">
+                    <Input
+                      value={(config.ctaButton as { text?: string })?.text || ""}
+                      onChange={(e) => handleChange("ctaButton.text", e.target.value)}
+                      placeholder="Button text"
+                    />
+                    <Input
+                      value={(config.ctaButton as { link?: string })?.link || ""}
+                      onChange={(e) => handleChange("ctaButton.link", e.target.value)}
+                      placeholder="Button link"
+                    />
+                    <div className="space-y-2">
+                      <Label className="text-xs">Button Style</Label>
+                      <Select
+                        value={(config.ctaButton as { style?: string })?.style || "primary"}
+                        onValueChange={(value) => handleChange("ctaButton.style", value)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="primary">Primary</SelectItem>
+                          <SelectItem value="secondary">Secondary</SelectItem>
+                          <SelectItem value="outline">Outline</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+
           {/* Common fields for most components */}
-          {"title" in config && (
+          {"title" in config && component.type !== "header" && (
             <div className="space-y-2">
               <Label>Title</Label>
               <Input
@@ -410,6 +534,46 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
             isLoading ? "opacity-50" : "opacity-100"
           }`}
         >
+          {/* Header Position */}
+          {component.type === "header" && (
+            <>
+              <div className="space-y-2">
+                <Label>Position</Label>
+                <Select
+                  value={(config.position as string) || "sticky"}
+                  onValueChange={(value) => handleChange("position", value)}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="static">Static</SelectItem>
+                    <SelectItem value="sticky">Sticky</SelectItem>
+                    <SelectItem value="fixed">Fixed</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="transparent"
+                    checked={(config.transparent as boolean) || false}
+                    onChange={(e) => handleChange("transparent", e.target.checked)}
+                    className="rounded border-gray-300"
+                  />
+                  <Label htmlFor="transparent" className="cursor-pointer">
+                    Transparent on Scroll Top
+                  </Label>
+                </div>
+                <p className="text-xs text-gray-500">
+                  Header will be transparent when at the top of the page
+                </p>
+              </div>
+            </>
+          )}
+
           {/* Alignment - for hero, cta, content, testimonials, etc. */}
           {(component.type === "hero" ||
             component.type === "cta" ||
