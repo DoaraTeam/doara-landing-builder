@@ -6,6 +6,7 @@
  * Component types available in the builder
  */
 export type ComponentType =
+  | "header"
   | "hero"
   | "features"
   | "pricing"
@@ -84,6 +85,38 @@ export type ContainerWidth =
 // ========================
 // COMPONENT CONFIGS
 // ========================
+
+/**
+ * Header tab item
+ */
+export interface HeaderTab {
+  id: string;
+  text: string;
+  link: string;
+}
+
+/**
+ * Header section configuration
+ */
+export interface HeaderConfig {
+  logo?: {
+    type: "text" | "image";
+    text?: string;
+    image?: string;
+    link?: string;
+  };
+  tabs: HeaderTab[];
+  ctaButton?: {
+    text: string;
+    link: string;
+    style?: "primary" | "secondary" | "outline";
+  };
+  position?: "fixed" | "sticky" | "static";
+  transparent?: boolean; // Transparent on scroll top
+  background: BackgroundConfig;
+  spacing?: SpacingConfig;
+  animation?: AnimationConfig;
+}
 
 /**
  * Hero section configuration
@@ -325,6 +358,7 @@ export interface ComponentConfig {
   order: number;
   visible: boolean;
   config:
+    | HeaderConfig
     | HeroConfig
     | FeaturesConfig
     | PricingConfig
