@@ -47,12 +47,22 @@ export function EditableBlock({
   };
   const getComponentName = (type: string) => {
     const names: Record<string, string> = {
+      header: "Header Navigation",
       hero: "Hero Section",
       features: "Features",
       pricing: "Pricing",
       testimonials: "Testimonials",
       cta: "Call to Action",
       footer: "Footer",
+      stats: "Statistics",
+      team: "Team",
+      faq: "FAQ",
+      gallery: "Gallery",
+      "logo-cloud": "Logo Cloud",
+      contact: "Contact",
+      content: "Content",
+      newsletter: "Newsletter",
+      video: "Video",
       "gym-hero": "Gym Hero",
       "gym-services": "Gym Services",
       "gym-pricing": "Gym Pricing",
@@ -68,7 +78,7 @@ export function EditableBlock({
     <div
       ref={setNodeRef}
       style={style}
-      className={`relative group transition-all duration-200 ${isSelected ? "shadow-xl z-30" : "hover:shadow-md"} ${!component.visible ? "opacity-60" : ""} ${isDragging ? "opacity-50 scale-105" : ""}`}
+      className={`relative group transition-all duration-200 ${isSelected ? "shadow-xl z-50" : "hover:shadow-md z-10"} ${!component.visible ? "opacity-60" : ""} ${isDragging ? "opacity-50 scale-105" : ""}`}
       onClick={onSelect}
     >
       {/* Component Content */}
@@ -104,7 +114,7 @@ export function EditableBlock({
 
       {/* Toolbar - Shows on hover or when selected */}
       <div
-        className={`absolute top-0 right-0 m-2 flex gap-1 transition-opacity ${
+        className={`absolute top-0 right-0 m-2 flex gap-1 transition-opacity z-[60] ${
           isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         }`}
       >
