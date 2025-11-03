@@ -16,6 +16,103 @@ export interface ComponentCategory {
 }
 
 const categories: ComponentCategory[] = [
+  // ==================== HEADER ====================
+  {
+    type: "header",
+    name: "Header",
+    description: "Navigation header with logo and menu",
+    icon: "📱",
+    variants: [
+      {
+        name: "Modern Header",
+        description: "Clean header with navigation and CTA button",
+        template: {
+          type: "header",
+          visible: true,
+          config: {
+            logo: {
+              type: "text",
+              text: "Your Brand",
+              link: "/",
+            },
+            tabs: [], // Will be auto-populated with components
+            ctaButton: {
+              text: "Get Started",
+              link: "#",
+              style: "primary",
+            },
+            position: "sticky",
+            transparent: false,
+            background: {
+              type: "solid",
+              color: "#ffffff",
+            },
+            spacing: { padding: "md" },
+            animation: { type: "none" },
+          },
+        },
+      },
+      {
+        name: "Transparent Header",
+        description: "Transparent header that becomes solid on scroll",
+        template: {
+          type: "header",
+          visible: true,
+          config: {
+            logo: {
+              type: "text",
+              text: "Your Brand",
+              link: "/",
+            },
+            tabs: [], // Will be auto-populated with components
+            ctaButton: {
+              text: "Contact Us",
+              link: "#",
+              style: "outline",
+            },
+            position: "fixed",
+            transparent: true,
+            background: {
+              type: "solid",
+              color: "#ffffff",
+            },
+            spacing: { padding: "md" },
+            animation: { type: "fadeIn", duration: 600 },
+          },
+        },
+      },
+      {
+        name: "Header with Logo Image",
+        description: "Header with image logo",
+        template: {
+          type: "header",
+          visible: true,
+          config: {
+            logo: {
+              type: "image",
+              image: "https://via.placeholder.com/150x50/4A90E2/FFF?text=Logo",
+              link: "/",
+            },
+            tabs: [], // Will be auto-populated with components
+            ctaButton: {
+              text: "Sign Up",
+              link: "#",
+              style: "primary",
+            },
+            position: "sticky",
+            transparent: false,
+            background: {
+              type: "solid",
+              color: "#ffffff",
+            },
+            spacing: { padding: "md" },
+            animation: { type: "none" },
+          },
+        },
+      },
+    ],
+  },
+
   // ==================== HERO SECTIONS ====================
   {
     type: "hero",
