@@ -31,8 +31,9 @@ Open your browser:
 
 - **Admin Dashboard**: http://localhost:3000/admin
 - **Landing Pages**:
-  - http://localhost:3000/landing/saas-platform
-  - http://localhost:3000/landing/ai-startup
+  - http://localhost:3000/saas-platform
+  - http://localhost:3000/ai-startup
+  -...
 
 ### Build for Production
 
@@ -59,7 +60,7 @@ npm start
 │   ├── types/
 │   │   └── landing.ts              # TypeScript types
 │   └── lib/
-└── BOT-DEVELOPMENT-GUIDE.md        # Detailed dev guide
+
 ```
 
 ## 🎨 Available Components
