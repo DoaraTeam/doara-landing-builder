@@ -100,7 +100,7 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
   };
 
   return (
-    <div className="fixed left-0 top-0 h-full w-full md:w-96 bg-white border-r border-gray-200 shadow-2xl flex flex-col z-50">
+    <div className="fixed left-0 top-0 h-full w-full md:w-96 bg-white border-r border-gray-200 shadow-2xl flex flex-col z-[999]">
       {/* Header */}
       <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
         <div className="flex items-center gap-2">
@@ -1088,28 +1088,211 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
 
                   <div className="space-y-2">
                     <Label className="text-xs font-semibold">Overlay Color (Optional)</Label>
-                    <Input
-                      type="text"
-                      value={
-                        (config.background as { image?: { overlay?: string } })?.image?.overlay ||
-                        ""
-                      }
-                      onChange={(e) => handleChange("background.image.overlay", e.target.value)}
-                      placeholder="rgba(0,0,0,0.5) or #000000"
-                    />
-                    <p className="text-xs text-gray-500">
-                      Để trống = không có lớp phủ. Ví dụ: rgba(0,0,0,0.5) cho lớp phủ đen 50%
-                    </p>
-                    {(config.background as { image?: { overlay?: string } })?.image?.overlay && (
-                      <div
-                        className="w-full h-12 rounded border border-gray-300"
-                        style={{
-                          backgroundColor:
-                            (config.background as { image?: { overlay?: string } })?.image
-                              ?.overlay || "transparent",
-                        }}
-                      />
-                    )}
+
+                    <div className="space-y-3">
+                      {/* Color Picker with Opacity Slider */}
+                      <div className="flex gap-3 items-start">
+                        {/* Color Input */}
+                        <div className="flex-1">
+                          <div className="flex gap-2">
+                            <Input
+                              type="color"
+                              value={(() => {
+                                const overlay =
+                                  (config.background as { image?: { overlay?: string } })?.image
+                                    ?.overlay || "";
+                                // Extract hex color from rgba or use default
+                                if (overlay.startsWith("rgba")) {
+                                  const match = overlay.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+                                  if (match) {
+                                    const r = parseInt(match[1]).toString(16).padStart(2, "0");
+                                    const g = parseInt(match[2]).toString(16).padStart(2, "0");
+                                    const b = parseInt(match[3]).toString(16).padStart(2, "0");
+                                    return `#${r}${g}${b}`;
+                                  }
+                                }
+                                return overlay || "#000000";
+                              })()}
+                              onChange={(e) => {
+                                const hex = e.target.value;
+                                const r = parseInt(hex.slice(1, 3), 16);
+                                const g = parseInt(hex.slice(3, 5), 16);
+                                const b = parseInt(hex.slice(5, 7), 16);
+                                const currentOverlay =
+                                  (config.background as { image?: { overlay?: string } })?.image
+                                    ?.overlay || "";
+                                // Preserve opacity if exists
+                                const opacityMatch = currentOverlay.match(/[\d.]+\)$/);
+                                const opacity = opacityMatch
+                                  ? parseFloat(opacityMatch[0].replace(")", ""))
+                                  : 0.5;
+                                handleChange(
+                                  "background.image.overlay",
+                                  `rgba(${r},${g},${b},${opacity})`
+                                );
+                              }}
+                              className="w-20 h-10 cursor-pointer"
+                            />
+                            <Input
+                              type="text"
+                              value={
+                                (config.background as { image?: { overlay?: string } })?.image
+                                  ?.overlay || ""
+                              }
+                              onChange={(e) =>
+                                handleChange("background.image.overlay", e.target.value)
+                              }
+                              placeholder="rgba(0,0,0,0.5)"
+                              className="flex-1"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Clear Button */}
+                        {(config.background as { image?: { overlay?: string } })?.image
+                          ?.overlay && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleChange("background.image.overlay", "")}
+                            className="h-10"
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        )}
+                      </div>
+
+                      {/* Opacity Slider */}
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <Label className="text-xs text-gray-600">Độ mờ (Opacity)</Label>
+                          <span className="text-xs font-mono text-gray-500">
+                            {(() => {
+                              const overlay =
+                                (config.background as { image?: { overlay?: string } })?.image
+                                  ?.overlay || "";
+                              const opacityMatch = overlay.match(/[\d.]+\)$/);
+                              const opacity = opacityMatch
+                                ? parseFloat(opacityMatch[0].replace(")", ""))
+                                : 0.5;
+                              return Math.round(opacity * 100) + "%";
+                            })()}
+                          </span>
+                        </div>
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          value={(() => {
+                            const overlay =
+                              (config.background as { image?: { overlay?: string } })?.image
+                                ?.overlay || "";
+                            const opacityMatch = overlay.match(/[\d.]+\)$/);
+                            const opacity = opacityMatch
+                              ? parseFloat(opacityMatch[0].replace(")", ""))
+                              : 0.5;
+                            return opacity * 100;
+                          })()}
+                          onChange={(e) => {
+                            const opacity = parseInt(e.target.value) / 100;
+                            const currentOverlay =
+                              (config.background as { image?: { overlay?: string } })?.image
+                                ?.overlay || "";
+
+                            if (currentOverlay.startsWith("rgba")) {
+                              // Update existing rgba
+                              const newOverlay = currentOverlay.replace(/[\d.]+\)$/, `${opacity})`);
+                              handleChange("background.image.overlay", newOverlay);
+                            } else {
+                              // Create new rgba from black
+                              handleChange("background.image.overlay", `rgba(0,0,0,${opacity})`);
+                            }
+                          }}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                        />
+                      </div>
+
+                      {/* Quick Presets */}
+                      <div className="space-y-2">
+                        <Label className="text-xs text-gray-600">Quick Presets</Label>
+                        <div className="flex gap-2 flex-wrap">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              handleChange("background.image.overlay", "rgba(0,0,0,0.5)")
+                            }
+                            className="text-xs"
+                          >
+                            Dark 50%
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              handleChange("background.image.overlay", "rgba(0,0,0,0.3)")
+                            }
+                            className="text-xs"
+                          >
+                            Dark 30%
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              handleChange("background.image.overlay", "rgba(255,255,255,0.5)")
+                            }
+                            className="text-xs"
+                          >
+                            Light 50%
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              handleChange("background.image.overlay", "rgba(59,130,246,0.4)")
+                            }
+                            className="text-xs"
+                          >
+                            Blue 40%
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Preview */}
+                      {(config.background as { image?: { overlay?: string } })?.image?.overlay && (
+                        <div className="space-y-1">
+                          <Label className="text-xs text-gray-600">Preview</Label>
+                          <div
+                            className="w-full h-16 rounded-lg border-2 border-gray-300 relative overflow-hidden"
+                            style={{
+                              backgroundImage:
+                                "linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)",
+                              backgroundSize: "20px 20px",
+                              backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
+                            }}
+                          >
+                            <div
+                              className="absolute inset-0"
+                              style={{
+                                backgroundColor:
+                                  (config.background as { image?: { overlay?: string } })?.image
+                                    ?.overlay || "transparent",
+                              }}
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      <p className="text-xs text-gray-500">
+                        💡 Chọn màu và điều chỉnh độ mờ, hoặc nhập trực tiếp rgba(r,g,b,a)
+                      </p>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
