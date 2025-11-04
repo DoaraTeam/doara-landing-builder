@@ -409,6 +409,40 @@ export interface LoadingConfig {
 }
 
 /**
+ * Sub-page configuration for multi-page landing
+ */
+export interface SubPage {
+  id: string;
+  title: string;
+  slug: string; // Relative slug (will be combined with parent)
+  icon?: string; // Icon name or emoji
+  description?: string;
+  components: ComponentConfig[];
+  order: number;
+  visible: boolean;
+}
+
+/**
+ * Page navigation style
+ */
+export type PageNavigationStyle =
+  | "tabs" // Horizontal tabs
+  | "sidebar" // Vertical sidebar
+  | "dropdown" // Dropdown menu
+  | "pills"; // Pill-style tabs
+
+/**
+ * Page navigation configuration
+ */
+export interface PageNavigation {
+  enabled: boolean;
+  style: PageNavigationStyle;
+  position?: "top" | "left" | "right"; // For sidebar
+  showIcons?: boolean;
+  sticky?: boolean;
+}
+
+/**
  * Landing page configuration
  */
 export interface LandingPage {
@@ -423,6 +457,10 @@ export interface LandingPage {
   createdAt?: string;
   updatedAt?: string;
   status?: "draft" | "published" | "archived";
+  // Multi-page support
+  isMultiPage?: boolean;
+  subPages?: SubPage[];
+  navigation?: PageNavigation;
 }
 
 /**
