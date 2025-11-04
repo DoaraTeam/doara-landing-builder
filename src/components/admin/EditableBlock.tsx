@@ -78,7 +78,7 @@ export function EditableBlock({
     <div
       ref={setNodeRef}
       style={style}
-      className={`relative group transition-all duration-200 ${isSelected ? "shadow-xl z-50" : "hover:shadow-md z-10"} ${!component.visible ? "opacity-60" : ""} ${isDragging ? "opacity-50 scale-105" : ""}`}
+      className={`relative group transition-all duration-200 ${isSelected ? "shadow-xl z-10" : "hover:shadow-md z-0"} ${!component.visible ? "opacity-60" : ""} ${isDragging ? "opacity-50 scale-105" : ""}`}
       onClick={onSelect}
     >
       {/* Component Content */}
