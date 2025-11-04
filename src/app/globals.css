@@ -106,3 +106,6 @@
 html {
   scroll-behavior: smooth;
 }
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
