@@ -6,6 +6,7 @@ import { LandingConfig } from "@/types/landing";
 import { ComponentRenderer } from "@/components/landing/ComponentRenderer";
 import { ThemeProvider } from "@/components/landing/ThemeProvider";
 import { LandingPageLoader } from "@/components/landing/LandingPageLoader";
+import MultiPageRenderer from "@/components/landing/MultiPageRenderer";
 import { getTheme } from "@/lib/themes";
 
 interface PageProps {
@@ -116,23 +117,20 @@ export default async function LandingPage({ params }: PageProps) {
           duration={loadingConfig.duration || 1000}
           minDuration={loadingConfig.minDuration || 500}
         >
-          <main className="min-h-screen">
-            {sortedComponents.map((component) => (
-              <ComponentRenderer key={component.id} component={component} theme={theme} />
-            ))}
-          </main>
+          {page.isMultiPage ? (
+            <MultiPageRenderer page={page} />
+          ) : (
+            <main className="min-h-screen">
+              {sortedComponents.map((component) => (
+                <ComponentRenderer key={component.id} component={component} theme={theme} />
+              ))}
+            </main>
+          )}
         </LandingPageLoader>
       </ThemeProvider>
     );
   } catch (error) {
     console.error("Error rendering landing page:", error);
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-red-600 mb-4">Error</h1>
-          <p className="text-gray-600">Failed to load landing page</p>
-        </div>
-      </div>
-    );
+    notFound();
   }
 }
