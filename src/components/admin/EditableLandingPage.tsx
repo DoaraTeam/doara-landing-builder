@@ -630,7 +630,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
       <div className="min-h-screen bg-gray-100">
         {/* Top Toolbar */}
         <div
-          className={`bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm transition-all duration-300 `}
+          className={`bg-white border-b border-gray-200 sticky top-0 z-[999] shadow-sm transition-all duration-300 `}
         >
           <div
             className={`px-4 py-3 flex items-center justify-between ${
