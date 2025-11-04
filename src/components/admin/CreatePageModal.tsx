@@ -43,6 +43,7 @@ export default function CreatePageModal({
     description: "",
     slug: "",
     theme: "modern",
+    isMultiPage: false,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -137,6 +138,17 @@ export default function CreatePageModal({
         components,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        // Multi-page support
+        isMultiPage: formData.isMultiPage,
+        subPages: formData.isMultiPage ? [] : undefined,
+        navigation: formData.isMultiPage
+          ? {
+              enabled: true,
+              style: "tabs" as const,
+              showIcons: true,
+              sticky: true,
+            }
+          : undefined,
       };
 
       const response = await fetch("/api/landing-config", {
@@ -159,6 +171,7 @@ export default function CreatePageModal({
         description: "",
         slug: "",
         theme: "modern",
+        isMultiPage: false,
       });
       setStep("template");
       setSelectedTemplate(null);
@@ -186,6 +199,7 @@ export default function CreatePageModal({
               description: "",
               slug: "",
               theme: "modern",
+              isMultiPage: false,
             });
           }
           onOpenChange(isOpen);
@@ -273,6 +287,43 @@ export default function CreatePageModal({
                 ))}
               </SelectContent>
             </Select>
+          </div>
+
+          {/* Page Type */}
+          <div className="space-y-2">
+            <Label htmlFor="pageType">Loại Landing Page *</Label>
+            <Select
+              value={formData.isMultiPage ? "multi" : "single"}
+              onValueChange={(value) =>
+                setFormData({ ...formData, isMultiPage: value === "multi" })
+              }
+              disabled={loading}
+            >
+              <SelectTrigger id="pageType">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="single">
+                  <div className="flex flex-col">
+                    <span className="font-medium">Single Page</span>
+                    <span className="text-xs text-gray-500">
+                      Một trang duy nhất với các section
+                    </span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="multi">
+                  <div className="flex flex-col">
+                    <span className="font-medium">Multiple Pages</span>
+                    <span className="text-xs text-gray-500">Nhiều trang con với navigation</span>
+                  </div>
+                </SelectItem>
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-gray-500">
+              {formData.isMultiPage
+                ? "Bạn có thể thêm nhiều trang con sau khi tạo"
+                : "Trang đơn giản với các component"}
+            </p>
           </div>
 
           {/* Error Message */}
