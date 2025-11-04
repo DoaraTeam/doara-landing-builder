@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { LandingConfig, LandingPage } from "@/types/landing";
 import { EditableLandingPage } from "./EditableLandingPage";
+import MultiPageEditor from "./MultiPageEditor";
 
 interface LandingPageEditorProps {
   pageId: string;
@@ -119,6 +120,11 @@ export function LandingPageEditor({ pageId }: LandingPageEditorProps) {
   }
 
   const theme = config.themes[page.theme];
+
+  // Use MultiPageEditor if page is multi-page
+  if (page.isMultiPage) {
+    return <MultiPageEditor page={page} config={config} onSave={handleSave} />;
+  }
 
   return <EditableLandingPage page={page} theme={theme} config={config} onSave={handleSave} />;
 }
