@@ -45,28 +45,32 @@ export function Header({ config, theme }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const { isEditMode } = useEditMode();
 
-  // Smooth scroll to component
+  // Handle navigation click - supports both hash links and page navigation
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
-    // Only handle hash links for smooth scrolling
-    if (!link.startsWith("#")) return;
+    // Close mobile menu
+    setMobileMenuOpen(false);
 
-    e.preventDefault();
-    const targetId = link.substring(1);
-    const targetElement = document.getElementById(targetId);
+    // Handle hash links for smooth scrolling
+    if (link.startsWith("#")) {
+      e.preventDefault();
+      const targetId = link.substring(1);
+      const targetElement = document.getElementById(targetId);
 
-    if (targetElement) {
-      // Calculate offset for fixed/sticky headers
-      const headerHeight = position === "fixed" || position === "sticky" ? 80 : 0;
-      const targetPosition = targetElement.offsetTop - headerHeight;
+      if (targetElement) {
+        // Calculate offset for fixed/sticky headers
+        const headerHeight = position === "fixed" || position === "sticky" ? 80 : 0;
+        const targetPosition = targetElement.offsetTop - headerHeight;
 
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-
-      // Close mobile menu if open
-      setMobileMenuOpen(false);
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }
+      return;
     }
+
+    // For other links (like /slug/subpage), let the browser handle it naturally
+    // No need to preventDefault(), the <a> tag will navigate normally
   };
 
   const {
