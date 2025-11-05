@@ -93,9 +93,24 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
     applyTheme(currentTheme);
   }, [editingPage.theme]);
 
+  // Sync header tabs when subpages change
+  useEffect(() => {
+    const headerComponent = editingPage.components.find((c) => c.type === "header");
+    if (headerComponent) {
+      const syncedComponents = syncHeaderTabs(editingPage.components);
+      if (JSON.stringify(syncedComponents) !== JSON.stringify(editingPage.components)) {
+        setEditingPage({
+          ...editingPage,
+          components: syncedComponents,
+        });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editingPage.subPages]);
+
   // Preview page
   const handlePreview = () => {
-    window.open(`/landing/${editingPage.slug}`, "_blank");
+    window.open(`/${editingPage.slug}`, "_blank");
   };
 
   // Back to dashboard
@@ -218,7 +233,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
     });
   };
 
-  // Auto-sync header tabs with components
+  // Auto-sync header tabs with components and subpages
   const syncHeaderTabs = (components: ComponentConfig[]) => {
     const headerComponent = components.find((c) => c.type === "header");
     if (!headerComponent) return components;
@@ -228,12 +243,25 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
       (c) => c.type !== "header" && c.visible && c.type !== "footer"
     );
 
-    // Create tabs for each component
-    const newTabs = visibleComponents.map((comp) => ({
+    // Create tabs for each component (hash links)
+    const componentTabs = visibleComponents.map((comp) => ({
       id: comp.id,
       text: getComponentDisplayName(comp),
       link: `#${comp.id}`,
     }));
+
+    // Add tabs for subpages if any (page links)
+    const subPageTabs =
+      editingPage.subPages
+        ?.filter((sp) => sp.visible)
+        .map((sp) => ({
+          id: sp.id,
+          text: sp.title,
+          link: `/${editingPage.slug}/${sp.slug}`,
+        })) || [];
+
+    // Combine component tabs and subpage tabs
+    const newTabs = [...componentTabs, ...subPageTabs];
 
     // Update header config with new tabs
     const updatedHeader = {
@@ -266,12 +294,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
       video: "Video",
     };
 
-    // Check if component has a title in config
-    const config = component.config as Record<string, unknown>;
-    if (config?.title && typeof config.title === "string") {
-      return config.title;
-    }
-
+    // Return component type name (short, clean text)
     return typeNames[component.type] || component.type;
   };
 
@@ -630,7 +653,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
       <div className="min-h-screen bg-gray-100">
         {/* Top Toolbar */}
         <div
-          className={`bg-white border-b border-gray-200 sticky top-0 z-[999] shadow-sm transition-all duration-300 `}
+          className={`bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm transition-all duration-300 `}
         >
           <div
             className={`px-4 py-3 flex items-center justify-between ${
@@ -830,6 +853,9 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
             component={selectedComponent}
             onUpdate={handleComponentUpdate}
             onClose={() => setSelectedComponentId(null)}
+            allComponents={editingPage.components}
+            subPages={editingPage.subPages || []}
+            pageSlug={editingPage.slug}
           />
         )}
 
