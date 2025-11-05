@@ -1,18 +1,29 @@
 "use client";
 
-import { HeaderTab } from "@/types/landing";
+import { HeaderTab, ComponentConfig, SubPage } from "@/types/landing";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus, Trash2, GripVertical } from "lucide-react";
 import { useState } from "react";
+import { LinkSelector } from "./LinkSelector";
 
 interface HeaderTabsEditorProps {
   tabs: HeaderTab[];
   onChange: (tabs: HeaderTab[]) => void;
+  // Props for link selection
+  allComponents?: ComponentConfig[];
+  subPages?: SubPage[];
+  pageSlug?: string;
 }
 
-export function HeaderTabsEditor({ tabs = [], onChange }: HeaderTabsEditorProps) {
+export function HeaderTabsEditor({
+  tabs = [],
+  onChange,
+  allComponents = [],
+  subPages = [],
+  pageSlug,
+}: HeaderTabsEditorProps) {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const addTab = () => {
@@ -105,12 +116,14 @@ export function HeaderTabsEditor({ tabs = [], onChange }: HeaderTabsEditorProps)
               </div>
 
               <div>
-                <Label className="text-xs">Link</Label>
-                <Input
+                <LinkSelector
                   value={tab.link}
-                  onChange={(e) => updateTab(index, "link", e.target.value)}
-                  placeholder="#section or /path"
-                  className="mt-1"
+                  onChange={(value) => updateTab(index, "link", value)}
+                  label="Link"
+                  placeholder="e.g., #pricing or /slug/page"
+                  components={allComponents}
+                  subPages={subPages}
+                  pageSlug={pageSlug}
                 />
               </div>
             </div>
