@@ -341,7 +341,7 @@ export default function AdminDashboard() {
               <CardFooter className="flex flex-col gap-2 pt-3 border-t">
                 <div className="flex gap-2 w-full">
                   <Button variant="outline" size="sm" asChild className="flex-1">
-                    <a href={`/landing/${page.slug}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`/${page.slug}`} target="_blank" rel="noopener noreferrer">
                       <Eye className="h-4 w-4 mr-1" />
                       Preview
                     </a>
