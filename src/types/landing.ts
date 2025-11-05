@@ -92,7 +92,7 @@ export type ContainerWidth =
 export interface HeaderTab {
   id: string;
   text: string;
-  link: string;
+  link: string; // Can be: "#section-id" for scroll or "/slug/subpage" for navigation
 }
 
 /**
@@ -127,12 +127,12 @@ export interface HeroConfig {
   description: string;
   primaryCTA?: {
     text: string;
-    link: string;
+    link: string; // Can be: "#section-id" for scroll or "/slug/subpage" for navigation
     style?: "primary" | "secondary" | "outline";
   };
   secondaryCTA?: {
     text: string;
-    link: string;
+    link: string; // Can be: "#section-id" for scroll or "/slug/subpage" for navigation
     style?: "primary" | "secondary" | "outline";
   };
   image?: string;
@@ -238,12 +238,12 @@ export interface CTAConfig {
   description: string;
   primaryCTA?: {
     text: string;
-    link: string;
+    link: string; // Can be: "#section-id" for scroll or "/slug/subpage" for navigation
     style?: "primary" | "secondary" | "outline";
   };
   secondaryCTA?: {
     text: string;
-    link: string;
+    link: string; // Can be: "#section-id" for scroll or "/slug/subpage" for navigation
     style?: "primary" | "secondary" | "outline";
   };
   alignment?: "left" | "center" | "right";
