@@ -57,6 +57,16 @@ export function Content({ config, theme }: ContentProps) {
   const headingFont = "var(--font-heading)";
   const bodyFont = "var(--font-body)";
 
+  // Handle CTA click - support both hash links and page navigation
+  const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    if (link.startsWith("#")) {
+      e.preventDefault();
+      const element = document.getElementById(link.substring(1));
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+    // Otherwise let the browser handle the navigation
+  };
+
   // Normalize image data to support both formats
   const imageData =
     typeof image === "string"
@@ -115,7 +125,9 @@ export function Content({ config, theme }: ContentProps) {
         {/* CTA */}
         {cta && (
           <Button asChild size="lg" style={{ backgroundColor: primaryColor }}>
-            <a href={cta.link}>{cta.text}</a>
+            <a href={cta.link} onClick={(e) => handleCTAClick(e, cta.link)}>
+              {cta.text}
+            </a>
           </Button>
         )}
       </div>
@@ -190,7 +202,9 @@ export function Content({ config, theme }: ContentProps) {
               {/* CTA */}
               {cta && (
                 <Button asChild size="lg" style={{ backgroundColor: primaryColor }}>
-                  <a href={cta.link}>{cta.text}</a>
+                  <a href={cta.link} onClick={(e) => handleCTAClick(e, cta.link)}>
+                    {cta.text}
+                  </a>
                 </Button>
               )}
             </div>
