@@ -253,7 +253,7 @@ export default function CreatePageModal({
           <div className="space-y-2">
             <Label htmlFor="slug">URL Slug *</Label>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">/landing/</span>
+              <span className="text-sm text-gray-500">/</span>
               <Input
                 id="slug"
                 placeholder="ai-startup"
