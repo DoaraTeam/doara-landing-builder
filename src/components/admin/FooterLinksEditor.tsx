@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus, Trash2, GripVertical, Facebook, Twitter, Linkedin, Github } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { LinkSelector } from "./LinkSelector";
+import { ComponentConfig, SubPage } from "@/types/landing";
 
 interface FooterLink {
   text: string;
@@ -34,6 +36,10 @@ interface FooterConfig {
 interface FooterLinksEditorProps {
   footerConfig: FooterConfig;
   onChange: (config: FooterConfig) => void;
+  // Props for link selection
+  allComponents?: ComponentConfig[];
+  subPages?: SubPage[];
+  pageSlug?: string;
 }
 
 const socialIcons = {
@@ -43,7 +49,13 @@ const socialIcons = {
   github: Github,
 };
 
-export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorProps) {
+export function FooterLinksEditor({
+  footerConfig,
+  onChange,
+  allComponents = [],
+  subPages = [],
+  pageSlug,
+}: FooterLinksEditorProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const handleUpdateLinkGroup = (index: number, updates: Partial<FooterLinkGroup>) => {
@@ -244,7 +256,18 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
                     </Button>
                   </div>
                   {group.items?.map((link, linkIndex) => (
-                    <div key={linkIndex} className="grid grid-cols-2 gap-2">
+                    <div key={linkIndex} className="space-y-2 p-2 border border-gray-100 rounded">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-gray-500">Link {linkIndex + 1}</span>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => handleDeleteLink(groupIndex, linkIndex)}
+                          className="h-6 w-6 p-0 hover:text-red-600"
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
                       <Input
                         value={link.text}
                         onChange={(e) =>
@@ -253,24 +276,17 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
                         placeholder="Link text"
                         className="h-7 text-xs"
                       />
-                      <div className="flex gap-1">
-                        <Input
-                          value={link.link}
-                          onChange={(e) =>
-                            handleUpdateLink(groupIndex, linkIndex, { link: e.target.value })
-                          }
-                          placeholder="Link URL"
-                          className="h-7 text-xs flex-1"
-                        />
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => handleDeleteLink(groupIndex, linkIndex)}
-                          className="h-7 w-7 p-0 hover:text-red-600"
-                        >
-                          <Trash2 className="h-3 w-3" />
-                        </Button>
-                      </div>
+                      <LinkSelector
+                        value={link.link}
+                        onChange={(value) =>
+                          handleUpdateLink(groupIndex, linkIndex, { link: value })
+                        }
+                        label=""
+                        placeholder="e.g., #contact or /slug/page"
+                        components={allComponents}
+                        subPages={subPages}
+                        pageSlug={pageSlug}
+                      />
                     </div>
                   ))}
                 </div>
@@ -297,35 +313,49 @@ export function FooterLinksEditor({ footerConfig, onChange }: FooterLinksEditorP
           </div>
         </CardHeader>
         {expandedSection === "social" && (
-          <CardContent className="p-3 space-y-2 border-t">
+          <CardContent className="p-3 space-y-3 border-t">
             {(footerConfig.social || []).map((social, index) => (
-              <div key={index} className="grid grid-cols-3 gap-2 items-center">
-                <select
-                  value={social.platform}
-                  onChange={(e) =>
-                    handleUpdateSocial(index, { platform: e.target.value, icon: e.target.value })
-                  }
-                  className="h-7 text-xs border border-gray-300 rounded px-2"
-                >
-                  <option value="facebook">Facebook</option>
-                  <option value="twitter">Twitter</option>
-                  <option value="linkedin">LinkedIn</option>
-                  <option value="github">GitHub</option>
-                </select>
-                <Input
-                  value={social.link}
-                  onChange={(e) => handleUpdateSocial(index, { link: e.target.value })}
-                  placeholder="https://..."
-                  className="h-7 text-xs"
-                />
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => handleDeleteSocial(index)}
-                  className="h-7 w-7 p-0 hover:text-red-600 justify-self-end"
-                >
-                  <Trash2 className="h-3 w-3" />
-                </Button>
+              <div key={index} className="border border-gray-200 rounded-md p-3 space-y-2">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-medium text-gray-700">Social #{index + 1}</span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => handleDeleteSocial(index)}
+                    className="h-6 w-6 p-0 hover:text-red-600"
+                  >
+                    <Trash2 className="h-3 w-3" />
+                  </Button>
+                </div>
+                <div className="space-y-2">
+                  <div>
+                    <label className="text-xs text-gray-600 block mb-1">Platform</label>
+                    <select
+                      value={social.platform}
+                      onChange={(e) =>
+                        handleUpdateSocial(index, {
+                          platform: e.target.value,
+                          icon: e.target.value,
+                        })
+                      }
+                      className="w-full h-8 text-xs border border-gray-300 rounded px-2"
+                    >
+                      <option value="facebook">Facebook</option>
+                      <option value="twitter">Twitter</option>
+                      <option value="linkedin">LinkedIn</option>
+                      <option value="github">GitHub</option>
+                    </select>
+                  </div>
+                  <LinkSelector
+                    value={social.link}
+                    onChange={(value) => handleUpdateSocial(index, { link: value })}
+                    label="Link"
+                    placeholder="e.g., https://facebook.com/yourpage"
+                    components={allComponents}
+                    subPages={subPages}
+                    pageSlug={pageSlug}
+                  />
+                </div>
               </div>
             ))}
           </CardContent>
