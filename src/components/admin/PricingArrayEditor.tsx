@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Plus, Trash2, GripVertical, Star } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { LinkSelector } from "./LinkSelector";
+import { ComponentConfig, SubPage } from "@/types/landing";
 
 interface PricingPlan {
   name: string;
@@ -22,9 +24,19 @@ interface PricingPlan {
 interface PricingArrayEditorProps {
   plans: PricingPlan[];
   onChange: (plans: PricingPlan[]) => void;
+  // Props for link selection
+  allComponents?: ComponentConfig[];
+  subPages?: SubPage[];
+  pageSlug?: string;
 }
 
-export function PricingArrayEditor({ plans, onChange }: PricingArrayEditorProps) {
+export function PricingArrayEditor({
+  plans,
+  onChange,
+  allComponents = [],
+  subPages = [],
+  pageSlug,
+}: PricingArrayEditorProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const handleAdd = () => {
@@ -282,7 +294,7 @@ export function PricingArrayEditor({ plans, onChange }: PricingArrayEditorProps)
 
                 <div className="space-y-2 p-2 border border-gray-200 rounded">
                   <Label className="text-xs font-semibold">Call to Action</Label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-2">
                     <Input
                       value={plan.cta?.text}
                       onChange={(e) =>
@@ -291,13 +303,16 @@ export function PricingArrayEditor({ plans, onChange }: PricingArrayEditorProps)
                       placeholder="Button text"
                       className="h-7 text-xs"
                     />
-                    <Input
-                      value={plan.cta?.link}
-                      onChange={(e) =>
-                        handleUpdate(index, { cta: { ...plan.cta, link: e.target.value } })
+                    <LinkSelector
+                      value={plan.cta?.link || ""}
+                      onChange={(value) =>
+                        handleUpdate(index, { cta: { ...plan.cta, link: value } })
                       }
-                      placeholder="Button link"
-                      className="h-7 text-xs"
+                      label=""
+                      placeholder="e.g., #contact or /slug/page"
+                      components={allComponents}
+                      subPages={subPages}
+                      pageSlug={pageSlug}
                     />
                   </div>
                 </div>
