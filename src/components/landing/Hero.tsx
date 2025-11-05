@@ -42,6 +42,28 @@ export function Hero({ config, theme }: HeroProps) {
   // Layout classes
   const layout = getLayoutClasses({ spacing, containerWidth, alignment });
 
+  // Handle CTA click - support both hash links and page navigation
+  const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    // Handle hash links for smooth scrolling
+    if (link.startsWith("#")) {
+      e.preventDefault();
+      const targetId = link.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        const headerHeight = 80; // Approximate header height
+        const targetPosition = targetElement.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }
+      return;
+    }
+    // For other links (like /slug/subpage), let the browser handle it naturally
+  };
+
   return (
     <AnimatedSection animation={animation}>
       <section
@@ -102,7 +124,9 @@ export function Hero({ config, theme }: HeroProps) {
                   }}
                   className="hover:opacity-90 transition-opacity"
                 >
-                  <a href={primaryCTA.link}>{primaryCTA.text}</a>
+                  <a href={primaryCTA.link} onClick={(e) => handleCTAClick(e, primaryCTA.link)}>
+                    {primaryCTA.text}
+                  </a>
                 </Button>
               )}
               {secondaryCTA && (
@@ -117,7 +141,9 @@ export function Hero({ config, theme }: HeroProps) {
                   }}
                   className="hover:opacity-80 transition-opacity"
                 >
-                  <a href={secondaryCTA.link}>{secondaryCTA.text}</a>
+                  <a href={secondaryCTA.link} onClick={(e) => handleCTAClick(e, secondaryCTA.link)}>
+                    {secondaryCTA.text}
+                  </a>
                 </Button>
               )}
             </div>
