@@ -21,19 +21,32 @@ import { TestimonialsArrayEditor } from "./TestimonialsArrayEditor";
 import { FooterLinksEditor } from "./FooterLinksEditor";
 import { LogoArrayEditor } from "./LogoArrayEditor";
 import { HeaderTabsEditor } from "./HeaderTabsEditor";
+import { LinkSelector } from "./LinkSelector";
 import { ensureAnimation } from "@/lib/animation-defaults";
+import { SubPage } from "@/types/landing";
 
 interface ComponentEditorProps {
   component: ComponentConfig;
   onUpdate: (config: ComponentConfig) => void;
   onClose: () => void;
+  // Additional props for link selection
+  allComponents?: ComponentConfig[]; // All components in current page
+  subPages?: SubPage[]; // Subpages for navigation
+  pageSlug?: string; // Current page slug
 }
 
 /**
  * ComponentEditor - Side panel for editing component configuration
  * Shows 3 tabs: Content, Layout, Style
  */
-export function ComponentEditor({ component, onUpdate, onClose }: ComponentEditorProps) {
+export function ComponentEditor({
+  component,
+  onUpdate,
+  onClose,
+  allComponents = [],
+  subPages = [],
+  pageSlug,
+}: ComponentEditorProps) {
   const [config, setConfig] = useState(component.config);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("content");
@@ -201,6 +214,9 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                 <HeaderTabsEditor
                   tabs={config.tabs}
                   onChange={(tabs) => handleChange("tabs", tabs)}
+                  allComponents={allComponents}
+                  subPages={subPages}
+                  pageSlug={pageSlug}
                 />
               )}
 
@@ -240,10 +256,14 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                       onChange={(e) => handleChange("ctaButton.text", e.target.value)}
                       placeholder="Button text"
                     />
-                    <Input
+                    <LinkSelector
                       value={(config.ctaButton as { link?: string })?.link || ""}
-                      onChange={(e) => handleChange("ctaButton.link", e.target.value)}
-                      placeholder="Button link"
+                      onChange={(value) => handleChange("ctaButton.link", value)}
+                      label="Button Link"
+                      placeholder="e.g., #pricing or /slug/page"
+                      components={allComponents}
+                      subPages={subPages}
+                      pageSlug={pageSlug}
                     />
                     <div className="space-y-2">
                       <Label className="text-xs">Button Style</Label>
@@ -319,10 +339,14 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                   onChange={(e) => handleChange("primaryCTA.text", e.target.value)}
                   placeholder="Button text"
                 />
-                <Input
+                <LinkSelector
                   value={(config.primaryCTA as { link?: string })?.link || ""}
-                  onChange={(e) => handleChange("primaryCTA.link", e.target.value)}
-                  placeholder="Button link"
+                  onChange={(value) => handleChange("primaryCTA.link", value)}
+                  label="Button Link"
+                  placeholder="e.g., #pricing or /slug/page"
+                  components={allComponents}
+                  subPages={subPages}
+                  pageSlug={pageSlug}
                 />
               </div>
             </div>
@@ -337,10 +361,36 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                   onChange={(e) => handleChange("secondaryCTA.text", e.target.value)}
                   placeholder="Button text"
                 />
-                <Input
+                <LinkSelector
                   value={(config.secondaryCTA as { link?: string })?.link || ""}
-                  onChange={(e) => handleChange("secondaryCTA.link", e.target.value)}
-                  placeholder="Button link"
+                  onChange={(value) => handleChange("secondaryCTA.link", value)}
+                  label="Button Link"
+                  placeholder="e.g., #contact or /slug/page"
+                  components={allComponents}
+                  subPages={subPages}
+                  pageSlug={pageSlug}
+                />
+              </div>
+            </div>
+          )}
+
+          {component.type === "content" && "cta" in config && (
+            <div className="space-y-3 p-3 border border-gray-200 rounded-lg">
+              <Label className="text-sm font-semibold">CTA Button</Label>
+              <div className="space-y-2">
+                <Input
+                  value={(config.cta as { text?: string })?.text || ""}
+                  onChange={(e) => handleChange("cta.text", e.target.value)}
+                  placeholder="Button text"
+                />
+                <LinkSelector
+                  value={(config.cta as { link?: string })?.link || ""}
+                  onChange={(value) => handleChange("cta.link", value)}
+                  label="Button Link"
+                  placeholder="e.g., #contact or /slug/page"
+                  components={allComponents}
+                  subPages={subPages}
+                  pageSlug={pageSlug}
                 />
               </div>
             </div>
@@ -395,6 +445,9 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                   }>
                 }
                 onChange={(plans) => handleChange("plans", plans)}
+                allComponents={allComponents}
+                subPages={subPages}
+                pageSlug={pageSlug}
               />
             </div>
           )}
@@ -447,6 +500,9 @@ export function ComponentEditor({ component, onUpdate, onClose }: ComponentEdito
                     ).social || [],
                   copyright: (config as { copyright?: string }).copyright || "",
                 }}
+                allComponents={allComponents}
+                subPages={subPages}
+                pageSlug={pageSlug}
                 onChange={(updatedFooterConfig) => {
                   // Merge footer content with existing or default background/spacing
                   setConfig({
