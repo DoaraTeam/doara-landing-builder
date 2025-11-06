@@ -104,7 +104,15 @@ export function Header({ config, theme }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [transparent, position, isEditMode]);
 
-  const bgStyle = getBackgroundStyle(background, theme?.colors.background || "#ffffff");
+  // Use theme background color as fallback, prioritize theme over config
+  const themeBackgroundColor = theme?.colors.background || "#ffffff";
+
+  // For solid backgrounds, always use theme color to ensure consistency
+  // For gradient/image backgrounds, respect the config
+  const backgroundConfig =
+    background.type === "solid" ? { ...background, color: themeBackgroundColor } : background;
+
+  const bgStyle = getBackgroundStyle(backgroundConfig, themeBackgroundColor);
   const spacingClasses = spacing ? getSpacingClasses(spacing) : "py-4";
 
   // In edit mode, force static position to prevent overlapping
@@ -122,23 +130,30 @@ export function Header({ config, theme }: HeaderProps) {
     transition-all duration-300
   `.trim();
 
+  // Apply transparent background only when not scrolled and transparent mode is enabled
+  // Otherwise, always use theme background
   const headerStyle =
     transparent && !scrolled && effectivePosition !== "static"
       ? { backgroundColor: "transparent" }
       : bgStyle;
 
-  const getButtonStyles = (style?: "primary" | "secondary" | "outline") => {
-    const primaryColor = theme?.colors.primary || "#3b82f6";
+  // Use CSS variables for theme colors (these are set by applyTheme())
+  const primaryColor = "var(--color-primary)";
+  const secondaryColor = "var(--color-secondary)";
+  const textColor = "var(--color-text)";
 
+  // Get button styles - uses CSS variables so they auto-update when theme changes
+  const getButtonStyles = (style?: "primary" | "secondary" | "outline"): React.CSSProperties => {
     switch (style) {
       case "secondary":
         return {
-          backgroundColor: theme?.colors.secondary || "#6b7280",
+          backgroundColor: secondaryColor,
           color: "#ffffff",
         };
       case "outline":
         return {
           border: `2px solid ${primaryColor}`,
+          borderStyle: "solid",
           color: primaryColor,
           backgroundColor: "transparent",
         };
@@ -170,22 +185,14 @@ export function Header({ config, theme }: HeaderProps) {
 
     if (logo?.text) {
       return (
-        <a
-          href={logoLink}
-          className="text-2xl font-bold"
-          style={{ color: theme?.colors.text || "#1f2937" }}
-        >
+        <a href={logoLink} className="text-2xl font-bold" style={{ color: textColor }}>
           {logo.text}
         </a>
       );
     }
 
     return (
-      <a
-        href={logoLink}
-        className="text-2xl font-bold"
-        style={{ color: theme?.colors.text || "#1f2937" }}
-      >
+      <a href={logoLink} className="text-2xl font-bold" style={{ color: textColor }}>
         Your Brand
       </a>
     );
@@ -206,7 +213,7 @@ export function Header({ config, theme }: HeaderProps) {
                 href={tab.link}
                 onClick={(e) => handleNavClick(e, tab.link)}
                 className="text-base font-medium hover:opacity-80 transition-opacity cursor-pointer"
-                style={{ color: theme?.colors.text || "#1f2937" }}
+                style={{ color: textColor }}
               >
                 {tab.text}
               </a>
@@ -217,8 +224,19 @@ export function Header({ config, theme }: HeaderProps) {
               <a
                 href={ctaButton.link}
                 onClick={(e) => handleNavClick(e, ctaButton.link)}
-                className="px-6 py-2 rounded-lg font-medium transition-all hover:opacity-90 cursor-pointer"
-                style={getButtonStyles(ctaButton.style)}
+                className="px-6 py-2 rounded-lg font-medium transition-all cursor-pointer hover:shadow-lg active:scale-95"
+                style={{
+                  ...getButtonStyles(ctaButton.style),
+                  filter: "brightness(1)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.filter = "brightness(0.9)";
+                  e.currentTarget.style.transform = "scale(1.02)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.filter = "brightness(1)";
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
               >
                 {ctaButton.text}
               </a>
@@ -233,9 +251,9 @@ export function Header({ config, theme }: HeaderProps) {
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <X size={24} style={{ color: theme?.colors.text || "#1f2937" }} />
+                <X size={24} style={{ color: textColor }} />
               ) : (
-                <Menu size={24} style={{ color: theme?.colors.text || "#1f2937" }} />
+                <Menu size={24} style={{ color: textColor }} />
               )}
             </button>
           </div>
@@ -251,7 +269,7 @@ export function Header({ config, theme }: HeaderProps) {
                   href={tab.link}
                   onClick={(e) => handleNavClick(e, tab.link)}
                   className="text-base font-medium hover:opacity-80 transition-opacity cursor-pointer"
-                  style={{ color: theme?.colors.text || "#1f2937" }}
+                  style={{ color: textColor }}
                 >
                   {tab.text}
                 </a>
@@ -261,8 +279,17 @@ export function Header({ config, theme }: HeaderProps) {
                 <a
                   href={ctaButton.link}
                   onClick={(e) => handleNavClick(e, ctaButton.link)}
-                  className="px-6 py-2 rounded-lg font-medium text-center transition-all hover:opacity-90 cursor-pointer"
-                  style={getButtonStyles(ctaButton.style)}
+                  className="px-6 py-2 rounded-lg font-medium text-center transition-all cursor-pointer active:scale-95"
+                  style={{
+                    ...getButtonStyles(ctaButton.style),
+                    filter: "brightness(1)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.filter = "brightness(0.9)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.filter = "brightness(1)";
+                  }}
                 >
                   {ctaButton.text}
                 </a>

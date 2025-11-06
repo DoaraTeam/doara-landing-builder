@@ -663,7 +663,7 @@ export function EditableLandingPage({ page, theme, config, onSave }: EditableLan
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="sm" onClick={handleBack} className="gap-1">
                 <ArrowLeft className="h-4 w-4" />
-                Back
+                Back to Dashboard
               </Button>
               <div>
                 <h1 className="text-lg font-semibold">{editingPage.title}</h1>

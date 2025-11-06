@@ -22,6 +22,7 @@ import {
 import { LandingConfig } from "@/types/landing";
 import { TemplateSelector } from "./TemplateSelector";
 import { LandingPageTemplate } from "@/lib/landing-templates";
+import { ArrowLeft } from "lucide-react";
 
 interface CreatePageModalProps {
   open: boolean;
@@ -336,11 +337,12 @@ export default function CreatePageModal({
 
         <DialogFooter className="flex justify-between">
           <Button variant="ghost" onClick={handleBack} disabled={loading}>
-            ← Quay lại chọn mẫu
+            <ArrowLeft className="h-4 w-4" />
+            Back to select template
           </Button>
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => onOpenChange(false)} disabled={loading}>
-              Hủy
+              Cancel
             </Button>
             <Button onClick={handleCreate} disabled={loading}>
               {loading ? "Đang tạo..." : "Tạo Page"}

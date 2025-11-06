@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SubPageManager from "./SubPageManager";
 import { EditableLandingPage } from "./EditableLandingPage";
-import { Settings, FileText, Layout } from "lucide-react";
+import { Settings, FileText, Layout, ArrowLeft } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -79,7 +79,8 @@ export default function MultiPageEditor({ page, config, onSave }: MultiPageEdito
           <div className="container mx-auto py-3 px-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
               <Button variant="ghost" size="sm" onClick={() => setEditingSubPageId(null)}>
-                ← Quay lại
+                <ArrowLeft className="h-4 w-4" />
+                Back
               </Button>
               <div>
                 <h2 className="font-semibold text-lg">Chỉnh sửa: {editingSubPage.title}</h2>
