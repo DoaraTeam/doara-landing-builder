@@ -6,14 +6,22 @@ import { Theme, TestimonialsConfig } from "@/types/landing";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface TestimonialsProps {
   config: TestimonialsConfig;
   theme?: Theme;
 }
 
-export function Testimonials({ config, theme }: TestimonialsProps) {
-  const { title, subtitle, description, testimonials, background, spacing, animation } = config;
+export function Testimonials({ config }: TestimonialsProps) {
+  const { title, subtitle, description, testimonials, background, spacing, animation, layout } =
+    config;
 
   const stagger = useStaggerAnimation({
     animation: animation || { type: "fadeInUp", duration: 700, delay: 100 },
@@ -37,6 +45,47 @@ export function Testimonials({ config, theme }: TestimonialsProps) {
   };
 
   const paddingClass = spacing?.padding === "xl" ? "py-20" : "py-16";
+
+  const renderTestimonialCard = (testimonial: TestimonialsConfig["testimonials"][0]) => (
+    <Card className="border-none shadow-sm h-full" style={{ backgroundColor: surfaceColor }}>
+      <CardContent className="p-6">
+        {testimonial.rating && (
+          <div className="flex gap-1 mb-4">
+            {Array.from({ length: testimonial.rating }).map((_, i) => (
+              <Star key={i} className="h-5 w-5 fill-current" style={{ color: primaryColor }} />
+            ))}
+          </div>
+        )}
+
+        <p className="text-base mb-6 italic" style={{ color: textColor }}>
+          &quot;{testimonial.content || testimonial.text}&quot;
+        </p>
+
+        <div className="flex items-center gap-3">
+          {testimonial.avatar && (
+            <img
+              src={testimonial.avatar}
+              alt={testimonial.name || testimonial.author || ""}
+              className="w-12 h-12 rounded-full object-cover"
+            />
+          )}
+
+          <div>
+            <div className="font-semibold" style={{ color: textColor }}>
+              {testimonial.name || testimonial.author}
+            </div>
+            {(testimonial.role || testimonial.company) && (
+              <div className="text-sm" style={{ color: textMuted }}>
+                {testimonial.role}
+                {testimonial.role && testimonial.company && ", "}
+                {testimonial.company}
+              </div>
+            )}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 
   return (
     <section className={`${paddingClass} px-4`} style={{ backgroundColor: getBackgroundColor() }}>
@@ -62,60 +111,53 @@ export function Testimonials({ config, theme }: TestimonialsProps) {
           )}
         </div>
 
-        <motion.div
-          ref={stagger.ref}
-          initial="hidden"
-          animate={stagger.animate}
-          variants={stagger.containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {testimonials.map((testimonial) => (
-            <motion.div key={testimonial.id} variants={stagger.itemVariants}>
-              <Card className="border-none shadow-sm" style={{ backgroundColor: surfaceColor }}>
-                <CardContent className="p-6">
-                  {testimonial.rating && (
-                    <div className="flex gap-1 mb-4">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 fill-current"
-                          style={{ color: primaryColor }}
-                        />
-                      ))}
-                    </div>
-                  )}
-
-                  <p className="text-base mb-6 italic" style={{ color: textColor }}>
-                    &quot;{testimonial.content || testimonial.text}&quot;
-                  </p>
-
-                  <div className="flex items-center gap-3">
-                    {testimonial.avatar && (
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name || testimonial.author || ""}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                    )}
-
-                    <div>
-                      <div className="font-semibold" style={{ color: textColor }}>
-                        {testimonial.name || testimonial.author}
-                      </div>
-                      {(testimonial.role || testimonial.company) && (
-                        <div className="text-sm" style={{ color: textMuted }}>
-                          {testimonial.role}
-                          {testimonial.role && testimonial.company && ", "}
-                          {testimonial.company}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Testimonials - Grid or Carousel Layout */}
+        {layout === "carousel" ? (
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial) => (
+                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">{renderTestimonialCard(testimonial)}</div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
+        ) : (
+          <motion.div
+            ref={stagger.ref}
+            initial="hidden"
+            animate={stagger.animate}
+            variants={stagger.containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {testimonials.map((testimonial) => (
+              <motion.div
+                key={testimonial.id}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease: "easeOut",
+                    },
+                  },
+                }}
+              >
+                {renderTestimonialCard(testimonial)}
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

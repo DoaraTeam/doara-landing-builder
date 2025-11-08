@@ -6,6 +6,13 @@ import { Theme, FeaturesConfig } from "@/types/landing";
 import { getBackgroundStyle, isBackgroundDark } from "@/lib/background-utils";
 import { getLayoutClasses } from "@/lib/layout-utils";
 import { useStaggerAnimation } from "@/hooks/use-scroll-animation";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface FeaturesProps {
   config: FeaturesConfig;
@@ -84,59 +91,132 @@ export function Features({ config }: FeaturesProps) {
           )}
         </div>
 
-        {/* Features Grid with Stagger Animation */}
-        <motion.div
-          ref={stagger.ref}
-          initial="hidden"
-          animate={stagger.animate}
-          variants={stagger.containerVariants}
-          className={`grid ${layout.grid} gap-6`}
-        >
-          {features.map((feature) => (
-            <motion.div
-              key={feature.id}
-              variants={stagger.itemVariants}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
-              style={{
-                backgroundColor: isDarkBg ? "rgba(255,255,255,0.08)" : surfaceColor,
-                border: isDarkBg ? "1px solid rgba(255,255,255,0.1)" : "1px solid #e5e7eb",
-              }}
-            >
-              {/* Feature Image */}
-              {feature.image && (
-                <div className="mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              )}
+        {/* Features - Grid or Carousel Layout */}
+        {config.layout === "carousel" ? (
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {features.map((feature) => (
+                <CarouselItem key={feature.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <div
+                      className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 h-full"
+                      style={{
+                        backgroundColor: isDarkBg ? "rgba(255,255,255,0.08)" : surfaceColor,
+                        border: isDarkBg ? "1px solid rgba(255,255,255,0.1)" : "1px solid #e5e7eb",
+                      }}
+                    >
+                      {/* Feature Image */}
+                      {feature.image && (
+                        <div className="mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
+                          <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      )}
 
-              {/* Icon */}
-              {feature.icon && <div className="text-4xl mb-4 inline-block">{feature.icon}</div>}
+                      {/* Icon */}
+                      {feature.icon && (
+                        <div className="text-4xl mb-4 inline-block">{feature.icon}</div>
+                      )}
 
-              {/* Title */}
-              <h3
-                className="text-lg md:text-xl font-semibold mb-2"
-                style={{ color: isDarkBg ? "#ffffff" : textColor, fontFamily: headingFont }}
-              >
-                {feature.title}
-              </h3>
+                      {/* Title */}
+                      <h3
+                        className="text-lg md:text-xl font-semibold mb-2"
+                        style={{ color: isDarkBg ? "#ffffff" : textColor, fontFamily: headingFont }}
+                      >
+                        {feature.title}
+                      </h3>
 
-              {/* Description */}
-              <p
-                className="text-sm md:text-base leading-relaxed"
+                      {/* Description */}
+                      <p
+                        className="text-sm md:text-base leading-relaxed"
+                        style={{
+                          color: isDarkBg ? "rgba(255,255,255,0.75)" : textMuted,
+                          fontFamily: bodyFont,
+                        }}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
+        ) : (
+          <motion.div
+            ref={stagger.ref}
+            initial="hidden"
+            animate={stagger.animate}
+            variants={stagger.containerVariants}
+            className={`grid ${layout.grid} gap-6`}
+          >
+            {features.map((feature) => (
+              <motion.div
+                key={feature.id}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.6,
+                      ease: "easeOut",
+                    },
+                  },
+                }}
+                className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
                 style={{
-                  color: isDarkBg ? "rgba(255,255,255,0.75)" : textMuted,
-                  fontFamily: bodyFont,
+                  backgroundColor: isDarkBg ? "rgba(255,255,255,0.08)" : surfaceColor,
+                  border: isDarkBg ? "1px solid rgba(255,255,255,0.1)" : "1px solid #e5e7eb",
                 }}
               >
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Feature Image */}
+                {feature.image && (
+                  <div className="mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+
+                {/* Icon */}
+                {feature.icon && <div className="text-4xl mb-4 inline-block">{feature.icon}</div>}
+
+                {/* Title */}
+                <h3
+                  className="text-lg md:text-xl font-semibold mb-2"
+                  style={{ color: isDarkBg ? "#ffffff" : textColor, fontFamily: headingFont }}
+                >
+                  {feature.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="text-sm md:text-base leading-relaxed"
+                  style={{
+                    color: isDarkBg ? "rgba(255,255,255,0.75)" : textMuted,
+                    fontFamily: bodyFont,
+                  }}
+                >
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

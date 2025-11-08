@@ -68,10 +68,20 @@ export function Stats({ config, theme }: StatsProps) {
 
   const isDarkBg = isBackgroundDark(background);
 
-  const gridColsClass = {
+  const gridColsClass: Record<number, string> = {
     2: "md:grid-cols-2",
     3: "md:grid-cols-3",
     4: "md:grid-cols-2 lg:grid-cols-4",
+  };
+
+  // Handle horizontal layout with proper Tailwind classes
+  const getHorizontalGridClass = () => {
+    const count = stats.length;
+    if (count === 2) return "md:grid-cols-2";
+    if (count === 3) return "md:grid-cols-3";
+    if (count === 4) return "md:grid-cols-2 lg:grid-cols-4";
+    // Default for 5+ items
+    return "md:grid-cols-2 lg:grid-cols-4";
   };
 
   const paddingClass =
@@ -121,15 +131,29 @@ export function Stats({ config, theme }: StatsProps) {
         {/* Stats */}
         <motion.div
           className={`grid grid-cols-1 ${
-            layout === "horizontal" ? "md:grid-cols-" + stats.length : gridColsClass[columns]
+            layout === "horizontal" ? getHorizontalGridClass() : gridColsClass[columns]
           } gap-8`}
           variants={stagger.containerVariants}
           initial="hidden"
-          animate={stagger.controls}
+          animate={stagger.animate}
           ref={stagger.ref}
         >
-          {stats.map((stat) => (
-            <motion.div key={stat.id} className="text-center" variants={stagger.itemVariants}>
+          {stats.map((stat: Stat) => (
+            <motion.div
+              key={stat.id}
+              className="text-center"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.6,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+            >
               <div
                 className="text-4xl md:text-5xl font-bold mb-2"
                 style={{

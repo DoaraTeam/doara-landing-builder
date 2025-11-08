@@ -689,7 +689,8 @@ export function ComponentEditor({
           {/* Layout type - for stats, testimonials, pricing */}
           {(component.type === "stats" ||
             component.type === "testimonials" ||
-            component.type === "pricing") && (
+            component.type === "pricing" ||
+            component.type === "features") && (
             <div className="space-y-2">
               <Label>Layout Style</Label>
               <Select
@@ -712,11 +713,13 @@ export function ComponentEditor({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="grid">Grid</SelectItem>
-                  <SelectItem value="list">List</SelectItem>
+                  {component.type === "features" && <SelectItem value="list">List</SelectItem>}
                   {component.type === "stats" && (
                     <SelectItem value="horizontal">Horizontal</SelectItem>
                   )}
-                  {component.type === "testimonials" && (
+                  {(component.type === "testimonials" ||
+                    component.type === "pricing" ||
+                    component.type === "features") && (
                     <SelectItem value="carousel">Carousel</SelectItem>
                   )}
                 </SelectContent>

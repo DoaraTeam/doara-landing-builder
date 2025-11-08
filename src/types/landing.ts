@@ -181,8 +181,13 @@ export interface PricingPlan {
   period?: string; // e.g., "/month", "/year"
   features: string[];
   highlighted?: boolean;
+  badge?: string; // Custom badge text (e.g., "Best Value", "Most Popular")
   ctaText?: string;
   ctaLink?: string;
+  cta?: {
+    text: string;
+    link: string;
+  };
 }
 
 /**
@@ -193,6 +198,7 @@ export interface PricingConfig {
   subtitle?: string;
   description?: string;
   plans: PricingPlan[];
+  layout?: "grid" | "carousel";
   containerWidth?: ContainerWidth;
   background: BackgroundConfig;
   animation: AnimationConfig;
